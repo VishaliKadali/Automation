@@ -1,0 +1,10 @@
+name: Suite
+tests:
+  - name: Test
+    classes:
+      - com.innroad.inncenter.test.CreateReservation
+
+  - name: Test2
+    classes:
+      - com.innroad.inncenter.test.CreateSeasons
+

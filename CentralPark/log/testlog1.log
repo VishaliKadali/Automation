@@ -1,0 +1,178 @@
+2017-08-14 10:13:42,083 [main] INFO testcore - Config property file loaded
+2017-08-14 10:13:42,761 [main] INFO testcore - Excel file loaded
+2017-08-14 10:22:17,730 [main] INFO testcore - Config property file loaded
+2017-08-14 10:22:18,314 [main] INFO testcore - Excel file loaded
+2017-08-14 10:33:43,220 [main] INFO testcore - Config property file loaded
+2017-08-14 10:33:43,765 [main] INFO testcore - Excel file loaded
+2017-08-14 10:34:10,236 [main] INFO testcore - Config property file loaded
+2017-08-14 10:34:10,918 [main] INFO testcore - Excel file loaded
+2017-08-14 10:47:14,127 [main] INFO testcore - Config property file loaded
+2017-08-14 10:47:14,888 [main] INFO testcore - Excel file loaded
+2017-08-14 10:47:17,187 [main] INFO testcore - chrome driver initialized
+2017-08-14 10:47:17,602 [main] INFO testcore - window Maximize
+2017-08-14 12:28:52,612 [main] INFO testcore - Config property file loaded
+2017-08-14 12:28:53,313 [main] INFO testcore - Excel file loaded
+2017-08-14 12:28:54,826 [main] INFO testcore - chrome driver initialized
+2017-08-14 12:28:55,280 [main] INFO testcore - window Maximize
+2017-08-14 16:50:51,085 [main] INFO testcore - Config property file loaded
+2017-08-14 16:50:51,778 [main] INFO testcore - Excel file loaded
+2017-08-14 16:50:53,170 [main] INFO testcore - chrome driver initialized
+2017-08-14 16:50:53,284 [main] INFO testcore - window Maximize
+2017-08-14 16:51:33,500 [main] INFO testcore - Config property file loaded
+2017-08-14 16:51:34,140 [main] INFO testcore - Excel file loaded
+2017-08-14 16:51:35,403 [main] INFO testcore - chrome driver initialized
+2017-08-14 16:51:35,517 [main] INFO testcore - window Maximize
+2017-08-14 16:52:47,200 [main] INFO testcore - Config property file loaded
+2017-08-14 16:52:47,841 [main] INFO testcore - Excel file loaded
+2017-08-14 16:52:49,099 [main] INFO testcore - chrome driver initialized
+2017-08-14 16:52:49,220 [main] INFO testcore - window Maximize
+2017-08-14 16:53:44,241 [main] INFO testcore - Config property file loaded
+2017-08-14 16:53:44,831 [main] INFO testcore - Excel file loaded
+2017-08-14 16:53:46,005 [main] INFO testcore - chrome driver initialized
+2017-08-14 16:53:46,120 [main] INFO testcore - window Maximize
+2017-08-20 18:50:00,636 [main] INFO testcore - Config property file loaded
+2017-08-20 18:50:01,384 [main] INFO testcore - Excel file loaded
+2017-08-20 18:50:03,687 [main] INFO testcore - chrome driver initialized
+2017-08-20 18:50:04,095 [main] INFO testcore - window Maximize
+2017-08-21 08:25:51,023 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:25:51,485 [main] INFO testcore - window Maximize
+2017-08-21 08:26:32,854 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:26:32,975 [main] INFO testcore - window phone screen size
+2017-08-21 08:27:10,444 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:27:10,563 [main] INFO testcore - window Tablet screen size
+2017-08-21 08:51:14,662 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:51:14,808 [main] INFO testcore - window Tablet screen size
+2017-08-21 08:52:29,891 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:52:30,014 [main] INFO testcore - window Tablet screen size
+2017-08-21 08:53:04,159 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:53:04,279 [main] INFO testcore - window phone screen size
+2017-08-21 08:54:21,997 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:54:22,120 [main] INFO testcore - window phone screen size
+2017-08-21 08:59:15,221 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:59:15,350 [main] INFO testcore - window phone screen size
+2017-08-21 08:59:16,270 [main] INFO testcore - chrome driver initialized
+2017-08-21 08:59:16,398 [main] INFO testcore - window phone screen size
+2017-08-21 09:38:24,939 [main] INFO testcore - chrome driver initialized
+2017-08-21 09:38:25,058 [main] INFO testcore - window phone screen size
+2017-08-21 10:08:10,074 [main] INFO testcore - chrome driver initialized
+2017-08-21 10:08:10,194 [main] INFO testcore - window phone screen size
+2017-08-21 10:11:06,513 [main] INFO testcore - chrome driver initialized
+2017-08-21 10:11:06,641 [main] INFO testcore - window phone screen size
+2017-08-21 10:13:38,080 [main] INFO testcore - chrome driver initialized
+2017-08-21 10:13:38,201 [main] INFO testcore - window phone screen size
+2017-08-21 10:13:54,817 [main] INFO testcore - chrome driver initialized
+2017-08-21 10:13:54,932 [main] INFO testcore - window Tablet screen size
+2017-08-21 10:55:55,958 [main] INFO testcore - chrome driver initialized
+2017-08-21 10:55:56,077 [main] INFO testcore - window Tablet screen size
+2017-08-21 11:33:59,487 [main] INFO testcore - chrome driver initialized
+2017-08-21 11:33:59,609 [main] INFO testcore - window Tablet screen size
+2017-08-21 11:36:27,142 [main] INFO testcore - chrome driver initialized
+2017-08-21 11:36:27,303 [main] INFO testcore - window Tablet screen size
+2017-08-21 13:03:00,888 [main] INFO testcore - chrome driver initialized
+2017-08-21 13:04:30,330 [main] INFO testcore - Firefox driver initialized
+2017-08-21 13:04:30,804 [main] INFO testcore - window Maximize
+2017-08-21 13:08:03,531 [main] INFO testcore - chrome driver initialized
+2017-08-21 14:41:01,366 [main] INFO testcore - chrome driver initialized
+2017-08-21 14:43:31,207 [main] INFO testcore - chrome driver initialized
+2017-08-21 14:52:11,249 [main] INFO testcore - chrome driver initialized
+2017-08-21 14:54:38,970 [main] INFO testcore - chrome driver initialized
+2017-08-21 14:56:20,556 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:09:20,676 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:32:47,512 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:39:30,722 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:41:57,209 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:41:57,330 [main] INFO testcore - window phone screen size
+2017-08-21 15:42:14,314 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:42:14,427 [main] INFO testcore - window Tablet screen size
+2017-08-21 15:48:30,471 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:48:30,590 [main] INFO testcore - window phone screen size
+2017-08-21 15:48:47,064 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:48:47,184 [main] INFO testcore - window Tablet screen size
+2017-08-21 15:49:48,749 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:49:48,867 [main] INFO testcore - window phone screen size
+2017-08-21 15:53:59,577 [main] INFO testcore - chrome driver initialized
+2017-08-21 15:53:59,699 [main] INFO testcore - window phone screen size
+2017-08-21 16:09:51,234 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:09:51,384 [main] INFO testcore - window phone screen size
+2017-08-21 16:10:07,283 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:10:07,397 [main] INFO testcore - window Tablet screen size
+2017-08-21 16:10:23,684 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:10:24,133 [main] INFO testcore - window Maximize
+2017-08-21 16:10:40,990 [main] INFO testcore - Firefox driver initialized
+2017-08-21 16:25:05,469 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:25:05,595 [main] INFO testcore - window phone screen size
+2017-08-21 16:25:21,486 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:25:21,606 [main] INFO testcore - window Tablet screen size
+2017-08-21 16:25:36,683 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:25:37,142 [main] INFO testcore - window Maximize
+2017-08-21 16:25:54,282 [main] INFO testcore - Firefox driver initialized
+2017-08-21 16:31:33,814 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:31:33,944 [main] INFO testcore - window phone screen size
+2017-08-21 16:31:49,935 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:31:50,053 [main] INFO testcore - window Tablet screen size
+2017-08-21 16:32:06,728 [main] INFO testcore - chrome driver initialized
+2017-08-21 16:32:07,138 [main] INFO testcore - window Maximize
+2017-08-21 16:32:24,792 [main] INFO testcore - Firefox driver initialized
+2017-08-21 17:48:32,291 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:48:32,414 [main] INFO testcore - window phone screen size
+2017-08-21 17:48:48,077 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:48:48,198 [main] INFO testcore - window Tablet screen size
+2017-08-21 17:49:04,213 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:49:04,664 [main] INFO testcore - window Maximize
+2017-08-21 17:49:21,706 [main] INFO testcore - Firefox driver initialized
+2017-08-21 17:50:57,770 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:50:57,892 [main] INFO testcore - window phone screen size
+2017-08-21 17:51:13,711 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:51:13,832 [main] INFO testcore - window Tablet screen size
+2017-08-21 17:51:30,244 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:51:30,697 [main] INFO testcore - window Maximize
+2017-08-21 17:53:42,756 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:53:42,881 [main] INFO testcore - window phone screen size
+2017-08-21 17:53:59,192 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:53:59,317 [main] INFO testcore - window Tablet screen size
+2017-08-21 17:54:15,073 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:54:15,525 [main] INFO testcore - window Maximize
+2017-08-21 17:57:06,967 [main] INFO testcore - chrome driver initialized
+2017-08-21 17:57:07,099 [main] INFO testcore - window phone screen size
+2017-08-22 08:16:16,753 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:16:16,874 [main] INFO testcore - window phone screen size
+2017-08-22 08:33:01,023 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:33:01,146 [main] INFO testcore - window phone screen size
+2017-08-22 08:33:16,952 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:33:17,074 [main] INFO testcore - window Tablet screen size
+2017-08-22 08:33:33,365 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:33:33,813 [main] INFO testcore - window Maximize
+2017-08-22 08:36:24,322 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:36:24,441 [main] INFO testcore - window phone screen size
+2017-08-22 08:36:40,163 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:36:40,292 [main] INFO testcore - window Tablet screen size
+2017-08-22 08:36:56,105 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:36:56,557 [main] INFO testcore - window Maximize
+2017-08-22 08:38:07,072 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:38:07,196 [main] INFO testcore - window phone screen size
+2017-08-22 08:38:22,984 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:38:23,116 [main] INFO testcore - window Tablet screen size
+2017-08-22 08:38:40,856 [main] INFO testcore - Firefox driver initialized
+2017-08-22 08:40:24,833 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:40:24,954 [main] INFO testcore - window phone screen size
+2017-08-22 08:40:41,456 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:40:41,575 [main] INFO testcore - window Tablet screen size
+2017-08-22 08:41:00,351 [main] INFO testcore - Firefox driver initialized
+2017-08-22 08:42:13,447 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:42:13,569 [main] INFO testcore - window phone screen size
+2017-08-22 08:42:29,421 [main] INFO testcore - chrome driver initialized
+2017-08-22 08:42:29,547 [main] INFO testcore - window Tablet screen size
+2017-08-22 13:10:23,304 [main] INFO testcore - chrome driver initialized
+2017-08-22 13:10:23,426 [main] INFO testcore - window phone screen size
+2017-08-22 13:11:09,553 [main] INFO testcore - chrome driver initialized
+2017-08-22 13:11:09,677 [main] INFO testcore - window phone screen size
+2017-08-22 13:11:26,695 [main] INFO testcore - chrome driver initialized
+2017-08-22 13:11:26,811 [main] INFO testcore - window Tablet screen size
+2017-08-22 13:11:42,286 [main] INFO testcore - chrome driver initialized
+2017-08-22 13:11:42,696 [main] INFO testcore - window Maximize
+2017-08-28 10:25:50,754 [main] INFO testcore - chrome driver initialized
+2017-08-28 10:25:50,876 [main] INFO testcore - window phone screen size
+2017-08-28 10:26:07,139 [main] INFO testcore - chrome driver initialized
+2017-08-28 10:26:07,263 [main] INFO testcore - window Tablet screen size
+2017-08-28 10:28:24,073 [main] INFO testcore - chrome driver initialized
+2017-08-28 10:28:24,516 [main] INFO testcore - window Maximize
