@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SmokeSuite">
+	<listeners>
+		<listener class-name="com.innroad.inncenter.listeners.EnvReaderListener" />
+	</listeners>
+	<parameter name="env" value="https://training.innroad.com" />
+	<test name="SmokeTest">
+		<classes>
+			
+			
+		 <class name="com.innroad.inncenter.test.NavigationFlow" />
+		 
+		 
+			
+			
+	<!--	
+		
+	        <class name="com.innroad.inncenter.test.NavigationFlow" />
+	        <class name="com.innroad.inncenter.test.CreateUnassignedReservation" />
+	        <class name="com.innroad.inncenter.test.CheckinCheckoutReservation" />
+		    <class name="com.innroad.inncenter.test.RateQuote_Book_Reservation" />
+			<class name="com.innroad.inncenter.test.BasicSearch" />
+			<class name="com.innroad.inncenter.test.BulkCheckinCheckout" />
+			<class name="com.innroad.inncenter.test.Create_Corporate_Account" />
+			<class name="com.innroad.inncenter.test.Tapechart_Reservation" /> 
+			
+			
+			-->
+
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

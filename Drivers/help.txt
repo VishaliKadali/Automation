@@ -1,0 +1,24 @@
+Preconditions:
+
+1. Before Executing "Create Unassinged Reservation", Updated Room ClassName and PropertyName
+2. Before Executing "RateQuote_Book_Reservation", Updated PropertyName and Guest Name(Guest name should be unique)
+3. Before Executing "BasicSearch", Update PropertyName and GuestName(Update Guest firstName and LastName, same as FirstName and LastName in RatequotePage)
+4. Before Executing "BulkCheckinCheckout", Update propertyName and GuestName(Update Guest firstName and LastName, same as FirstName and LastName in RatequotePage)
+   Note: Before Executing "BulkCheckinCheckout", , check that room classes are Clean 
+5. Before Executing "CheckinCheckoutReservation", Update propertyName, Room ClassName and Room Number
+   Note: Before Executing "CheckinCheckoutReservation",  checkin policy should not be exist (code written to handel to checkinpolicy, but due to knonw issues, we are ignoring)
+6. Before Executing "Tapechart_Reservation", make sure all room classes are with Rates
+Execution flow:
+
+1. Navigation flow
+2. Create Unassinged Reservation
+3. Create Reservation from Rate quote (it covers manual email and Scheduling)
+4. Basic Search
+5. Bulk Checkin and Checkout
+6. Create Reservation from Tapehcart (payment)
+7. Checkin and Checkout Reservation
+8. Create Account and payment
+
+
+
+
