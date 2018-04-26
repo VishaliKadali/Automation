@@ -1,33 +1,34 @@
-package com.innroad.inncenter.Utils;
+package com.innroad.inncenter.utils;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
-import com.innroad.inncenter.Wait.Wait;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
 
 public class Utility {
-
+	
+	
 	public static boolean isExecutable(String test_name, excel_reader excel) {
 
 		String sheetName = "testcases";
 		for (int rowNum = 2; rowNum <= excel.getRowCount(sheetName); rowNum++) {
-
 			if (excel.getCellData(sheetName, "test_name", rowNum).equals(test_name)) {
-
 				if (excel.getCellData(sheetName, "runmode", rowNum).equalsIgnoreCase("Y"))
 					return true;
 				else
 					return false;
-
 			}
 		}
 
 		return false;
-
 	}
-
+	
 	// TestNG Parameterization
 	public static Object[][] getData(String sheetName, excel_reader excel) {
 		// return test data;
@@ -56,11 +57,12 @@ public class Utility {
 
 	}
 
+	
+	
+	
+/*##########################################################################################################################################################################
 
-
-	/*##########################################################################################################################################################################
-
-' Method Name:	getTimeStamp()
+' Method Name:	customDateTimeFormat()
 ' Description:  This Utility method returns a current time stamp which is used to generate the unique extent report file for each run
 ' Input parameters: NA
 ' Return value: Time-stamp in String representation
@@ -69,14 +71,14 @@ public class Utility {
 ' Modified By | Description of Modification:
 
 ###########################################################################################################################################################################*/
-
+				
 	public static String getTimeStamp() {
 		return new SimpleDateFormat("dd-M-yyyy hh:mm:ss").format(new Date()).replaceAll("[-: ]", "_");
 	}
-
-
-
-	/*##########################################################################################################################################################################
+	
+	
+	
+/*##########################################################################################################################################################################
 
 ' Method Name:	archiveExtentReports()
 ' Description:  This Utility method will back up the old reports present in the 'reports' directory to 'reports\old' directory.
@@ -86,75 +88,91 @@ public class Utility {
 ' Created On: 06/06/2017		(MM/DD/YYYY)
 ' Modified By | Description of Modification:
   ------------------------------------------
+  07/04/2017:Surender Avula:
+  1.Renamed method name from backUpReportFiles()
+  2.Add path argument to method.
+  3.Modified implementation such that checks for the path argument value, root directory and archived (sub-directory) in project working directly and
+    report accordingly.
+  4.Added comments for better readability
 ###########################################################################################################################################################################*/
 
-    public static void archiveExtentReports(String path) {
+	public static void archiveExtentReports(String path) {
 
-        //            verify that path should not be empty
-        if (path != "") {
+//		verify that path should not be empty
+		if (path != "") {
+			
+//			file object creation for 'archived' folder present inside extent-reports
+			String archiveFolderName = "archived";
+			File archiveFolder = new File(path + "\\" + archiveFolderName);
 
-               //                  file object creation for 'archived' folder present inside extent-reports
-               String archiveFolderName = "archived";
-               File archiveFolder = new File(path + "\\" + archiveFolderName);
+			try {
+				
+//				file object creation for extent-reports folder which is root directory for entent reports
+				File reportsRootDir = new File(path);
+				
+//				verifying root dir (extent-reports) is present in project working directory or not
+				if (reportsRootDir.exists()) {
+					
+//					get all the files and sub-directory names
+					String[] dirListNames = reportsRootDir.list();	
+					
+//					check with 'archived' sub-directory is present or not in root dir.
+					if (!Arrays.asList(dirListNames).contains(archiveFolderName)) {						
+						try{
+							archiveFolder.mkdir();  // create 'archived' folder if not alread present
+						}catch(Exception e){
+							System.out.println("failed to created archive folder , " + e.getMessage());
+						}
+					}
 
-               try {
+//                  move all the existing (if any) reports to archived folder
+					for (String name : dirListNames) {
+						File reportFile = new File(reportsRootDir, name);
+						if (reportFile.isFile()) {
+							reportFile.renameTo(new File(archiveFolder.getAbsolutePath() + "\\" + reportFile.getName()));
+						}
+					}
+				}else{
+					System.out.println(reportsRootDir.getName() + " folder is not present in project working directory, it should be created by extent-reports library "
+							+ "hence please verify extent-reports statements in testCore.java file.");
+				}
 
-                     //                         file object creation for extent-reports folder which is root directory for entent reports
-                     File reportsRootDir = new File(path);
-
-                     // verifying root dir (extent-reports) is present in project working directory or not
-                     if (reportsRootDir.exists()) {
-
-                            // get all the files and sub-directory names
-                            String[] dirListNames = reportsRootDir.list();       
-
-                            //check with 'archived' sub-directory is present or not in root dir.
-                            if (!Arrays.asList(dirListNames).contains(archiveFolderName)) {                                         
-                                   try{
-                                          archiveFolder.mkdir();  // create 'archived' folder if not alread present
-                                   }catch(Exception e){
-                                          System.out.println("failed to created archive folder , " + e.getMessage());
-                                   }
-                            }
-
-                            //move all the existing (if any) reports to archived folder
-                            for (String name : dirListNames) {
-                                   File reportFile = new File(reportsRootDir, name);
-                                   if (reportFile.isFile()) {
-                                          reportFile.renameTo(new File(archiveFolder.getAbsolutePath() + "\\" + reportFile.getName()));
-                                   }
-                            }
-                     }else{
-                            System.out.println(reportsRootDir.getName() + " folder is not present in project working directory, it should be created by extent-reports library "
-                                          + "hence please verify extent-reports statements in testCore.java file.");
-                     }
-
-               }catch(NullPointerException npe){
-                     System.out.println(npe.getMessage());
-               }catch (Exception e) {
-                     System.out.println(e.getMessage());
-               }
-
-        } else {
-               System.out.println("Path argument is empty, please pass valid path value.");
-        }
- }
-
-
-
-	public static boolean return_element_status_after_explicit_wait(String Element)
-	{
-
-		boolean element_status;
-		try
-		{
-			Wait.explicit_wait_xpath(Element);
-			element_status =true;
-		} catch (Exception e)
-
-		{		
-			element_status =false;	 
+			}catch(NullPointerException npe){
+				System.out.println(npe.getMessage());
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+		} else {
+			System.out.println("Path argument is empty, please pass valid path value.");
 		}
-		return element_status;	 
 	}
+	
+
+/*##########################################################################################################################################################################
+
+' Method Name:	captureScreenShot(String, WebDriver)
+' Description:  This Utility method returns screenshot file path
+' Input parameters: String, WebDriver
+' Return value: String
+' Created By: Surender Avula
+' Created On: 06/04/2018	(MM/DD/YYYY)
+' Modified By | Description of Modification:
+
+###########################################################################################################################################################################*/
+
+	public static String captureScreenShot(String name, WebDriver driver){		
+		String screenShotPath=System.getProperty("user.dir") + "\\screenshots\\" + name + ".png";
+		TakesScreenshot screenShot=(TakesScreenshot)driver;
+		File srcFile=screenShot.getScreenshotAs(OutputType.FILE);
+		File destFile=new File(screenShotPath);
+		try {
+			FileUtils.copyFile(srcFile, destFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return screenShotPath;
+	}	
+	
+	
 }

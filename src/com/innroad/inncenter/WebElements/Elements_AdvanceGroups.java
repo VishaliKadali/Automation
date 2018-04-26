@@ -1,4 +1,4 @@
-package com.innroad.inncenter.WebElements;
+package com.innroad.inncenter.webelements;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
-import com.innroad.inncenter.Properties.OR;
+import com.innroad.inncenter.properties.OR;
 
 public class Elements_AdvanceGroups {
 	

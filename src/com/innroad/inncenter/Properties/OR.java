@@ -1,4 +1,4 @@
-package com.innroad.inncenter.Properties;
+package com.innroad.inncenter.properties;
 
 public class OR {
 	
@@ -37,14 +37,15 @@ public class OR {
 	public static final String SelectRoomNumber="dgRoomsList_drpRooms_0";
 	public static final String Guest_Info="//a[.='Guest Info']";
 	public static final String Verify_Guest_Info="//strong[.='Reservation#: ']";
+	public static final String Early_CheckOut="//*[@id='StayInfo']//p[contains(text(),'Checked out')]";
+	public static final String Reservation_Status_Dropdown="//*[@id='StayInfo']//select";
+	
 	
 	//Header_Panel_Elements
 	
 	public static final String Inventory_Icon="rptrMenu_btnMenuItem_3";
-	public static final String Verify_Stay_info="//div[@id='StayInfo']";
-	public static final String checkstayinfocheckbox="//input[contains(@data-bind,'checked: UseMailingInfo')]";
 	
-	//Season 
+	//Season
 	
 	public static final String New_Seasons="rptrMenu_lbtnAltMenuItem_1";
 	public static final String Select_Property_in_Seasons="//select[starts-with(@data-bind,'options: PropertiesList')]";
@@ -181,14 +182,12 @@ public class OR {
 	public static final String Room_Forecast_grid="//*[@id='tdTitle']/font";
 	public static final String Net_Sales="//a[.='Net Sales']";
 	public static final String Net_Sales_Grid="//*[@id='tdTitle']/font";
-	public static final String Advance_Depos="//a[.='Advance Deposit']";  
+	public static final String Advance_Depos="//a[.='Advance Deposit']";
 	public static final String Advance_Depos_grid="//*[@id='tdTitle']/font";
 	public static final String Reservation_Backward="//*[@id='head_reservations']/a";
 	
 	
 	//Reservation page
-	
-	public static final String Guestinfo="//a[.='Guest Info']";
 	
 	//Reservation button
 	
@@ -234,7 +233,6 @@ public class OR {
 	public static final String Enter_Children="//input[contains(@data-bind,'value: (Children')]";
 	public static final String Enter_Rate_Promocode="//input[contains(@data-bind,'RatePromoCode')]";
 	public static final String Check_Assign_Room="//input[contains(@data-bind,'AssignRoomsEnabled')]";
-	public static final String Check_Split_Rooms="//label[contains(text(),'Split Rooms:')]/input";
 	public static final String Click_Search="//button[contains(@data-bind,'SearchBtnClick')]";
 	public static final String Validation_Text_NoRooms="//div[.='Room Classes are not available for the search criteria. Please change the criteria and try again']";
 	public static final String Select_property_RoomAssign="//select[contains(@data-bind,'SelectedProperty')]";
@@ -254,10 +252,10 @@ public class OR {
 	public static final String Click_Save_ReservationDetails="//button[.='Save']";
 	public static final String Verify_Depos_policy="//div[@aria-hidden='false']//h4[.='Deposit Policy']";
 	public static final String Click_Without_Deposit="//div[@aria-hidden='false']//div[3]/button[.='Without Deposit']";
-	public static final String Get_Notes="//table[@class='table table-striped table-bordered table-hover resGrid1']/tbody/tr";
 	
 	
 	//New Quote
+	
 	public static final String Click_Arrive_DatePicker="//input[@placeholder='Arrive']/following-sibling::div/a/i";
 	public static final String Enter_RateQuoteNights="//input[@data-bind='value: RateQuoteNights']";
 	public static final String Enter_RateQuoteAdults="//input[@data-bind='value: RateQuoteAdults']";
@@ -272,16 +270,14 @@ public class OR {
 	public static final String Verify_Number_rate_book_red="//button[@class='rate-book-red']";
 	public static final String Get_Property_Id="//tr[@rowtype='RoomClassHeader']";
 	public static final String Click_First_Book_Icon="//tr[@rowtype='RoomClassHeader']/following-sibling::tr[1]//td[contains(@id,'td_Action')]/button[2]";
-	public static final String Click_First_Quote_Icon="//tr[@rowtype='RoomClassHeader']/following-sibling::tr[1]//td[contains(@id,'td_Action')]/button[1]";
-	public static final String Get_QuoteReservation_Status="(//label[contains(text(),'Reservation Status:')]/following-sibling::div/select)";
 	public static final String Click_Rate_Quote_Book="//button[contains(@data-bind,'isOverRideAllowed(), text: btnQuoteOrBook')]";
 	public static final String Verify_OverBook_popup="//h4[@id='myModalLabelforRuleMessage'] [@data-bind='text: ruleTitle']";
 	public static final String Click_Continue_OverBook_Popup="//button[contains(@data-bind,'isOverRideAllowed(), text: btnContinue')]";
 	
-	public static final String Click_Book_Reservation="//button[contains(text(),'Book')]";
 	
-		
+	
 	//Accounts
+	
 	public static final String Select_Account_Type="//div[@id='accountSearchFilter']//label/following-sibling::div/select[contains(@data-bind,'AccountTypeName')]";
 	public static final String Click_New_Account="//button[.='New Account']";
 	public static final String Verify_New_Account_tab="//span[.='New Accou...']";
@@ -329,6 +325,18 @@ public class OR {
 	public static final String Select_Property_lineitem="//div[@class='AccountDetail']//select[contains(@data-bind,'value: SelectedProperty')]";
 	public static final String Apply_Advance_Deposite="//div[@id='ruleMessageForInnroad']//h4[.='Apply Advance Deposit']";
 	public static final String Click_Continue_Adv_Deposite="//*[@id='ruleMessageForInnroad']//button[.='Continue']";
+	public static final String Acc_Add_Button="//a[.='Add']";
+	public static final String Verify_Notes_Popup="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//h4[.='Note Details']";
+	public static final String Acc_Note_Enter_sub="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//input[contains(@data-bind,'value: Subject')]";
+	public static final String Acc_Note_Enter_Details="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//textarea[contains(@data-bind,'value: NoteDetails')]";
+	public static final String Acc_Note_Select_Note_Type="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//select[contains(@data-bind,'options: $parent.NoteTypes')]";
+	public static final String Acc_Note_Select_Note_Status="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//select[contains(@data-bind,'options: $parent.Statuses')]";
+	public static final String Acc_Note_Action_Req="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//input[contains(@data-bind,'checked: IsActionRequired')]";
+	public static final String Acc_Note_Save="//div[@class='modal-scrollable']//div[@id='NotesDetailPopup']//button[.='Save']";
+	public static final String Verify_Add_line_Notes="//tr[@data-bind='visible : showCancelledNotes()']";
+	
+	
+	
     //Basic Search
 	
 	public static final String BasicGuestName="//input[contains(@data-bind,'textInput: BasicGuestName')]";
@@ -395,6 +403,7 @@ public class OR {
 	
 	//Tape Chart
 	
+	public static final String tapeChartGridLayOut="//div[@class='container ng-mobile-nospace']";
 	public static final String Select_Arrival_Date="//input[contains(@data-bind,'value: ArriveDate')]//following-sibling::div//a/i";
 	public static final String Enter_Adults_Tapehchart="//div[@id='tapeChartSearch']//input[contains(@data-bind,'value: Adults')]";
 	public static final String Enter_Children_Tapechart="//div[@id='tapeChartSearch']//input[contains(@data-bind,'value: Children')]";
@@ -449,7 +458,7 @@ public class OR {
 	
 	//Tapechart
 	
-	public static final String Click_Unassigned_Tapechart="//div[@class='roomClasses']//div[@class='roomRatesChart'][1]//div[@class='row unassignedrow']//div[@class='col-xs-1']";
+	public static final String Click_Unassigned_Tapechart="(//div[contains(text(),'Unassigned')])[1]";  //"//div[@class='roomClasses']//div[@class='roomRatesChart'][1]//div[@class='row unassignedrow']//div[@class='col-xs-1']";
 
 	//Account new Reservation button
 	
@@ -502,6 +511,7 @@ public class OR {
     public static final String Verify_New_Reservation_Enabled=".//*[@id='MainContent_btnNewReservation']";
 	
     //Adv Block Creation
+    
     public static final String Click_New_Block_button=".//*[@id='MainContent_btnNewBlock']";
     public static final String Verify_Block_Details_Popup="//span[.='Block Details']";
     public static final String Enter_Block_Name=".//*[@id='MainContent_txtBlockName']";
@@ -514,6 +524,7 @@ public class OR {
     public static final String Verify_Room_Class_Grid_Groups=".//*[@id='rateQuoteGridWithPlainKO']/div[1]/table";
     
     //Adv Group Updated automatically assigned rooms
+    
     public static final String GetBlockedRowsize="//tbody[@data-bind='foreach: serverData.objListRoomClass']//tr/td[3]/input";
     public static final String txtTotalRooms ="txtTotalRooms";
     public static final String GetRoomclasses="//tbody[@data-bind='foreach: serverData.objListRoomClass']//tr/td[1]/span";
@@ -527,364 +538,41 @@ public class OR {
     public static final String Navigate_Room_Block=".//*[@id='MainContent_btnRoomBlock']";
     
     
-	//Guest History
+	//Old Groups
     
-    public static final String Accountype_Label=".//*[@class='form-group']/label[contains(text(),'Account Type:')]";
+    public static final String oldGroup_startdate="//*[@id='imgDateStartGroup']";
+    public static final String oldGroup_numberofNights="//*[@id='MainContent_txtNightGroup']";
+    public static final String oldGroup_AccountNumber="//input[@id='MainContent_txtAccountNo']";
+    public static final String oldGroup_Today="//table[@class='datepicker-table-condensed table-condensed']//tfoot/tr[1]/th";
+    public static final String oldGroup_Adults="//*[@id='MainContent_txtRoomBlockAdults']";
+    public static final String old_Gropups_RoomBlockPage="//div[@id='MainContent_pnlRoomBlockAttributes']";
+    public static final String old_Groups_Click_Search="//input[@id='MainContent_btnRoomBlockSearch']";
+    public static final String GetNumberofclasses="//td[@class='dgText'][2]";
+    public static final String oldGroups_Click_Groups=".//*[@id='ucNavSecondary_rptrNavMain_lbtnNavMainItem_4']";
+    public static final String oldgroups_Verify_GroupSearchpage="//font[.='Accounts']";
+    public static final String oldGroups_Account_Search="//input[@id='MainContent_txtAccountNumber']";
+    public static final String oldGroups_Account_ClickGo="//input[@id='MainContent_btnGoSearch']";
+    public static final String oldGroups_Account_VerifyAccountNumber="//table[@id='MainContent_dgAccountList']//tr[@class='dgItem']//td[2]";
+    public static final String oldGroup_SearchBookicon="//input[@id='MainContent_dgAccountList_imgPickUp_0']";
+    public static final String oldGroup_Verify_GroupPickPage=".//*[@id='tdTitle']/font";
+    public static final String oldGroup_Click_Roominglistbutton="//input[@id='btnRoomingList']";
+    public static final String oldGroup_Verify_Roominglistpopup="//span[.='Rooming List - Pick Up Rooms']";
+    public static final String oldGroups_Enter_FirstName_Roominglistpopup="//input[@id='dgRoomingList_txtFirstname_0']";
+    public static final String oldGroups_Enter_LastName_Roominglistpoup="//input[@id='dgRoomingList_txtLastName_0']";
+    public static final String oldGroups_Select_Roomclass_Roominglistpoup="//select[@id='dgRoomingList_drpRoomClassName_0']";
+    public static final String oldGroups_Select_RoomNo_Roominglistpopup="//select[@id='dgRoomingList_drpRoomNo_0']";
+    public static final String oldGroups_Select_Pickupbutton_Roominglistpopup="//input[@id='btnPickUp']";
+    public static final String oldGroup_Verify_Roominglistsummary="//span[.='Rooming List - Pick Up Summary']";
+    public static final String oldgroup_Verify_grid="//table[@id='dgRoomingList']";
+    public static final String oldGroup_Click_Close_Roominglistsummary="//input[@id='btnClose']";
+    public static final String oldGroup_AccountSearch_Accountnum="//input[@id='MainContent_txtAccountNumber']";
     
-    //Statements
+	
+//	Resell Rooms popup
+    public static final String Resell_Rooms_Popup_Header="//h4[.='Resell Rooms']";
+    public static final String Resell_Rooms_Popup_Continue_Button="//h4[.='Resell Rooms']//following::button[.='Continue']";
     
-	public static final String Account_Statement_Tab =".//*[@id='MainContent_btnAccountStatement']";
-	
-    //Travel Agent Items
-	
-	public static final String Travel_Agent_Items_Title="//font[.='Travel Agent Items']";
-	
-	// Management Items
-	
-	public static final String Management_Items_Title="//font[.='Management Items']";
-	
-	
-	// Account Distributions
-	
-	public static final String Account_Distributions_Title="//font[.='Account Distributions']";
-	
-	
-	// Guest Services
-	
-	public static final String Guest_Services_Menu_Title="//font[.='Guest Services Menu']";
-	
-
-	// Housekeeping Status
-	
-	public static final String Housekeeping_Status_Title="//font[.='Housekeeping Status']";
-	
-	
-	// Task List
-	
-	public static final String Task_List_Title="//font[.='Task List']";
-	
-	// Room Maintenance
-	
-	public static final String Room_Maintenance_Fromdate=".//*[@id='MainContent_txtDateStart']";
-	
-	
-	// Inventory
-	
-	public static final String Inventory_Menu_Title="//font[.='Inventory Menu']";
-	
-	
-	// Overview
-	
-	public static final String Inventory_Overview=".//*[@id='MainContent_lnkInventoryOverview']";
-	
-	//Season 
-	public static final String New_Season_Btn="//button[contains(text(),'New Season')]";
-	
-	// Rates
-	public static final String Rates_Title="//font[.='Rates']";
-	
-	//Rules
-	public static final String New_Rule_Btn="//button[contains(text(),'New Rule')]";
-	
-	// Distribution
-	
-	public static final String Table_Text=".//span[text()='innCenter']";
-	 
-	
-	public static final String Syndication_Month_Label="//span[@class='monthLabel']";
-	public static final String BlackOuts_Source_Label="//label[text()='Source:']";
-	
-	//Policy
-	public static final String New_Policy_Btn=".//button[text()='New Policy']";
-	
-	//Setup
-	
-	public static final String Setup_Menu_Title="//font[.='Setup Menu']";
-	
-	//Properties
-	public static final String Properties_Title ="//font[.='Properties']";
-	
-	//Room Classes
-		
-	public static final String New_RoomClass_Btn ="//button[contains(text(),'New Room Class')]";
-	
-	//Tax Items
-	public static final String Tax_Items_Title ="//font[.='Tax Items']";
-	
-   //Ledger Accounts
-	
-	public static final String Ledger_Accounts_Title ="//font[.='Ledger Accounts']";
-   
-   //Merchant Services
-	
-	public static final String Merchant_Services_Title ="//font[.='Merchant Services']";
-	
-	
-	//Document Templates
-	
-	public static final String Document_Templates_Title ="//font[.='Document Templates']";
     
-	//List Management
-	
-	public static final String List_Management_Title ="//font[.='List Management']";
-	
-	
-	//Admin
-	
-	public static final String Admin_Menu_Title ="//font[.='Admin Menu']";
-	
-	//Clients
-	
-	public static final String Clients_Title ="//font[.='Clients']";
-	
-	// Users
-	
-	public static final String New_User_Btn ="//button[.='New User']";
-	
-	//Roles
-	public static final String New_Role_Btn ="//button[.='New Role']";
-	
-	//Night Audit
-	public static final String Period_Status_Title ="//font[.='Period Status']";
-	
-	//Reports
-	
-	public static final String Reports_Menu_Title ="//font[.='Reports Menu']";
-	
-	// Account Balance Summary 
-	public static final String Account_Balance_Summary_Title ="//font[.='Account Balance Summary']";
-	
-	// Ledger Balances 
-	public static final String Ledger_Balances_Title ="//font[.='Ledger Balances']";
-	
-	// Merchant Transactions
-	public static final String Merchant_Transaction_From_Date_Feild =".//*[@id='MainContent_txtTransactionsDate']";
-	
-	//Deposit
-	public static final String Deposit_Title ="//font[.='Advance Deposits']";
-	
-	// Daily Flash
-	
-	public static final String Daily_Flash_From_Date_Feild =".//*[@id='MainContent_TxtDailyDate']";
-	
-	// Room Forecast Report 
-	public static final String Room_Forecast_From_Date_Feild=".//*[@id='MainContent_txtFromDate']";
-	
-	//Net Sales
-	public static final String Net_Sales_Title ="//font[.='Net Sales']";
-	
-
-	//************************* Room Class **********************************
-	
-	//Room Class Details
-	public static final String New_RoomClass_Deails="//div[contains(text(),'Room Class Details')]";
-	
-	//New Room Class Name
-	
-	public static final String New_RoomClass_Name="//input[@placeholder='Room Class Name']";
-	
-	//New Room Class Abbrivation
-	public static final String New_RoomClass_Abbrivation="//input[@placeholder='Room Class Abbreviation']";
-	
-	//New Room Class King Beds
-	
-	public static final String New_RoomClass_KingBeds="//h4[contains(text(),'King')]/following::div/input";
-	
-	//New Room Class Room Type
-	
-	public static final String New_RoomClass_RoomType_AdjoiningRooms="//span[contains(text(),'Adjoining rooms')]/../preceding-sibling::span/input";
-	
-	//New Room Class Rooms
-	
-	public static final String New_RoomClass_Rooms="//a[contains(text(),'Rooms')]";
-	
-	
-	//New Room Class Max Adutls
-	
-	public static final String New_RoomClass_Max_Adults="//label[contains(text(),'Max Adults')]/following::div/input";
-	
-	//New Room Class Max persons
-	
-	public static final String New_RoomCLass_Max_Persons="//label[contains(text(),'Max Persons')]/following::div/input";
-	
-	//New Room Class Room Quantity
-	
-	public static final String New_RoomClass_Room_Quantity="//label[contains(text(),'Room Quantity')]/following::div/input";
-	
-	//New Room Class Create Rooms
-	
-	public static final String New_RoomClass_Create_Rooms="//button[@data-bind='click: createRooms']";
-	
- 
-	//New Room Class Room Number
-	public static final String New_RoomClass_RoomNumber="//table/tbody/tr/td[2]/input";
-	
-	//New Room Class Assign Rooms
-	
-	public static final String New_RoomClass_AssignRoomNumber="//button[@class='btn blue disableForClientUser']";
-	
-	//New Room Class Save
-	
-	public static final String New_RoomClass_Save="(//button[contains(text(),'Save')])[2]";
-	
-	//New Room Class publish
-	
-	public static final String New_RoomClass_Publish="//button[contains(text(),'Publish')]";
-	
-	//New Room Class OK
-	
-	public static final String New_RoomClass_OK="(//button[contains(text(),'OK')])[2]";
-	
-	//New Room classes
-	public static final String New_RoomClasses="//span[contains(text(),'Room Classes')]";
-	
-	//New Room Classes msg After Publish
-	
-	public static final String New_RoomClass_Msg_Publish="//div[@id='toast-container']/div/div[2]";
-	
-	//******************** Move Folio **************************************
-	
-	// Folio
-	
-	public static final String MoveFolio_Folio="//a[contains(text(),'Folio')]";
-	
-	// Guset Folio
-	public static final String MoveFolio_GuestFolio="//select[@class='form-control folioFil']";
-	
-	//New Folio
-	public static final String MoveFolio_NewFolio="//img[@title='New Folio']";
-	
-	//Folio Details
-	public static final String MoveFolio_NewFolioDeatils="//h4[contains(text(),'Folio details')]";
-	
-	// New Folio Name
-	public static final String MoveFolio_NewFolio_Name="//label[contains(text(),'Name:  ')]/following::div/input";
-	
-	//New Folio Description
-	public static final String MoveFolio_NewFolio_Description="//label[contains(text(),'Description:')]/following::div/textarea";
-	
-	//New Folio Close
-	public static final String MoveFolio_NewFolio_Close="(//button[contains(text(),'Close')])[10]";
-	
-	//New Folio Save
-	public static final String MoveFolio_NewFolio_Save="(//button[contains(text(),'Save')])[7]";
-	
-	//New Folio Save Reservation
-	public static final String MoveFolio_NewFolio_SaveReservation="(//button[contains(text(),'Save')])[2]";
-	
-	//New Folio select folio item
-	public static final String MoveFolio_SelectFiloItem="//table[@class='table table-striped table-bordered table-hover trHeight25']/tbody/tr/td[1]/input";
-	
-	
-	//New Folio Move
-	public static final String MoveFolio_Move="//button[contains(text(),'Move')]";
-	
-	//Target Folio
-	public static final String MoveFolio_TargetFolio="//select[@data-bind='value: $root.selectedFolioId']";
-	
-	//Select Folio Item to move in pop up
-	
-	public static final String MoveFolio_FolioItemToMove="//table[@class='table  table-hover']/tbody/tr/td";
-	
-	//Move Selected Item
-	public static final String MoveFolio_MoveSelectedItem="//button[@data-bind='click: MoveItemsToTarget, enable: SelectedFolio']";
-	
-	//close on move folio pop up
-	public static final String MoveFolio_Close="//div[@id='moveFolioItemsModal']/div[3]/button";
-	
-	//New Reservations
-	public static final String NewRervations="//span[contains(text(),'New Reservations')]";
-	
-	//Guest Info
-	public static final String GuestInfo="//a[contains(text(),'Guest Info')]";
-	
-	//Reservations sublink
-	
-	public static final String Reservations="(//span[contains(text(),'Reservations')])[2]";
-	
-	//First opened reservation
-	
-	public static final String FirstOpenedReservation="//div[@class='sec_nav_in container']/ul/li[6]/a/span[3]";
-	
-	//First opened reservation close
-	public static final String FirstOpenedReservationClose="//div[@class='sec_nav_in container']/ul/li[6]/a/i";
-	
-	//Room Charges 
-	public static final String Room_Charges="//label[contains(text(),'Room Charges:')]/following-sibling::span/span";
-	
-	//Incidentals
-	public static final String Incidentals="//label[contains(text(),'Incidentals:')]/following-sibling::span/span";
-	
-	//Taxes and Service charges
-	public static final String TaxesAndServiceCharges="//label[contains(text(),'Taxes & Service Charges:')]/following-sibling::span/span";
-	
-	//Total Charges
-	public static final String TotalCharges="//label[contains(text(),'Total Charges:')]/following-sibling::span/span";
-	
-	//Tax exempt this field is required
-	public static final String TaxExemptThisFieldIsdRequired="//span[contains(text(),'This field is required.')]";
-	
-	
-	
-	
-	//Tax Creation
-	
-	//New Tax Item
-	public static final String TaxNewItem="//input[@id='MainContent_btnNew']";
-	
-	//Item Name
-	public static final String TaxItemName="//td[contains(text(),'Item Name:')]/following-sibling::td/input";
-	
-	//Display Name
-	public static final String TaxDispalyName="//td[contains(text(),'Display Name:')]/following-sibling::td/input";
-	
-	//Description
-	public static final String TaxDescription="//td[contains(text(),'Description:')]/following-sibling::td/textarea";
-	
-	//Tax Value
-	public static final String TaxValue="//input[@id='MainContent_txtTaxItemValue']";
-	
-	//Tax exempt
-	public static final String ExcludeTaxExempt="//input[@id='MainContent_chkTaxExempt']";
-	
-	//Tax Percent
-	public static final String TaxPercent="//input[@id='MainContent_chkIsPercent']";
-	
-	//Tax category
-	public static final String taxCategory="//select[@id='MainContent_drpCategory']";
-	
-	
-	//Tax associate
-	public static final String TaxAssociate="//input[@id='MainContent_btnEditTaxes']";
-	
-	//Tax Ledger Account pick po up
-	
-	public static final String TaxLedgerAccountPopup="//td[@id='tdTitle']/font[contains(text(),'Ledger Account Picker')]";
-	
-	//Tax Pick one
-	public static final String TaxPickOne="//input[@id='btnPickOne']";
-	
-	//String Save/Done LergerAccount
-	public static final String TaxLaedgerAccountDone="//input[@id='Button1']";
-	
-	// Tax Done
-	public static final String TaxDone="//input[@id='MainContent_btnDone']";
-	
-	
-	//Add incidentals
-	
-	//Add
-	
-	public static final String AddIncidental="//button[contains(text(),'Add')]";
-	
-	//Incidental category
-	public static final String IncidentalCategory="//td[@class='lineitem-category']/select";
-	
-	//Incidental Amount
-	public static final String IncidentalAmount="//input[@class='form-control fgInpFx']";
-	
-	//commit
-	public static final String Commit="//button[contains(text(),'Commit')]";
-	
+    
 	
 }

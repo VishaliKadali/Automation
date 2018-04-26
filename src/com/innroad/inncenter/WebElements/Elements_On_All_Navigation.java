@@ -1,4 +1,4 @@
-package com.innroad.inncenter.WebElements;
+package com.innroad.inncenter.webelements;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.innroad.inncenter.Properties.OR;
+import com.innroad.inncenter.properties.OR;
 
 public class Elements_On_All_Navigation {
 	
@@ -289,16 +289,111 @@ public class Elements_On_All_Navigation {
 		@FindBy(xpath=OR.Guest_Info)
 		public WebElement Guest_Info;
 		
+	
 		
 		
-		@FindBy(xpath=OR.New_RoomClass_Btn)
-		public WebElement New_RoomClass;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 
-		@FindBy(xpath=OR.New_RoomClass_Deails)
-		public WebElement New_RoomClass_Details;
-		
-		
-		
 }

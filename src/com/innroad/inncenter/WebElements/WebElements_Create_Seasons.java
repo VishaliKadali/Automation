@@ -1,11 +1,11 @@
-package com.innroad.inncenter.WebElements;
+package com.innroad.inncenter.webelements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.innroad.inncenter.Properties.OR;
+import com.innroad.inncenter.properties.OR;
 
 public class WebElements_Create_Seasons {
 	

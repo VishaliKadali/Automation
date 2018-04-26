@@ -1,4 +1,4 @@
-package com.innroad.inncenter.WebElements;
+package com.innroad.inncenter.webelements;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.innroad.inncenter.Properties.OR;
+import com.innroad.inncenter.properties.OR;
 
 public class Elements_Accounts {
 	
@@ -179,6 +179,31 @@ public class Elements_Accounts {
 		
 		@FindBy(xpath=OR.Enter_Gift_Line_Item_Amount)
 		public WebElement Enter_Gift_Line_Item_Amount;
+		
+		@FindBy(xpath=OR.Acc_Add_Button)
+		public WebElement Acc_Add_Button;
+		
+		@FindBy(xpath=OR.Acc_Note_Enter_sub)
+		public WebElement Acc_Note_Enter_sub;
+		
+		@FindBy(xpath=OR.Acc_Note_Enter_Details)
+		public WebElement Acc_Note_Enter_Details;
+		
+		@FindBy(xpath=OR.Acc_Note_Select_Note_Type)
+		public WebElement Acc_Note_Select_Note_Type;
+		
+		@FindBy(xpath=OR.Acc_Note_Select_Note_Status)
+		public WebElement Acc_Note_Select_Note_Status;
+		
+		@FindBy(xpath=OR.Acc_Note_Action_Req)
+		public WebElement Acc_Note_Action_Req;
+		
+		@FindBy(xpath=OR.Acc_Note_Save)
+		public WebElement Acc_Note_Save;
+		
+		@FindBy(xpath=OR.Verify_Add_line_Notes)
+		public WebElement Verify_Add_line_Notes;
+		
 		
 		
 		

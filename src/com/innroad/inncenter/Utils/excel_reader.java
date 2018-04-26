@@ -1,4 +1,4 @@
-package com.innroad.inncenter.Utils;
+package com.innroad.inncenter.utils;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;

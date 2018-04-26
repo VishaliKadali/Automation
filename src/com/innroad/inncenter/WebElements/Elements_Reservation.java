@@ -1,4 +1,4 @@
-package com.innroad.inncenter.WebElements;
+package com.innroad.inncenter.webelements;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.innroad.inncenter.Properties.OR;
+import com.innroad.inncenter.properties.OR;
 
 public class Elements_Reservation {
 	
@@ -135,10 +135,6 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Check_Assign_Room)
 		public WebElement Check_Assign_Room;
 		
-		@FindBy(xpath=OR.Check_Split_Rooms)
-		public WebElement Check_Split_Rooms;
-		
-		
 		@FindBy(xpath=OR.Click_Search)
 		public WebElement Click_Search;
 		
@@ -147,13 +143,6 @@ public class Elements_Reservation {
 		
 		@FindBy(xpath=OR.Select_Room_Class)
 		public WebElement Select_Room_Class;
-		
-		@FindBy(xpath=OR.Get_Notes)
-		public WebElement Get_Notes;
-		
-
-		@FindBy(xpath=OR.GuestInfo)
-		public WebElement GuestInfo;
 		
 		@FindBy(xpath=OR.Select_Room_Number)
 		public WebElement Select_Room_Number;
@@ -208,6 +197,8 @@ public class Elements_Reservation {
 		
 		
 		//Folio 
+		
+		
 		@FindBy(xpath=OR.Click_Pay_Button)
 		public WebElement Click_Pay_Button;
 		
@@ -316,8 +307,6 @@ public class Elements_Reservation {
 		public WebElement Enter_Track_Data;
 		
 		
-		
-		
 		//Notes
 		
 		@FindBy(xpath=OR.Click_Add_Res_Note)
@@ -377,43 +366,24 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Click_Select_Gift)
 		public WebElement Click_Select_Gift;
 		
-		@FindBy(xpath=OR.Guestinfo)
-		public WebElement Guestinfo;
-		
-		@FindBy(xpath=OR.Verify_Stay_info)
-		public WebElement Verify_Stay_info;
-		
-		@FindBy(xpath=OR.checkstayinfocheckbox)
-		public WebElement checkstayinfocheckbox;
 		
 		
 		
-		//Payment amount
-		
-		@FindBy(xpath=OR.Room_Charges)
-		public WebElement Room_Charges;
-		
-		@FindBy(xpath=OR.Incidentals)
-		public WebElement Incidentals;
-		
-		@FindBy(xpath=OR.TaxesAndServiceCharges)
-		public WebElement TaxesAndServiceCharges;
-		
-		@FindBy(xpath=OR.TotalCharges)
-		public WebElement TotalCharges;
-		
-		@FindBy(xpath=OR.TaxExemptThisFieldIsdRequired)
-		public WebElement TaxExemptThisFieldIsdRequired;
-		
-		@FindBy(xpath=OR.MoveFolio_Folio)
-		public WebElement MoveFolio_Folio;
-		
-		@FindBy(xpath=OR.FirstOpenedReservationClose)
-		public WebElement FirstOpenedReservationClose;
 		
 		
-		@FindBy(xpath=OR.Click_Book_Reservation)
-		public WebElement Click_Book_Reservation;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

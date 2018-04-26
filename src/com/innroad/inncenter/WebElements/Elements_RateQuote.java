@@ -1,4 +1,4 @@
-package com.innroad.inncenter.WebElements;
+package com.innroad.inncenter.webelements;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.innroad.inncenter.Properties.OR;
+import com.innroad.inncenter.properties.OR;
 
 public class Elements_RateQuote {
 	
@@ -65,10 +65,6 @@ public class Elements_RateQuote {
 		@FindBy(xpath=OR.Click_First_Book_Icon)
 		public WebElement Click_First_Book_Icon;
 		
-		@FindBy(xpath=OR.Click_First_Quote_Icon)
-		public WebElement Click_First_Quote_Icon;
-		
-		
 		@FindBy(xpath=OR.Verify_RulesBroken_Popup)
 		public WebElement Verify_RulesBroken_Popup;
 		
@@ -82,12 +78,19 @@ public class Elements_RateQuote {
 		public WebElement Click_Continue_OverBook_Popup;
 		
 		
-		@FindBy(xpath=OR.Get_QuoteReservation_Status)
-		public WebElement Get_QuoteReservation_Status;
-		
-	
 		
 		
 		
 		
-	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
+}
