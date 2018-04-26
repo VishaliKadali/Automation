@@ -1,6 +1,8 @@
 !*.exe
 #ignore folder
 test-output/
+extent-reports/
+screenshots/
 log/
 .metadata/
 .settings/
