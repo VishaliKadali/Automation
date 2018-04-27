@@ -20,7 +20,7 @@
     <reportName>Automation Report</reportName>
     
     <!-- report headline - displayed at top-nav, after reportHeadline -->
-    <reportHeadline> : Sanity Execution Report </reportHeadline>
+    <reportHeadline> : Regression Execution Report </reportHeadline>
     
     <!-- global date format override -->
     <!-- defaults to yyyy-MM-dd -->

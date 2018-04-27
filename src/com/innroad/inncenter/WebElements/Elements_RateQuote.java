@@ -78,7 +78,8 @@ public class Elements_RateQuote {
 		public WebElement Click_Continue_OverBook_Popup;
 		
 		
-		
+		@FindBy(xpath=OR.Click_First_Quote_Icon)
+		public WebElement Click_First_Quote_Icon;
 		
 		
 		

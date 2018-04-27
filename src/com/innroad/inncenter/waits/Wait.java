@@ -1,6 +1,7 @@
 package com.innroad.inncenter.waits;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -8,8 +9,12 @@ import com.innroad.inncenter.testcore.TestCore;
 
 public class Wait {
 
+	public static void wait1Second() throws InterruptedException {
+		Thread.sleep(1000);
+	}
+	
 	public static void wait2Second() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 	}
 
 	public static void wait3Second() throws InterruptedException {
@@ -17,11 +22,11 @@ public class Wait {
 	}
 
 	public static void wait5Second() throws InterruptedException {
-		Thread.sleep(6000);
+		Thread.sleep(5000);
 	}
 
 	public static void wait10Second() throws InterruptedException {
-		Thread.sleep(11000);
+		Thread.sleep(10000);
 	}
 
 	public static void wait15Second() throws InterruptedException {
@@ -56,6 +61,13 @@ public class Wait {
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(Element)));
 	}
 
+	public static void explicit_wait_visibilityof_webelement (WebElement Element)
+	{
+		WebDriverWait wait = new WebDriverWait(TestCore.driver, 60);
+		wait.until(ExpectedConditions.visibilityOf(Element));
+		
+	}
+	
 	public static void timeCal() {
 		long startTime = System.currentTimeMillis();
 		long endTime = System.currentTimeMillis();

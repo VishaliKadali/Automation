@@ -289,111 +289,14 @@ public class Elements_On_All_Navigation {
 		@FindBy(xpath=OR.Guest_Info)
 		public WebElement Guest_Info;
 		
-	
+		@FindBy(xpath=OR.Guest_Services_Main_Menu) 
+		public WebElement Guest_Services_Main_Menu;
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		@FindBy(xpath=OR.Menuitem_Policy_Text)
+		public WebElement Menuitem_Policy_Text;
 
+		@FindBy(xpath=OR.New_RoomClass_Btn)
+		public WebElement New_RoomClass;
+		
 }

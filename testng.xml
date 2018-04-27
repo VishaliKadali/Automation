@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SanitySuite">
+<suite name="RegressionSuite">
   <listeners>
         <listener class-name="com.innroad.inncenter.listeners.EnvReaderListener"/>
   </listeners>
   <parameter name="env" value="https://app.innroad.com"/>
-	<test name="SanityTest">
+	<test name="RegressionTest">
 		<classes>
-			<class name="com.innroad.inncenter.tests.Tapechart_Unassign_Reser" /> 
- <!--  			<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
+		
+		<class name="com.innroad.inncenter.tests.VerifyItemDetail" /> 
+		
+	<!--  		<class name="com.innroad.inncenter.tests.Tapechart_Unassign_Reser" /> 
+ 			<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
   			 <class name="com.innroad.inncenter.tests.CheckinCheckoutReservation" />  -->
 <!--  			<class name="com.innroad.inncenter.tests.BulkCheckinCheckout" />
 			<class name="com.innroad.inncenter.tests.CreateGroupAccount" />  

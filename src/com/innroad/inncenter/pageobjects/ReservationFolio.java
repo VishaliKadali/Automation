@@ -38,11 +38,13 @@ public class ReservationFolio implements IReservationFolio {
 
 	}
 
-	public void TestPaymentPopup(WebDriver driver, String PaymentType, String CardName, String CCNumber,
+	public float TestPaymentPopup(WebDriver driver, String PaymentType, String CardName, String CCNumber,
 			String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue,
 			String traceData) throws InterruptedException {
 		Elements_Reservation ReservationFolio = new Elements_Reservation(driver);
 
+		float processed_amount=0;
+		
 		Wait.explicit_wait_xpath(OR.Verify_Payment_Details_poup);
 		Wait.wait10Second();
 
@@ -85,21 +87,35 @@ public class ReservationFolio implements IReservationFolio {
 					resFolioLogger.info("Payment verification failed \n");
 					e.printStackTrace();
 				}
+				
+				Wait.wait1Second();
+				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
+				Wait.wait2Second();
+				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
+				System.out.println(Processed_Amount + " -- "+Processed_Amount);
+				String RemoveCurreny []=Processed_Amount.split(" ");
+				processed_amount=Float.parseFloat(RemoveCurreny[1]);
+				System.out.println(processed_amount);
+				
+				
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button of Payment popup");
 				Wait.wait15Second();
 				Wait.explicit_wait_xpath(OR.Verify_Line_item);
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
 //				resFolioLogger.info("Balance: " + " " + GetBalance);
-				String RemoveCurreny[] = GetBalance.split(" ");
+				RemoveCurreny = GetBalance.split(" ");
 				resFolioLogger.info("Pending balance after payment: " + " " + RemoveCurreny[1]);
-
+				
 				if (ChangeAmount.equalsIgnoreCase("NO")) {
 					if (RemoveCurreny[1].equals("0.00"))
 						;
 				} else {
 					resFolioLogger.info("Selected Changed Value");
 				}
+				
+				processed_amount= Float.parseFloat(RemoveCurreny[1]);
+				
 			} catch (Exception e) {
 				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using CASH \n"  + e.getMessage() + 
 						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_ByCash" + Utility.getTimeStamp(), driver)));
@@ -147,6 +163,18 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Paymnet is Failed");
 				}
+				
+				
+				Wait.wait1Second();
+				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
+				Wait.wait2Second();
+				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
+				System.out.println("Processed_Amount "+Processed_Amount + " -- "+Processed_Amount);
+				String RemoveCurreny []=Processed_Amount.split(" ");
+				processed_amount=Float.parseFloat(RemoveCurreny[1]);
+				System.out.println(processed_amount);
+				
+				
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button");
 				Wait.wait3Second();
@@ -160,7 +188,7 @@ public class ReservationFolio implements IReservationFolio {
 				}
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
 //				resFolioLogger.info("Balance: " + " " + GetBalance);
-				String RemoveCurreny[] = GetBalance.split(" ");
+				RemoveCurreny = GetBalance.split(" ");
 				resFolioLogger.info("Pending balance after payment: " + " " + RemoveCurreny[1]);
 				if (ChangeAmount.equalsIgnoreCase("No")) {
 					if (RemoveCurreny[1].equals("0.00"))
@@ -168,6 +196,9 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Selected Changed Value");
 				}
+				
+				processed_amount= Float.parseFloat(RemoveCurreny[1]);
+				
 			} catch (Exception e) {
 				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using MC \n"  + e.getMessage() + 
 						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_ByMC" + Utility.getTimeStamp(), driver)));
@@ -203,6 +234,18 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Paymnet is failed");
 				}
+				
+				Wait.wait1Second();
+				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
+				Wait.wait2Second();
+				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
+				System.out.println(Processed_Amount + " -- "+Processed_Amount);
+				String RemoveCurreny []=Processed_Amount.split(" ");
+				processed_amount=Float.parseFloat(RemoveCurreny[1]);
+				System.out.println(processed_amount);
+				
+				
+				
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button");
 				Wait.wait3Second();
@@ -224,7 +267,7 @@ public class ReservationFolio implements IReservationFolio {
 				Wait.wait3Second();
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
 //				resFolioLogger.info("Balance: " + " " + GetBalance);
-				String RemoveCurreny[] = GetBalance.split(" ");
+				RemoveCurreny = GetBalance.split(" ");
 				resFolioLogger.info("Balance: " + RemoveCurreny[1]);
 				if (ChangeAmount.equalsIgnoreCase("NO")) {
 					if (RemoveCurreny[1].equals("0.00"))
@@ -232,13 +275,19 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Selected Changed Value");
 				}
+				
+				processed_amount= Float.parseFloat(RemoveCurreny[1]);
+				
 			} catch (Exception e) {
 				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using swipe \n"  + e.getMessage() + 
 						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_BySwipe" + Utility.getTimeStamp(), driver)));
 				resFolioLogger.error("Exception occured while paying using swipe \n");
 				e.printStackTrace();
 			}
+			
 		}
+		
+		return processed_amount;
 	}
 
 	public void Paytype_CP_Account(WebDriver driver, String ChangeAmount, String ChangeAmountValue)

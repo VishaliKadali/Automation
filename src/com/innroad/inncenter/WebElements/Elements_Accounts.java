@@ -204,10 +204,11 @@ public class Elements_Accounts {
 		@FindBy(xpath=OR.Verify_Add_line_Notes)
 		public WebElement Verify_Add_line_Notes;
 		
+		@FindBy(xpath=OR.Click_Folio_Options)
+		public WebElement Click_Folio_Options;
 		
-		
-		
-		
+		@FindBy(xpath=OR.Select_Account_Checkin_Policy)
+		public WebElement Select_Account_Checkin_Policy;
 		
 		
 		

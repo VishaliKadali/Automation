@@ -177,6 +177,12 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Click_Save_ReservationDetails)
 		public WebElement Click_Save_ReservationDetails;
 		
+		@FindBy(xpath=OR.Room_Assignment_PopUp)
+		public WebElement Room_Assignment_PopUp;
+		
+		@FindBy(xpath=OR.Click_Save_Close)
+		public WebElement Click_Save_Close;
+		
 		@FindBy(xpath=OR.Verify_Depos_policy)
 		public WebElement Verify_Depos_policy;
 		
@@ -267,7 +273,8 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Change_Amount)
 		public WebElement Change_Amount;
 		
-		
+		@FindBy(xpath=OR.Payment_Details_Folio_Balance)
+		public WebElement Payment_Details_Folio_Balance;
 		
 		//checkin
 		
@@ -305,6 +312,25 @@ public class Elements_Reservation {
 		
 		@FindBy(xpath=OR.Enter_Track_Data)
 		public WebElement Enter_Track_Data;
+		
+		
+		@FindBy(xpath=OR.Room_Assignment_PopUp_Error)
+		public WebElement Room_Assignment_PopUp_Error;
+		
+		@FindBy(xpath=OR.Room_Selector_In_Room_Assignment_PopUp)
+		public WebElement Room_Selector_In_Room_Assignment_PopUp;
+		
+		@FindBy(xpath=OR.ReCalculate_Folio_Options_PopUp)
+		public WebElement ReCalculate_Folio_Options_PopUp;
+		
+		@FindBy(xpath=OR.ReCal_Folio_Options_PopUp_No_Charge_Changed)
+		public WebElement ReCal_Folio_Options_PopUp_No_Charge_Changed;
+		
+		@FindBy(xpath=OR.ReCal_Folio_Options_PopUp_Select_Btn)
+		public WebElement ReCal_Folio_Options_PopUp_Select_Btn;
+		
+		@FindBy(xpath=OR.ReCal_Folio_Options_PopUp_Cancel_Btn)
+		public WebElement ReCal_Folio_Options_PopUp_Cancel_Btn;
 		
 		
 		//Notes
@@ -367,34 +393,205 @@ public class Elements_Reservation {
 		public WebElement Click_Select_Gift;
 		
 		
+		@FindBy(xpath=OR.Resell_Rooms_Popup)
+		public WebElement Resell_Rooms_Popup;
 		
+		@FindBy(xpath=OR.Resell_Rooms_Popup_Continue_Btn)
+		public WebElement Resell_Rooms_Popup_Continue_Btn;
 		
+		@FindBy(xpath=OR.Resell_Rooms_Popup_Cancel_Btn)
+		public WebElement Resell_Rooms_Popup_Cancel_Btn;
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		@FindBy(xpath=OR.Guestinfo)
+		public WebElement Guestinfo;
 		
 
+	    
+	    @FindBy(xpath=OR.Cancel_Reservation_Icon)
+	    public WebElement Cancel_Reservation_Icon;
+		
+	    @FindBy(xpath=OR.Cancel_Res_Popup)
+	    public WebElement Cancel_Res_Popup;
+	    
+	    @FindBy(xpath=OR.Cancel_Reason_Txtarea)
+	    public WebElement Cancel_Reason_Txtarea;
+	    
+	    @FindBy(xpath=OR.VoidRC_Chkbox_In_Popup)
+	    public WebElement VoidRC_Chkbox_In_Popup;
+	    
+	    @FindBy(xpath=OR.Cancel_Res_Popup_Ok_Btn)
+	    public WebElement Cancel_Res_Popup_Ok_Btn;
+	    
+	    @FindBy(xpath=OR.Reservation_Status)
+	    public WebElement Reservation_Status;
+	    
+	    @FindBy(xpath=OR.Close_Tab_Btn)
+	    public WebElement Close_Tab_Btn;
+	    
+	    @FindBy(xpath=OR.AlertForTab)
+	    public WebElement AlertForTab;    
+	   
+	    @FindBy(xpath=OR.AlertForTab_Yes_Btn)
+	    public WebElement AlertForTab_Yes_Btn;
+	    
+		@FindBy(xpath=OR.Click_Continue_Deposit)
+		public WebElement Click_Continue_Deposit;
+		
+	    @FindBy(xpath=OR.Acc_Picker_Confirm_Continue_Btn)
+	  	public WebElement Acc_Picker_Confirm_Continue_Btn;
+	    
+	    @FindBy(xpath=OR.Associated_AccountName)
+	  	public WebElement Associated_AccountName;
+		
+	    @FindBy(xpath=OR.Acc_Picker_Confirm)
+		public WebElement Acc_Picker_Confirm;
+	    
+	    
+		@FindBy(xpath=OR.Click_Show_PaymentInfo)
+		public WebElement Click_Show_PaymentInfo;
+		
+		@FindBy(xpath=OR.Folio_Billing_Info_Popup)
+		public WebElement Folio_Billing_Info_Popup;
+		
+		@FindBy(xpath=OR.Select_Salutation_PaymentInfo_Popup)
+		public WebElement Select_Salutation_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_First_Name_PaymentInfo_Popup)
+		public WebElement Enter_First_Name_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Last_Name_PaymentInfo_Popup)
+		public WebElement Enter_Last_Name_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Phone_PaymentInfo_Popup)
+		public WebElement Enter_Phone_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_AltPhone_PaymentInfo_Popup)
+		public WebElement Enter_AltPhone_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Email_PaymentInfo_Popup)
+		public WebElement Enter_Email_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Line1_PaymentInfo_Popup)
+		public WebElement Enter_Line1_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Line2_PaymentInfo_Popup)
+		public WebElement Enter_Line2_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Line3_PaymentInfo_Popup)
+		public WebElement Enter_Line3_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_City_PaymentInfo_Popup)
+		public WebElement Enter_City_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Select_Country_PaymentInfo_Popup)
+		public WebElement Select_Country_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Select_State_PaymentInfo_Popup)
+		public WebElement Select_State_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Postal_Code_PaymentInfo_Popup)
+		public WebElement Enter_Postal_Code_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Select_Payment_Method_PaymentInfo_Popup)
+		public WebElement Select_Payment_Method_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_Account_Number_PaymentInfo_Popup)
+		public WebElement Enter_Account_Number_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_CardExpiryDate_PaymentInfo_Popup)
+		public WebElement Enter_CardExpiryDate_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Enter_BillingNotes_PaymentInfo_Popup)
+		public WebElement Enter_BillingNotes_PaymentInfo_Popup;
+		
+		
+		@FindBy(xpath=OR.Save_Btn_PaymentInfo_Popup)
+		public WebElement Save_Btn_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Cancel_Btn_PaymentInfo_Popup)
+		public WebElement Cancel_Btn_PaymentInfo_Popup;
+		
+		@FindBy(xpath=OR.Payment_Info_Textarea)
+		public WebElement Payment_Info_Textarea;
+		
+		
+	    @FindBy(xpath=OR.First_RC_Line_Item_Desc)
+	    public WebElement First_RC_Line_Item_Desc;
+			    
+
+	    @FindBy(xpath=OR.First_RC_Line_Item_Amount)
+	    public WebElement First_RC_Line_Item_Amount;
+
+	    @FindBy(xpath=OR.Item_Details_Popup)
+	    public WebElement Item_Details_Popup;
+		
+	    @FindBy(xpath=OR.Item_Details_Popup_Cancel_Btn)
+	    public WebElement Item_Details_Popup_Cancel_Btn;
+		
+	    
+
+	    @FindBy(xpath=OR.RC_Link_In_Item_Details_Popup)
+	    public WebElement RC_Link_In_Item_Details_Popup;
+	    
+	    @FindBy(xpath=OR.Tax_Item_Details_Popup)
+	    public WebElement Tax_Item_Details_Popup;
+	    
+	    @FindBy(xpath=OR.Sales_Tax_Link_In_Item_Details_Popup)
+	    public WebElement Sales_Tax_Link_In_Item_Details_Popup;
+
+	    @FindBy(xpath=OR.Total_Charges_In_Item_Details_Popup)
+	    public WebElement Total_Charges_In_Item_Details_Popup;
+		
+	    @FindBy(xpath=OR.Include_Taxes_in_Line_Items_Checkbox)
+	    public WebElement Include_Taxes_in_Line_Items_Checkbox;
+	   
+	    @FindBy(xpath=OR.Rate_Details_Popup)
+	    public WebElement Rate_Details_Popup;
+	    
+	    @FindBy(xpath=OR.Rate_Details_Popup_Cancel_Btn)
+	    public WebElement Rate_Details_Popup_Cancel_Btn;
+	    
+	    @FindBy(xpath=OR.Display_Name_In_Tax_Item_Details_Popup)
+	    public WebElement Display_Name_In_Tax_Item_Details_Popup;
+	    
+	    @FindBy(xpath=OR.Rate_Name_In_Rate_Details_Popup)
+	    public WebElement Rate_Name_In_Rate_Details_Popup;
+	    
+		@FindBy(xpath=OR.Click_Book_Reservation)
+		public WebElement Click_Book_Reservation;
+		
+		@FindBy(xpath=OR.Check_Split_Rooms)
+		public WebElement Check_Split_Rooms;
+		
+		@FindBy(xpath=OR.GuestInfo)
+		public WebElement GuestInfo;
+
+		//Payment amount
+		
+		@FindBy(xpath=OR.Room_Charges)
+		public WebElement Room_Charges;
+		
+		@FindBy(xpath=OR.Incidentals)
+		public WebElement Incidentals;
+		
+		@FindBy(xpath=OR.TaxesAndServiceCharges)
+		public WebElement TaxesAndServiceCharges;
+		
+		@FindBy(xpath=OR.TotalCharges)
+		public WebElement TotalCharges;
+		
+		@FindBy(xpath=OR.TaxExemptThisFieldIsdRequired)
+		public WebElement TaxExemptThisFieldIsdRequired;
+		
+		@FindBy(xpath=OR.MoveFolio_Folio)
+		public WebElement MoveFolio_Folio;
+		
+		@FindBy(xpath=OR.FirstOpenedReservationClose)
+		public WebElement FirstOpenedReservationClose;
+		
+		@FindBy(xpath=OR.Processed_Amount_In_Paymentdetails_Popup)
+		public WebElement Processed_Amount_In_Paymentdetails_Popup;
+		
+		
+		
 }

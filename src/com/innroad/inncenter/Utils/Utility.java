@@ -8,7 +8,13 @@ import java.util.Date;
 
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import com.innroad.inncenter.testcore.TestCore;
+import com.innroad.inncenter.waits.Wait;
+
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 
 public class Utility {
@@ -173,6 +179,39 @@ public class Utility {
 		}
 		return screenShotPath;
 	}	
+
 	
+	 public static void ScrollToElement(WebElement element) throws InterruptedException
+	 {
+		 ((JavascriptExecutor) TestCore.driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		  Wait.wait2Second();
+	 }
+	 
+	 
+	 public static String getScreenhot() throws Exception {
+			TakesScreenshot ts = (TakesScreenshot) TestCore.driver;
+			File source = ts.getScreenshotAs(OutputType.FILE);
+			String destination = System.getProperty("user.dir") + "/screenshots/" + getTimeStamp()+".png";
+			File finalDestination = new File(destination);
+			FileUtils.copyFile(source, finalDestination);
+			return destination;
+		}
+	 
+	 
+		public static boolean return_element_status_after_explicit_wait(String Element)
+		{
+
+			boolean element_status;
+			try
+			{
+				Wait.explicit_wait_xpath(Element);
+				element_status =true;
+			} catch (Exception e)
+
+			{		
+				element_status =false;	 
+			}
+			return element_status;	 
+		}
 	
 }

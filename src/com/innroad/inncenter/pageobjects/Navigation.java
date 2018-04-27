@@ -1,6 +1,7 @@
 package com.innroad.inncenter.pageobjects;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.innroad.inncenter.interfaces.INavigation;
@@ -393,6 +394,13 @@ public class Navigation implements INavigation {
 		Wait.explicit_wait_xpath(OR.Roomclass_grid);
 	}
 
+	public void NewRoomClass(WebDriver driver) throws InterruptedException{
+		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
+		Thread.sleep(3000);
+	    Navigate.New_RoomClass.click();
+	    Wait.explicit_wait_xpath(OR.New_RoomClass_Deails);
+	}
+	
 	public void Reservation(WebDriver driver) {
 		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
 		Navigate.Click_Reservation.click();
@@ -411,4 +419,15 @@ public class Navigation implements INavigation {
 		Wait.explicit_wait_xpath(OR.Verify_Guest_Info);
 	}
 
+	public void TaxesAfterCloseReservation(WebDriver driver) throws InterruptedException {
+		// TODO Auto-generated method stub
+		Wait.wait5Second();
+		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
+		 driver.findElement(By.xpath("//a[contains(text(),'Taxes\')]")).click();
+		    Wait.explicit_wait_xpath(OR.Taxes_Grid);
+	}
+	
+	
+	
+	
 }

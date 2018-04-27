@@ -32,7 +32,7 @@ public class TestCore {
 	public static String testDataPath = System.getProperty("user.dir") + "\\test-data";
 	public static String configFilesPath = System.getProperty("user.dir") + "\\config-files";
 
-	public static final ExtentReports extent = new ExtentReports(extentReportsPath + "\\Sanity_Execution_Report_" + Utility.getTimeStamp() + ".html", false);
+	public static final ExtentReports extent = new ExtentReports(extentReportsPath + "\\InnCenterRegression_Execution_Report_" + Utility.getTimeStamp() + ".html", false);
 
 	public static ExtentTest test;
 	
@@ -60,7 +60,7 @@ public class TestCore {
 		envURL = env.replaceAll("\"", "");
 
 		System.out.println("##################################################################################");
-		System.out.println("EXECUTING Automation SANITY SUITE ON: " + envURL + " - ENVIRONMENT.");
+		System.out.println("EXECUTING Automation REGRESSION SUITE ON: " + envURL + " - ENVIRONMENT.");
 		System.out.println("##################################################################################");
 
 		extent.addSystemInfo("Selenium-WebDriver Version", "2.53.1");

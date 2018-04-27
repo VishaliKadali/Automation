@@ -189,6 +189,8 @@ public class OR {
 	
 	//Reservation page
 	
+	public static final String Guestinfo="//a[.='Guest Info']";
+	
 	//Reservation button
 	
 	public static final String New_Reservation_Button="//a[.='New Reservation']";
@@ -252,7 +254,22 @@ public class OR {
 	public static final String Click_Save_ReservationDetails="//button[.='Save']";
 	public static final String Verify_Depos_policy="//div[@aria-hidden='false']//h4[.='Deposit Policy']";
 	public static final String Click_Without_Deposit="//div[@aria-hidden='false']//div[3]/button[.='Without Deposit']";
+	public static final String First_Element_In_Search_Result=".//*[@id='bpjscontainer_21']//tbody/tr[1]/td[1]/a";
+	public static final String Click_Save_Close="//div[@class='footer_buttons']//button[.='Save and Close']";
+	public static final String Reservation_Status="//label[contains(text(),'Reservation Status: ')]/following-sibling::div//select";
 	
+	
+	public static final String Room_Assignment_PopUp_Error="//*[@id='modalRoomPickerReservation']//div[contains(@class,'alert')]";
+	public static final String Room_Selector_In_Room_Assignment_PopUp="(//*[@id='modalRoomPickerReservation']//select[contains(@data-bind,'options: Rooms')])[1]";
+	public static final String ReCalculate_Folio_Options_PopUp="//div[@id='divRoomPickerReCalculateFolios']";            
+	public static final String ReCal_Folio_Options_PopUp_No_Charge_Changed="//div[@id='divRoomPickerReCalculateFolios']//input[@value='0']";  
+	
+	public static final String ReCal_Folio_Options_PopUp_Select_Btn="//div[@id='divRoomPickerReCalculateFolios']//button[text()='Select']"; 
+	public static final String ReCal_Folio_Options_PopUp_Cancel_Btn="//div[@id='divRoomPickerReCalculateFolios']//button[text()='Cancel']"; 
+	
+	public static final String Resell_Rooms_Popup="//h4[text()='Resell Rooms']";
+	public static final String Resell_Rooms_Popup_Continue_Btn="//div[contains(@data-bind,'excludeRoomContainer')]//button[text()='Continue']";
+	public static final String Resell_Rooms_Popup_Cancel_Btn="//div[contains(@data-bind,'excludeRoomContainer')]//button[text()='Cancel']";
 	
 	//New Quote
 	
@@ -373,6 +390,8 @@ public class OR {
 	public static final String Verify_Bulk_Checkout_popup="//h4[.='Bulk Checkout']";
 	public static final String Verify_Bulk_Checkout_Completed="//h4[.='Bulk Checkout Completed']";
 	
+	public static final String Click_On_First_SearchResult="(//td//a[@title])[1]";
+	public static final String Check_First_SearchResult="(//td//input[contains(@data-bind,'DeleteReservation')])[1]";
 	
 	//Folio
 	
@@ -399,7 +418,7 @@ public class OR {
 	public static final String Select_Authorization_type="//div[@id='ReservationPaymetItemDetail']//select[@name='AuthorizationTypeOut']";
 	public static final String Change_Amount="//div[@id='ReservationPaymetItemDetail']//input[contains(@data-bind,'value: $parent.formattedAmount')]";
 	
-	
+	public static final String Payment_Details_Folio_Balance=".//*[@id='StayInfo']//label[text()='Folio Balance:']/..//p/span";
 	
 	//Tape Chart
 	
@@ -427,6 +446,31 @@ public class OR {
 	public static final String Payment_Popup="//span[.='Payment Details']";
 	public static final String Key_Generation_Popup="//h4[.='Key Generation']";
 	public static final String Key_Generation_Close="//*[@id='keyGenerationPopUp']/div[3]/div/button[3]";
+	
+	
+	//Checkin-New Objects
+	public static final String Enter_Checkin_Percentage_On_balance ="(.//*[@id='checkin']//input[@type='text'])[1]";
+    public static final String Select_Capture_Payment_for_Checkin="(.//*[@id='checkin']//input[@type='radio'])[1]";
+    public static final String Select_Authorize_Payment_for_Checkin="(.//*[@id='checkin']//input[@type='radio'])[2]";
+    
+	public static final String Enter_Policy_Text=".//textarea[contains(@data-bind,'PolicyStatement')]";
+	public static final String Enter_Policy_Description=".//textarea[contains(@data-bind,'PolicyDescription')]";
+	public static final String Associate_Sources_Btn=".//button[text()='Associate Sources']";
+	public static final String Associate_Seasons_Btn=".//button[text()='Associate Seasons']";
+	public static final String Associate_Room_Classes_Btn=".//button[text()='Associate Room Classes']";
+	public static final String Associate_Rate_Plans_Btn=".//button[text()='Associate Rate Plans']";
+	public static final String Associate_Assign_All_Btn="//button[@data-bind='click: AssignAll']";
+	public static final String Available_Options_In_Popup="(.//*[@id='roleModal']//select)[1]/option";
+	public static final String Added_Options_In_Popup="(.//*[@id='roleModal']//select)[2]/option"; 
+	public static final String Done_In_Popup =" .//*[@id='roleModal']//button[text()='Done']";
+	public static final String Selected_Options_Under_Room_Class="//tbody[contains(@data-bind,'PolicyRoomClasses')]/tr[@style='']";
+	public static final String Selected_Options_Under_Sources="//tbody[contains(@data-bind,'PolicySources')]/tr[@style='']";
+	public static final String Selected_Options_Under_Seasons="//tbody[contains(@data-bind,'PolicySeasons')]/tr[@style='']";
+	public static final String Selected_options_Under_Rateplan="//tbody[contains(@data-bind,'PolicyRatePlans')]/tr[@style='']";
+	public static final String Policy_Save=".//*[@id='bpjscontainer_22']//button[text()='Save']";
+	public static final String Policy_Close_Btn=".//*[@id='bpjscontainer_17']//li[contains(@class,'new-policy')]//i";
+	public static final String Delete_Policy_Checkbox="(//input[@data-bind='checked: deletePolicy'])[1]";
+	public static final String Delete_Policy_Btn="//button[text()='Delete']";
 	
 	//Checkout
 	
@@ -573,6 +617,478 @@ public class OR {
     public static final String Resell_Rooms_Popup_Continue_Button="//h4[.='Resell Rooms']//following::button[.='Continue']";
     
     
+	//Policies
+	public static final String Policy_Name_On_Policiespage="//input[contains(@data-bind,'value: policyName')]";
+	public static final String Search_On_On_Policiespage ="//button[contains(@data-bind,'goSearchPolicies')]";
+	public static final String New_Policy_Btn=".//button[text()='New Policy']";
+	public static final String Select_Policy_Type="//select[contains(@data-bind,'policyTypes')]";
+	public static final String Enter_Policy_Name="//input[contains(@data-bind,'PolicyName')]";
+	
+	public static final String Select_Deposit_Roomcharges_Radiobtn="(.//*[@id='deposit']//input[@type='radio'])[1]";
+	public static final String Select_Deposit_Fixedamount_Radiobtn="(.//*[@id='deposit']//input[@type='radio'])[2]";
+	public static final String Select_Deposit_Firstnightrc_Radiobtn="(.//*[@id='deposit']//input[@type='radio'])[3]";
+	
+	public static final String Select_Noshow_Roomcharges_Radiobtn="(.//*[@id='deposit']//input[@type='radio'])[1]";
+	public static final String Select_Noshow_Fixedamount_Radiobtn="(.//*[@id='deposit']//input[@type='radio'])[2]";
+	public static final String Select_Noshow_Firstnightrc_Radiobtn="(.//*[@id='deposit']//input[@type='radio'])[3]";
+	
+	
+	public static final String Select_Checkin_Roomcharges_Radiobtn="(.//*[@id='checkin']//input[@type='radio'])[1]";
+	public static final String Select_Checkin_Fixedamount_Radiobtn="(.//*[@id='checkin']//input[@type='radio'])[2]";
+	public static final String Select_Checkin_Firstnightrc_Radiobtn="(.//*[@id='checkin']//input[@type='radio'])[3]";
+	
+	public static final String Select_Roomcharges_Type_for_Deposit=".//*[@id='deposit']//select";
+	public static final String Select_Roomcharges_Type_for_Cancellation=".//*[@id='cancellation']//select";
+	public static final String Select_Roomcharges_Type_for_Noshow=".//*[@id='noShow']//select";
+	
+	
+	public static final String Enter_Deposit_Percentage_Charges="(.//*[@id='deposit']//input[@type='text'])[1]";
+	public static final String Enter_Deposit_Fixed_Amount="((.//*[@id='deposit']//div[@class='form-group'])[2]//input[@type='text'])[1]";
+	public static final String Enter_Deposit_First_Nights_RC="((.//*[@id='deposit']//div[@class='form-group'])[3]//input[@type='text'])[1]";
+	public static final String Enter_Noshow_Percentage_Charges="(.//*[@id='noShow']//input[@type='text'])[1]";
+	public static final String Enter_Noshow_Fixed_Amount="((.//*[@id='noShow']//div[@class='form-group'])[2]//input[@type='text'])[1]";
+	public static final String Enter_Noshow_First_Nights_RC="((.//*[@id='noShow']//div[@class='form-group'])[3]//input[@type='text'])[1]";
     
 	
+	// Guest Services
+	public static final String Guest_Services_Main_Menu="//img[@class='nav-guest-services nav_icon']";
+	public static final String Guest_Services_Menu_Title="//font[.='Guest Services Menu']";
+	public static final String Select_Items_Per_Page=".//select[@id='MainContent_ddlItemsPerPage']";
+	public static final String Select_Rmcondition_In_Theader="//tr[@class='dgHeader']//input[@type='radio']"; ////tr[@class='dgHeader']//label[text()='Clean']/../input
+	public static final String Save_Housekeeping_Status =".//*[@id='MainContent_btnSave']";
+	
+	public static final String Housekeeping_Status_Title="//font[.='Housekeeping Status']";
+	
+	public static final String Menuitem_Policy_Text=".//a[text()='Policies' and @class='MenuItem']";
+	
+	public static final String Cancel_Reservation_Icon="//a[@title='Cancel']//i";
+	public static final String Cancel_Res_Popup="//h4[text()='Cancellation']";
+	public static final String Cancel_Reason_Txtarea="//h4[text()='Cancellation']/../..//*[@data-bind='value: cancelreason']";
+	public static final String VoidRC_Chkbox_In_Popup="//label[text()='Void Room Charges']/preceding-sibling::input";
+	public static final String Cancel_Res_Popup_Ok_Btn="//h4[text()='Cancellation']/../..//button[text()='OK']";
+	
+	
+	public static final String Close_Tab_Btn=".//span[text()='Auto Guest']/following-sibling::i";
+	public static final String AlertForTab="//div[@id='alertForTab']//h4";
+	public static final String AlertForTab_Yes_Btn="//div[@id='alertForTab']//button[text()='Yes']";
+	
+	
+	public static final String Select_Delete="//span[.='Delete']";
+	public static final String Verify_Bulk_Delete_popup="//h4[.='Bulk Delete']";
+	public static final String Verify_Bulk_Delete_Completed="//h4[.='Bulk Delete Completed']";
+	public static final String Search_Results_Alert_Msg="//div[@class='alert alert-warning']";
+	
+	public static final String Verify_Res_Number="//div[@id='tab1']//span[contains(@data-bind,'text: ConfirmationNumber')]";
+	
+	//Guest History
+    
+    public static final String Accountype_Label=".//*[@class='form-group']/label[contains(text(),'Account Type:')]";
+    
+    //Statements
+    
+ 	public static final String Account_Statement_Tab =".//*[@id='MainContent_btnAccountStatement']";
+ 	
+     //Travel Agent Items
+ 	
+ 	public static final String Travel_Agent_Items_Title="//font[.='Travel Agent Items']";
+ 	
+ 	// Management Items
+ 	
+ 	public static final String Management_Items_Title="//font[.='Management Items']";
+ 	
+ 	
+ 	// Account Distributions
+ 	
+ 	public static final String Account_Distributions_Title="//font[.='Account Distributions']";
+ 	
+	// Task List
+	
+	public static final String Task_List_Title="//font[.='Task List']";
+	
+	// Room Maintenance
+	
+	public static final String Room_Maintenance_Fromdate=".//*[@id='MainContent_txtDateStart']";
+	
+	
+	// Inventory
+	
+	public static final String Inventory_Menu_Title="//font[.='Inventory Menu']";
+	
+	
+	// Overview
+	
+	public static final String Inventory_Overview=".//*[@id='MainContent_lnkInventoryOverview']";
+	
+	//Season 
+	public static final String New_Season_Btn="//button[contains(text(),'New Season')]";
+	
+	// Rates
+	public static final String Rates_Title="//font[.='Rates']";
+	
+	//Rules
+	public static final String New_Rule_Btn="//button[contains(text(),'New Rule')]";
+	
+	// Distribution
+	
+	public static final String Table_Text=".//span[text()='innCenter']";
+	 
+	
+	public static final String Syndication_Month_Label="//span[@class='monthLabel']";
+	public static final String BlackOuts_Source_Label="//label[text()='Source:']";
+	
+	//Setup
+	
+		public static final String Setup_Menu_Title="//font[.='Setup Menu']";
+		
+		//Properties
+		public static final String Properties_Title ="//font[.='Properties']";
+		
+		//Room Classes
+			
+		public static final String New_RoomClass_Btn ="//button[contains(text(),'New Room Class')]";
+		
+		//Tax Items
+		public static final String Tax_Items_Title ="//font[.='Tax Items']";
+		
+	   //Ledger Accounts
+		
+		public static final String Ledger_Accounts_Title ="//font[.='Ledger Accounts']";
+	   
+	   //Merchant Services
+		
+		public static final String Merchant_Services_Title ="//font[.='Merchant Services']";
+		
+		
+		//Document Templates
+		
+		public static final String Document_Templates_Title ="//font[.='Document Templates']";
+	    
+		//List Management
+		
+		public static final String List_Management_Title ="//font[.='List Management']";
+		
+		
+		//Admin
+		
+		public static final String Admin_Menu_Title ="//font[.='Admin Menu']";
+		
+		//Clients
+		
+		public static final String Clients_Title ="//font[.='Clients']";
+		
+		// Users
+		
+		public static final String New_User_Btn ="//button[.='New User']";
+		
+		//Roles
+		public static final String New_Role_Btn ="//button[.='New Role']";
+		
+		//Night Audit
+		public static final String Period_Status_Title ="//font[.='Period Status']";
+		
+		//Reports
+		
+		public static final String Reports_Menu_Title ="//font[.='Reports Menu']";
+		
+		// Account Balance Summary 
+		public static final String Account_Balance_Summary_Title ="//font[.='Account Balance Summary']";
+		
+		// Ledger Balances 
+		public static final String Ledger_Balances_Title ="//font[.='Ledger Balances']";
+		
+		// Merchant Transactions
+		public static final String Merchant_Transaction_From_Date_Feild =".//*[@id='MainContent_txtTransactionsDate']";
+		
+		//Deposit
+		public static final String Deposit_Title ="//font[.='Advance Deposits']";
+		
+		// Daily Flash
+		
+		public static final String Daily_Flash_From_Date_Feild =".//*[@id='MainContent_TxtDailyDate']";
+		
+		// Room Forecast Report 
+		public static final String Room_Forecast_From_Date_Feild=".//*[@id='MainContent_txtFromDate']";
+		
+		//Net Sales
+		public static final String Net_Sales_Title ="//font[.='Net Sales']";
+		
+		
+		public static final String Click_Continue_Deposit="//div[@aria-hidden='false']//button[.='Continue']";
+		
+		public static final String Click_Folio_Options="//span[@class='subTab']//a[text()='Folio Options']";
+		
+		public static final String Select_Account_Checkin_Policy="//label[text()='Check In Policy:']//following-sibling::div//select";
+		
+		public static final String Acc_Picker_Confirm_Continue_Btn=".//*[@id='ReservationAccountPickerConfirmationPopup']//button[text()='Continue']";
+	
+		public static final String Associated_AccountName=".//a[contains(@data-bind,'Accountname')]";
+		public static final String Acc_Picker_Confirm=".//*[@id='ReservationAccountPickerConfirmationPopup']//h4";
+		
+		//PaymentInfo_Popup or Billing_Info_Popup
+		public static final String Click_Show_PaymentInfo="//a[contains(@data-bind,'fnShowPaymentInfo')]";
+		public static final String Folio_Billing_Info_Popup="//h4/span[.='Folio Billing Information']";
+		public static final String Select_Salutation_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//select[contains(@data-bind,'parent.SaluationList')]";
+		public static final String Enter_First_Name_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[@placeholder='First Name']";
+		public static final String Enter_Last_Name_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[@placeholder='Last Name']";
+		public static final String Enter_Phone_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//label[.='Phone:']/..//input[@placeholder='Number']";
+		public static final String Enter_AltPhone_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//label[.='Alternate Phone:']/..//input[@placeholder='Number']";
+		public static final String Enter_Email_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//label[.='Email:']/..//input[@placeholder='example@example.com']";
+		public static final String Enter_Line1_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'MailingAddress1')]";
+		public static final String Enter_Line2_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'MailingAddress2')]";
+		public static final String Enter_Line3_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'MailingAddress3')]";
+		public static final String Enter_City_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'City')]";
+		public static final String Select_Country_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//select[contains(@data-bind,'CountryList')]";
+		public static final String Select_State_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//select[contains(@data-bind,'StateList')]";
+		public static final String Enter_Postal_Code_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'PostalCode')]";
+		
+		
+		public static final String Select_Payment_Method_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//select[contains(@data-bind,'BillingTypeList')]";
+		public static final String Enter_Account_Number_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@placeholder,'Account Number')]";
+		public static final String Enter_CardExpiryDate_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'CardExpiryDate')]";
+		public static final String Enter_BillingNotes_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//input[contains(@data-bind,'BillingNotes')]";
+		public static final String Save_Btn_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//button[text()='Save']";
+		public static final String Cancel_Btn_PaymentInfo_Popup="//div[@id='ReservationPaymetInfoDiv']//button[text()='Cancel']";
+		public static final String Payment_Info_Textarea="//textarea[@data-bind='value: PayDetails']";	
+		
+		
+		public static final String First_RC_Line_Item_Desc="(//span[text()='Room Charge']/../following-sibling::td[contains(@data-bind,'lineitem-description')]/a)[1]";
+		public static final String First_RC_Line_Item_Amount="(//span[text()='Room Charge']/../following-sibling::td[@class='lineitem-amount']/span)[1]";
+		public static final String Item_Details_Popup="//h4[.='Item Detail']";
+		public static final String RC_Link_In_Item_Details_Popup ="//div[@data-bind='getElement: popUp']//span[text()='Room Charge']/../following-sibling::td/a";
+		public static final String Sales_Tax_Link_In_Item_Details_Popup="//div[@data-bind='getElement: popUp']//span[text()='Sales Tax']/../following-sibling::td/a";
+		public static final String Tax_Item_Details_Popup="//h4[text()='Tax Item Details']";
+		public static final String Display_Name_In_Tax_Item_Details_Popup="//div[@id='popUpForInnroad']//label[text()='Display Name:']";
+		
+		public static final String Total_Charges_In_Item_Details_Popup="//div[@data-bind='getElement: popUp']//span[contains(@data-bind,'TotalSummary')]";
+		public static final String Item_Details_Popup_Cancel_Btn="//div[@data-bind='getElement: popUp']//button[@data-dismiss='modal' and text()='Cancel']";
+		public static final String Include_Taxes_in_Line_Items_Checkbox="//input[contains(@data-bind,'IncludeTaxesInLineItems')]";
+		
+		public static final String Rate_Details_Popup="//h4[.='Rate Details']";
+		public static final String Rate_Name_In_Rate_Details_Popup="//div[@id='popUpForInnroad']//label[text()='Rate Name:']";
+		public static final String Rate_Details_Popup_Cancel_Btn="//div[@id='popUpForInnroad']//button[@data-dismiss='modal' and text()='Cancel']";
+		
+		//New Reservations
+		public static final String NewRervations="//span[contains(text(),'New Reservations')]";
+		
+		//Guest Info
+		public static final String GuestInfo="//a[contains(text(),'Guest Info')]";
+		
+		//Edit Folio
+		public static final String Edit_Folio_Btn="//img[@title='Edit Folio']";
+		
+		//Delete Folio
+		public static final String Delete_Folio_Btn="//img[@title='Delete Folio']";
+		
+		// Folio
+		
+		public static final String MoveFolio_Folio="//a[contains(text(),'Folio')]";
+		
+		// Guset Folio
+		public static final String MoveFolio_GuestFolio="//select[@class='form-control folioFil']";
+		
+		//New Folio
+		public static final String MoveFolio_NewFolio="//img[@title='New Folio']";
+		
+		//Folio Details
+		public static final String MoveFolio_NewFolioDeatils="//h4[contains(text(),'Folio details')]";
+		
+		// New Folio Name
+		public static final String MoveFolio_NewFolio_Name="//label[contains(text(),'Name:  ')]/following::div/input";
+		
+		//New Folio Description
+		public static final String MoveFolio_NewFolio_Description="//label[contains(text(),'Description:')]/following::div/textarea";
+		
+		//New Folio Close
+		public static final String MoveFolio_NewFolio_Close="(//button[contains(text(),'Close')])[10]";
+		
+		//New Folio Save
+		public static final String MoveFolio_NewFolio_Save="(//button[contains(text(),'Save')])[7]";
+		
+		//New Folio Save Reservation
+		public static final String MoveFolio_NewFolio_SaveReservation="(//button[contains(text(),'Save')])[2]";
+		
+		//New Folio select folio item
+		public static final String MoveFolio_SelectFiloItem="//table[@class='table table-striped table-bordered table-hover trHeight25']/tbody/tr/td[1]/input";
+		
+		
+		//New Folio Move
+		public static final String MoveFolio_Move="//button[contains(text(),'Move')]";
+		
+		//Target Folio
+		public static final String MoveFolio_TargetFolio="//select[@data-bind='value: $root.selectedFolioId']";
+		
+		//Select Folio Item to move in pop up
+		
+		public static final String MoveFolio_FolioItemToMove="//table[@class='table  table-hover']/tbody/tr/td";
+		
+		//Move Selected Item
+		public static final String MoveFolio_MoveSelectedItem="//button[@data-bind='click: MoveItemsToTarget, enable: SelectedFolio']";
+		
+		//close on move folio pop up
+		public static final String MoveFolio_Close="//div[@id='moveFolioItemsModal']/div[3]/button";
+		
+		//************************* Room Class **********************************
+		
+		//Room Class Details
+		public static final String New_RoomClass_Deails="//div[contains(text(),'Room Class Details')]";
+		
+		//New Room Class Name
+		
+		public static final String New_RoomClass_Name="//input[@placeholder='Room Class Name']";
+		
+		//New Room Class Abbrivation
+		public static final String New_RoomClass_Abbrivation="//input[@placeholder='Room Class Abbreviation']";
+		
+		//New Room Class King Beds
+		
+		public static final String New_RoomClass_KingBeds="//h4[contains(text(),'King')]/following::div/input";
+		
+		//New Room Class Room Type
+		
+		public static final String New_RoomClass_RoomType_AdjoiningRooms="//span[contains(text(),'Adjoining rooms')]/../preceding-sibling::span/input";
+		
+		//New Room Class Rooms
+		
+		public static final String New_RoomClass_Rooms="//a[contains(text(),'Rooms')]";
+		
+		
+		//New Room Class Max Adutls
+		
+		public static final String New_RoomClass_Max_Adults="//label[contains(text(),'Max Adults')]/following::div/input";
+		
+		//New Room Class Max persons
+		
+		public static final String New_RoomCLass_Max_Persons="//label[contains(text(),'Max Persons')]/following::div/input";
+		
+		//New Room Class Room Quantity
+		
+		public static final String New_RoomClass_Room_Quantity="//label[contains(text(),'Room Quantity')]/following::div/input";
+		
+		//New Room Class Create Rooms
+		
+		public static final String New_RoomClass_Create_Rooms="//button[@data-bind='click: createRooms']";
+		
+	 
+		//New Room Class Room Number
+		public static final String New_RoomClass_RoomNumber="//table/tbody/tr/td[2]/input";
+		
+		//New Room Class Assign Rooms
+		
+		public static final String New_RoomClass_AssignRoomNumber="//button[@class='btn blue disableForClientUser']";
+		
+		//New Room Class Save
+		
+		public static final String New_RoomClass_Save="(//button[contains(text(),'Save')])[2]";
+		
+		//New Room Class publish
+		
+		public static final String New_RoomClass_Publish="//button[contains(text(),'Publish')]";
+		
+		//New Room Class OK
+		
+		public static final String New_RoomClass_OK="(//button[contains(text(),'OK')])[2]";
+		
+		//New Room classes
+		public static final String New_RoomClasses="//span[contains(text(),'Room Classes')]";
+		
+		//New Room Classes msg After Publish
+		
+		public static final String New_RoomClass_Msg_Publish="//div[@id='toast-container']/div/div[2]";
+		
+		
+		public static final String Click_First_Quote_Icon="//tr[@rowtype='RoomClassHeader']/following-sibling::tr[1]//td[contains(@id,'td_Action')]/button[1]";
+		public static final String Get_QuoteReservation_Status="(//label[contains(text(),'Reservation Status:')]/following-sibling::div/select)";
+		
+		public static final String Click_Book_Reservation="//button[contains(text(),'Book')]";
+		
+		public static final String Check_Split_Rooms="//label[contains(text(),'Split Rooms:')]/input";
+		
+		public static final String Get_Notes="//table[@class='table table-striped table-bordered table-hover resGrid1']/tbody/tr";
+		
+		//First opened reservation
+		
+		public static final String FirstOpenedReservation="//div[@class='sec_nav_in container']/ul/li[6]/a/span[3]";
+		
+		//First opened reservation close
+		public static final String FirstOpenedReservationClose="//div[@class='sec_nav_in container']/ul/li[6]/a/i";
+		
+		//Room Charges 
+		public static final String Room_Charges="//label[contains(text(),'Room Charges:')]/following-sibling::span/span";
+		
+		//Incidentals
+		public static final String Incidentals="//label[contains(text(),'Incidentals:')]/following-sibling::span/span";
+		
+		//Taxes and Service charges
+		public static final String TaxesAndServiceCharges="//label[contains(text(),'Taxes & Service Charges:')]/following-sibling::span/span";
+		
+		//Total Charges
+		public static final String TotalCharges="//label[contains(text(),'Total Charges:')]/following-sibling::span/span";
+		
+		//Tax exempt this field is required
+		public static final String TaxExemptThisFieldIsdRequired="//span[contains(text(),'This field is required.')]";
+		
+		//Add incidentals
+		
+		//Add
+		
+		public static final String AddIncidental="//button[contains(text(),'Add')]";
+		
+		//Incidental category
+		public static final String IncidentalCategory="//td[@class='lineitem-category']/select";
+		
+		//Incidental Amount
+		public static final String IncidentalAmount="//input[@class='form-control fgInpFx']";
+		
+		//commit
+		public static final String Commit="//button[contains(text(),'Commit')]";
+		
+		//Reservations sublink
+		
+		public static final String Reservations="(//span[contains(text(),'Reservations')])[2]";
+		
+		//Tax Creation
+		
+		//New Tax Item
+		public static final String TaxNewItem="//input[@id='MainContent_btnNew']";
+		
+		//Item Name
+		public static final String TaxItemName="//td[contains(text(),'Item Name:')]/following-sibling::td/input";
+		
+		//Display Name
+		public static final String TaxDispalyName="//td[contains(text(),'Display Name:')]/following-sibling::td/input";
+		
+		//Description
+		public static final String TaxDescription="//td[contains(text(),'Description:')]/following-sibling::td/textarea";
+		
+		//Tax Value
+		public static final String TaxValue="//input[@id='MainContent_txtTaxItemValue']";
+		
+		//Tax exempt
+		public static final String ExcludeTaxExempt="//input[@id='MainContent_chkTaxExempt']";
+		
+		//Tax Percent
+		public static final String TaxPercent="//input[@id='MainContent_chkIsPercent']";
+		
+		//Tax category
+		public static final String taxCategory="//select[@id='MainContent_drpCategory']";
+		
+		
+		//Tax associate
+		public static final String TaxAssociate="//input[@id='MainContent_btnEditTaxes']";
+		
+		//Tax Ledger Account pick po up
+		
+		public static final String TaxLedgerAccountPopup="//td[@id='tdTitle']/font[contains(text(),'Ledger Account Picker')]";
+		
+		//Tax Pick one
+		public static final String TaxPickOne="//input[@id='btnPickOne']";
+		
+		//String Save/Done LergerAccount
+		public static final String TaxLaedgerAccountDone="//input[@id='Button1']";
+		
+		// Tax Done
+		public static final String TaxDone="//input[@id='MainContent_btnDone']";
+		
+		public static final String Processed_Amount_In_Paymentdetails_Popup="(//tbody[contains(@data-bind,' PaymentItemsArray')]//td[@class='text-right'])[1]/span";
+		
 }

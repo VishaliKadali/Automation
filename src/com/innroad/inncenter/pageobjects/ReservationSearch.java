@@ -5,14 +5,22 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.innroad.inncenter.interfaces.IReservationSearchPage;
 import com.innroad.inncenter.properties.OR;
+import com.innroad.inncenter.utils.Utility;
 import com.innroad.inncenter.waits.Wait;
+import com.innroad.inncenter.webelements.Elements_Reservation;
 import com.innroad.inncenter.webelements.Elements_Reservation_SearchPage;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class ReservationSearch implements IReservationSearchPage {
 
@@ -56,6 +64,101 @@ public class ReservationSearch implements IReservationSearchPage {
 
 	}
 
+	
+	public String basicSearch_WithResNumber(WebDriver driver,String resNumber ) throws InterruptedException {
+		String str = null;
+		try
+		{
+		/*FileReader fr= new FileReader(".\\ConfirmationNumber.txt");
+		BufferedReader br = new BufferedReader(fr);
+		
+		while((ResNumber=br.readLine())!=null)
+		{*/
+			System.out.println("ResNumber :"+resNumber);
+			Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
+			System.out.println("ResNumber after loop:" + resNumber);
+			resservationSearch.Basic_Res_Number.sendKeys(resNumber);
+			resservationSearch.Click_BasicSearch.click();
+			Wait.explicit_wait_xpath(OR.Verify_Search_Loading_Gird);
+			Wait.wait10Second();
+			String GetResNumber=resservationSearch.Get_Res_Number.getText();
+			Assert.assertEquals(resNumber, GetResNumber);
+	//	}
+		//br.close();
+			
+			
+			// Explicit wait object creation
+			WebDriverWait wait = new WebDriverWait(driver, 90);
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.NewRervations)));
+			System.out.println(resNumber);
+			
+			String resLocator="//span[contains(text(),'"+resNumber.trim()+"')]/../../td[4]/div/a";
+			Wait.wait5Second();
+			/*
+			Elements_MovieFolio moveFolio = new Elements_MovieFolio(driver);
+			moveFolio.NewRervations.click();*/
+			
+			str=driver.findElement(By.xpath(resLocator)).getText();
+	
+			driver.findElement(By.xpath(resLocator)).click();
+		}
+		catch(Exception e)
+		{
+			System.out.println("File not found");
+		}
+		
+		return str;
+	}
+	
+	
+	public void basicSearch_WithResNumber1(WebDriver driver,String resNumber ) throws InterruptedException {
+		String str = null;
+		try
+		{
+		/*FileReader fr= new FileReader(".\\ConfirmationNumber.txt");
+		BufferedReader br = new BufferedReader(fr);
+		
+		while((ResNumber=br.readLine())!=null)
+		{
+			System.out.println("ResNumber :"+resNumber);
+			Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
+			System.out.println("ResNumber after loop:" + resNumber);
+			resservationSearch.Basic_Res_Number.sendKeys(resNumber);
+			resservationSearch.Click_BasicSearch.click();
+			Wait.explicit_wait_xpath(OR.Verify_Search_Loading_Gird);
+			Wait.wait10Second();
+			String GetResNumber=resservationSearch.Get_Res_Number.getText();
+			Assert.assertEquals(resNumber, GetResNumber);
+		}
+		br.close();*/
+			
+			
+			// Explicit wait object creation
+			WebDriverWait wait = new WebDriverWait(driver, 90);
+			
+			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.NewRervations)));
+			System.out.println(resNumber);
+			
+			String resLocator="//span[contains(text(),'"+resNumber.trim()+"')]/../../td[4]/div/a";
+			//Thread.sleep(5000);
+			
+			/*Elements_MovieFolio moveFolio = new Elements_MovieFolio(driver);
+			moveFolio.NewRervations.click();*/
+			
+			str=driver.findElement(By.xpath(resLocator)).getText();
+			
+			driver.findElement(By.xpath(resLocator)).click();
+		}
+		catch(Exception e)
+		{
+			System.out.println("File not found");
+		}
+		
+		
+	}
+	
+	
 	public void Bulkcheckin(WebDriver driver, String GuestName) throws InterruptedException {
 		Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
 		resservationSearch.Check_Reservation.click();
@@ -119,5 +222,75 @@ public class ReservationSearch implements IReservationSearchPage {
 		}
 
 	}
+	
+	
+	public void delete_Res_WithResNumber(WebDriver driver,String Res_Confirm_Number ) throws InterruptedException {
+		
+		Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
+		resservationSearch.Check_Reservation.click();
+		resservationSearch.Click_Bulk_Action.click();
+		Utility.ScrollToElement(resservationSearch.Select_Delete);
+		resservationSearch.Select_Delete.click();		
+		Wait.explicit_wait_visibilityof_webelement(resservationSearch.Verify_Bulk_Delete_popup);
+		String GetResNumber=resservationSearch.Verify_Res_Number.getText();
+		System.out.println("GetResNumber  :" + GetResNumber);
+		if(GetResNumber.equals(Res_Confirm_Number))
+		{
+			System.out.println("Verified GetResNumber in popup");
+		}
+		else
+		{
+			System.out.println("Fail to verify GetResNumber in popup");
+		}
+		Wait.explicit_wait_visibilityof_webelement(resservationSearch.Click_Process_Button);
+		resservationSearch.Click_Process_Button.click();
+		
+		Wait.explicit_wait_visibilityof_webelement(resservationSearch.Verify_Bulk_Delete_Completed);
+	    resservationSearch.click_on_Close_icon.click();
+		Wait.wait5Second();
+		Assert.assertEquals(resservationSearch.Search_Results_Alert_Msg.getText(), "No records meet your criteria. Please change your criteria and search again.");
+      	
+		
+	}
+	
+	
+	public void uncheck_TaxExempt(WebDriver driver,ExtentTest test) throws InterruptedException{
+		Elements_Reservation ReservationPage = new Elements_Reservation(driver);
+
+		Wait.wait5Second();
+		// Java script object creation
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,1000)");
+		if(ReservationPage.Check_IsTaxExempt.isSelected()){
+			ReservationPage.Check_IsTaxExempt.click();
+			test.log(LogStatus.PASS, "Tax exempt check box un selected");
+		}
+	}
+
+	
+	public void addIncidentals(WebDriver driver,ExtentTest test,String category,String amount) throws InterruptedException{
+		Wait.wait5Second();
+		Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
+		resservationSearch.AddIncidental.click();
+		test.log(LogStatus.PASS, "click Add");
+		Select sel = new Select(resservationSearch.IncidentalCategory);
+		sel.selectByVisibleText(category);
+		test.log(LogStatus.PASS, "select the category : "+category);
+		resservationSearch.IncidentalAmount.sendKeys(amount);
+		test.log(LogStatus.PASS, "Enter the amount : "+amount);
+		resservationSearch.Commit.click();
+		test.log(LogStatus.PASS, "click commit");
+		Wait.wait5Second();
+		String str=driver.findElement(By.xpath("//td/span[contains(text(),'"+category+"')]/../following-sibling::td/following-sibling::td/following-sibling::td/span")).getText();
+		str=str.replace("$", "");
+		Double d=Double.parseDouble(str);
+		if(d==0){
+			test.log(LogStatus.PASS, "Tax value is zero");
+		}else{
+			test.log(LogStatus.FAIL, "Tax value is not zero");	
+		}
+	}
+	
+	
 
 }

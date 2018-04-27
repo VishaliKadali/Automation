@@ -74,6 +74,38 @@ public class Elements_Reservation_SearchPage {
 		@FindBy(xpath=OR.Verify_Bulk_Checkout_Completed)
 		public WebElement Verify_Bulk_Checkout_Completed;
 		
+		@FindBy(xpath=OR.Click_On_First_SearchResult)
+		public WebElement Click_On_First_SearchResult;
+	
+		@FindBy(xpath=OR.Select_Delete)
+		public WebElement Select_Delete;
+		
+		@FindBy(xpath=OR.Verify_Bulk_Delete_popup)
+		public WebElement Verify_Bulk_Delete_popup;
+		
+		@FindBy(xpath=OR.Verify_Bulk_Delete_Completed)
+		public WebElement Verify_Bulk_Delete_Completed;
+		
+		@FindBy(xpath=OR.Check_First_SearchResult)
+		public WebElement Check_First_SearchResult;
+		
+		@FindBy(xpath=OR.Verify_Res_Number)
+		public WebElement Verify_Res_Number;
+		
+		@FindBy(xpath=OR.Search_Results_Alert_Msg)
+		public WebElement Search_Results_Alert_Msg;
+		
+		@FindBy(xpath=OR.AddIncidental)
+		public WebElement AddIncidental;
+		
+		@FindBy(xpath=OR.IncidentalCategory)
+		public WebElement IncidentalCategory;
+		
+		@FindBy(xpath=OR.IncidentalAmount)
+		public WebElement IncidentalAmount;
+		
+		@FindBy(xpath=OR.Commit)
+		public WebElement Commit;
 		
 		
 		
@@ -82,12 +114,4 @@ public class Elements_Reservation_SearchPage {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-
 }
