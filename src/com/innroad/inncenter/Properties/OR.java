@@ -458,7 +458,7 @@ public class OR {
 	
 	//Tapechart
 	
-	public static final String Click_Unassigned_Tapechart="(//div[contains(text(),'Unassigned')])[1]";  //"//div[@class='roomClasses']//div[@class='roomRatesChart'][1]//div[@class='row unassignedrow']//div[@class='col-xs-1']";
+	public static final String Click_Unassigned_Tapechart="(//div[contains(text(),'Unassigned12')])[1]";  //"//div[@class='roomClasses']//div[@class='roomRatesChart'][1]//div[@class='row unassignedrow']//div[@class='col-xs-1']";
 
 	//Account new Reservation button
 	

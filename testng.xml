@@ -4,13 +4,13 @@
   <listeners>
         <listener class-name="com.innroad.inncenter.listeners.EnvReaderListener"/>
   </listeners>
-  <parameter name="env" value="https://training.innroad.com"/>
+  <parameter name="env" value="https://app.innroad.com"/>
 	<test name="SanityTest">
 		<classes>
 			<class name="com.innroad.inncenter.tests.Tapechart_Unassign_Reser" /> 
-  			<class name="com.innroad.inncenter.tests.CheckinCheckoutReservation" /> 
-  			<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
- 			<class name="com.innroad.inncenter.tests.BulkCheckinCheckout" />
+ <!--  			<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
+  			 <class name="com.innroad.inncenter.tests.CheckinCheckoutReservation" />  -->
+<!--  			<class name="com.innroad.inncenter.tests.BulkCheckinCheckout" />
 			<class name="com.innroad.inncenter.tests.CreateGroupAccount" />  
  			<class name="com.innroad.inncenter.tests.Create_CP_Res_CPPay" />
 			<class name="com.innroad.inncenter.tests.Create_UnitOwner_Acc" />
@@ -19,7 +19,7 @@
 			<class name="com.innroad.inncenter.tests.Create_GiftCertificate_Account" />	
  			<class name="com.innroad.inncenter.tests.Reservation_CashPayment" />
 			<class name="com.innroad.inncenter.tests.Reservation_MCPayment" />
-			<class name="com.innroad.inncenter.tests.EarlyCheckout" />
+			<class name="com.innroad.inncenter.tests.EarlyCheckout" /> -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
