@@ -62,6 +62,11 @@ public class Elements_TapeChart {
 		@FindBy(xpath=OR.Click_Unassigned_Tapechart)
 		public WebElement Click_Unassigned_Tapechart;
 		
+		@FindBy(xpath=OR.FirstRoomClass_Rate_In_Tapechart)
+		public WebElement FirstRoomClass_Rate_In_Tapechart;
+		
+		@FindBy(xpath=OR.Click_First_Available_In_First_Roomclass)
+		public WebElement Click_First_Available_In_First_Roomclass;
 		
 		
 		

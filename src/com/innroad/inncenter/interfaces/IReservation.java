@@ -20,7 +20,7 @@ public interface IReservation {
 	
 	void saveReservation(WebDriver driver)throws InterruptedException;
 	
-	void Checkin(WebDriver driver, String PropertyName, String RoomClassName, String CheckorUncheckAssign,String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData)throws InterruptedException;
+	double Checkin(WebDriver driver, String PropertyName, String RoomClassName, String CheckorUncheckAssign,String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData)throws InterruptedException;
 	
 	void checkout(WebDriver driver,String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData)throws InterruptedException;
 	

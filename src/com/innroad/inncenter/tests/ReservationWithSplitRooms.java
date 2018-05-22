@@ -18,102 +18,107 @@ public class ReservationWithSplitRooms extends TestCore{
 	//Before Test
 	@BeforeTest
 	public void checkRunMode(){
-		PropertyConfigurator.configure("Log4j.properties");
-
-		if(!Utility.isExecutable("ReservationWithSplitRooms", excel))
-			throw new SkipException("Skipping the test");
-		app_logs.info("Verifying Test case is Skipped or not");	
+		String testName = this.getClass().getSimpleName().trim();
+		app_logs.info("Verifying Test case " + testName.toUpperCase() + " is Skipped or not");
+		if (!Utility.isExecutable(testName, excel))
+			throw new SkipException("Skipping the test - " + testName);
 	}
 
 	// Create split reservation
-	@Test(dataProvider="getData", groups="Somke")
+	@Test(dataProvider="getData", groups="Regression")
 	public void reservationWithSplitRooms(String url,String ClientCode, String Username, String Password,String MarketSegment,String Referral,String FirstName,String LastName,String Line1, String City, String State, String Country,String Postalcode,String Phonenumber, String PaymentMethod,String AccountNumber,String ExpiryDate,String BillingNotes,String Nights,String Adults,String Children,String CheckorUncheckAssign,String RoomClassName,String RoomClassName2 ){
 
-		Reservation res = new Reservation();
-		
+
+		test = extent.startTest("Reservation with Split Rooms", "Reservation with Split Rooms")
+				.assignCategory("Reservation with Split Rooms")
+				.assignCategory("Regression");
+
+		String testName = test.getTest().getName().toUpperCase();
+
+		app_logs.info("##################################################################################");
+		app_logs.info("EXECUTING: " + testName + " TEST.");
+		app_logs.info("##################################################################################");
+
+
+		Reservation res 	= new Reservation();
+		Login		LOGIN	= new Login();
+
+
+		// Login to InnCenter
+		try{
+
+			LOGIN.login(driver,url, ClientCode, Username, Password);
+			test.log(LogStatus.PASS, "System successfully logged in the site");
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to login", testName, "Login");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to login", testName, "Login");
+		}
+
+
+		// Clicking on New Reservation
+		try{
+			res.clickNewReservationButton(driver);
+			test.log(LogStatus.PASS, "Successfully clicked on New Reservation");
+
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to click on new Reservation", testName, "NewReservation");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to click on new Reservation", testName, "NewReservation");
+		}
+
+		// fill the marketing info
+		try{
+			res.marketingInfo(driver, test, MarketSegment, Referral);
+
+
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to Fill Market Info", testName, "MarketInfo");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Fill Market Info", testName, "MarketInfo");
+		}
+
+		// fill the contact info
+		try{
+			res.contactInformation(driver, test, FirstName, LastName, Line1, City, Country, State, Postalcode, Phonenumber);
+
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to Fill Contact Info", testName, "ContactInfo");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Fill Contact Info", testName, "ContactInfo");
+		}
+
+		// Fill the payment info
+		try{
+			res.billingInformation(driver, test,PaymentMethod, AccountNumber, ExpiryDate, BillingNotes);
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to Fill Payment Info", testName, "PaymentInfo");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Fill Payment Info", testName, "PaymentInfo");
+		}
+
+		//Fill the room details
+		try{
+			res.roomAssignment(driver, test, Nights, Adults, Children,  CheckorUncheckAssign, RoomClassName, RoomClassName2);
+
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to Fill Room Info", testName, "RoomInfo");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Fill Room Info", testName, "RoomInfo");
+		}
+
 
 		try{
-			ExtentTest test = extent.startTest("Reservation with Split Rooms", "Reservation with Split Rooms")
-					.assignCategory("Reservation with Split Rooms")
-					.assignCategory("Smoke");
-
-			System.out.println("Executing: " + test.getTest().getName()+ " test.");
-
-			// Login to InnCenter
-			try{
-				Login LOGIN = new Login();
-				LOGIN.login(driver,url, ClientCode, Username, Password);
-				test.log(LogStatus.PASS, "System successfully logged in the site");
-			}catch(Exception e){
-				System.out.println(e);
-				test.log(LogStatus.FAIL, "System fail to login");
-			}
-
-
-			// Clicking on New Reservation
-			try{
-				res.clickNewReservationButton(driver);
-				test.log(LogStatus.PASS, "Successfully clicked on New Reservation");
-				System.out.println("successfully clicked on new reservation");
-			}catch(Exception e){
-				System.out.println("************* Failed to click new reservation **************");
-				e.printStackTrace();
-			}
-
-			// fill the marketing info
-			try{
-				res.marketingInfo(driver, test, MarketSegment, Referral);
-			
-				System.out.println("successfully filled the market info");
-			}catch(Exception e){
-				System.out.println("************* Failed to fill the market info **************");
-				e.printStackTrace();
-			}
-			
-			// fill the contact info
-			try{
-				res.contactInformation(driver, test, FirstName, LastName, Line1, City, Country, State, Postalcode, Phonenumber);
-			
-				System.out.println("successfully filled the contact info");
-			}catch(Exception e){
-				System.out.println("************* Failed to fill the contact info **************");
-				e.printStackTrace();
-			}
-			
-			// Fill the payment info
-			try{
-				res.billingInformation(driver, test,PaymentMethod, AccountNumber, ExpiryDate, BillingNotes);
-				System.out.println("successfully filled the payment info");
-			}catch(Exception e){
-				System.out.println("************* Failed to fill the payment info **************");
-				e.printStackTrace();
-			}
-			
-			//Fill the room details
-			
-			try{
-				res.roomAssignment(driver, test, Nights, Adults, Children,  CheckorUncheckAssign, RoomClassName, RoomClassName2);
-				System.out.println("successfully filled the room info");
-			}catch(Exception e){
-				System.out.println("************* Failed to fill the room info **************");
-				e.printStackTrace();
-			}
-			
-
-			try{
-				res.saveReservation(driver,test);
-				res.GetReservationnumber(driver,test);
-				res.clickGuestInfo(driver,test);
-				res.getNotesCreated(driver,test);
-			}catch(Exception e){
-				System.out.println("************* Failed to save reservation **************");
-				e.printStackTrace();
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-			System.out.println("Exception");
-
+			res.saveReservation(driver,test);
+			res.GetReservationnumber(driver,test);
+			res.clickGuestInfo(driver,test);
+			res.getNotesCreated(driver,test);
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to Save Reservarion", testName, "SaveReservarion");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Save Reservarion", testName, "SaveReservarion");
 		}
+
 
 	}
 	// Data provider to read the data from excel

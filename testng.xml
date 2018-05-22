@@ -4,25 +4,44 @@
   <listeners>
         <listener class-name="com.innroad.inncenter.listeners.EnvReaderListener"/>
   </listeners>
-  <parameter name="env" value="https://app.innroad.com"/>
+  <parameter name="env" value="https://training.innroad.com/"/>
 	<test name="RegressionTest">
-		<classes>
-		
-		<class name="com.innroad.inncenter.tests.VerifyItemDetail" /> 
-		
-	<!--  		<class name="com.innroad.inncenter.tests.Tapechart_Unassign_Reser" /> 
- 			<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
-  			 <class name="com.innroad.inncenter.tests.CheckinCheckoutReservation" />  -->
-<!--  			<class name="com.innroad.inncenter.tests.BulkCheckinCheckout" />
-			<class name="com.innroad.inncenter.tests.CreateGroupAccount" />  
- 			<class name="com.innroad.inncenter.tests.Create_CP_Res_CPPay" />
-			<class name="com.innroad.inncenter.tests.Create_UnitOwner_Acc" />
-  			<class name="com.innroad.inncenter.tests.Create_Travel_Agent" />
-			<class name="com.innroad.inncenter.tests.Create_House_Acc" /> 
-			<class name="com.innroad.inncenter.tests.Create_GiftCertificate_Account" />	
- 			<class name="com.innroad.inncenter.tests.Reservation_CashPayment" />
-			<class name="com.innroad.inncenter.tests.Reservation_MCPayment" />
-			<class name="com.innroad.inncenter.tests.EarlyCheckout" /> -->
+				<classes>
+				
+ 				<class name="com.innroad.inncenter.tests.Clean_Room_Classes" /> 
+				<class name="com.innroad.inncenter.tests.Delete_Reservation" />
+				<class name="com.innroad.inncenter.tests.Create_New_Policy" />
+				<class name="com.innroad.inncenter.tests.RetainPaymentInfoAfterEdit" />
+				<class name="com.innroad.inncenter.tests.VerifyItemDetail" />
+				<class name="com.innroad.inncenter.tests.VerifySaveBtnFuncForReservation" />
+				<class name="com.innroad.inncenter.tests.VerifySaveBtnFuncForAccounts" />
+				<class name="com.innroad.inncenter.tests.CreateResWithOverridenRate" />
+				<class name="com.innroad.inncenter.tests.CheckInWithZeroBalance" />
+				<class name="com.innroad.inncenter.tests.CheckoutWithZeroBalance" />
+				<class name="com.innroad.inncenter.tests.VerifyResetOption" />
+
+				<class name="com.innroad.inncenter.tests.GuestHistoryAccount" />
+				<class name="com.innroad.inncenter.tests.CreateGuestHistoryReservation" /> 
+				<class name="com.innroad.inncenter.tests.AssociateResWithGuestHistory" />
+				<class name="com.innroad.inncenter.tests.FolioLineItemsVoid" /> 
+				<class name="com.innroad.inncenter.tests.LockUnlockFunctionality" /> 
+				<class name="com.innroad.inncenter.tests.CopyReservationAssigned" /> 
+				<class name="com.innroad.inncenter.tests.Copy_Unassigned_Reservation" />  
+				<class name="com.innroad.inncenter.tests.Reservation_PromoCode" /> 
+				<class name="com.innroad.inncenter.tests.Reservation_With_NonRackRate" /> 
+				<class name="com.innroad.inncenter.tests.PostLineItem" /> 
+				<class name="com.innroad.inncenter.tests.BaseRate" /> 
+				<class name="com.innroad.inncenter.tests.DerivedRate" /> 
+				<class name="com.innroad.inncenter.tests.PackageRate" /> 
+				<class name="com.innroad.inncenter.tests.SourceDefaultStatus" /> 
+				<class name="com.innroad.inncenter.tests.CreateRule" /> 
+	
+				<class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
+				<class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 
+				<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
+				<class name="com.innroad.inncenter.tests.Tax_And_TaxExempt" />
+				<class name="com.innroad.inncenter.tests.ReservationWithSplitRooms" /> 
+
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

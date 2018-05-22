@@ -115,7 +115,7 @@ public class Elements_On_All_Navigation {
 		@FindBy(id=OR.Inventory_Grid)
 		public WebElement Inventory_Grid;
 		
-		@FindBy(id=OR.Inventory)
+		@FindBy(xpath=OR.Inventory)
 		public WebElement Inventory;
 		
 		@FindBy(xpath=OR.Overview)

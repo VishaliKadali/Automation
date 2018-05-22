@@ -13,7 +13,6 @@ import com.innroad.inncenter.pageobjects.RateQuote;
 import com.innroad.inncenter.pageobjects.Reservation;
 import com.innroad.inncenter.testcore.TestCore;
 import com.innroad.inncenter.utils.Utility;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 public class RateQuote_Book_Reservation extends TestCore {
@@ -26,8 +25,8 @@ public class RateQuote_Book_Reservation extends TestCore {
 		if (!Utility.isExecutable(testName, excel))
 			throw new SkipException("Skipping the test - "+ testName);
 	}
-	
-	@Test(dataProvider = "getData")
+
+	@Test(dataProvider = "getData", groups="Regression")
 	public void CreateReservationfromRateQuoteBookicon(String url, String ClientCode, String Username, String Password,
 			String propertyName, String RateQuoteNights, String RateQuoteAdults, String RateQuoteChildren,
 			String RateQuoteRatePlanList, String RateQuotePromoCode, String MarketSegment, String Referral,
@@ -37,47 +36,46 @@ public class RateQuote_Book_Reservation extends TestCore {
 			String IsTaxExempt, String TaxEmptext, String Attachment, String PaymentMethod, String AccountNumber,
 			String ExpiryDate, String BillingNotes
 
-	) throws InterruptedException, IOException {
+			) throws InterruptedException, IOException {
 
-		ExtentTest test = extent.startTest("RateQuote_Book_Reservation", "Reservation Booking RateQuote")
+		test = extent.startTest("RateQuote_Book_Quote", "RateQuote_Book_Quote")
 				.assignCategory("RateQuote")
-				.assignCategory("Sanity");
-		
-		String testName=test.getTest().getName().toUpperCase();
-		
+				.assignCategory("Regression");	
+
+		String testName = test.getTest().getName().toUpperCase();
+
 		app_logs.info("##################################################################################");
 		app_logs.info("EXECUTING: " + testName + " TEST.");
 		app_logs.info("##################################################################################");
 
+		Login 		LOGIN 				= new Login();
+		Navigation 	newQuoteNavigation 	= new Navigation();
+		RateQuote 	rateQuotePage		= new RateQuote();
+		Reservation res 				= new Reservation();
+
 		try {
-			Login LOGIN = new Login();
+
 			LOGIN.login(driver, url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "Logged into the application");
 			app_logs.info("Logged into the application");
 		} catch (Exception e) {
-			test.log(LogStatus.FAIL, "Failed to Login into the application \n" + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + test.addScreenCapture(Utility.captureScreenShot(testName + "_Login_" + Utility.getTimeStamp(), driver)));
-			app_logs.error("Failed to Login into the application \n");
-			e.printStackTrace();
-			throw new SkipException(e.getMessage());
+			Utility.updateReport(e, "Failed to login", testName, "Login");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to login", testName, "Login");
 		}
 
-		Reservation res = new Reservation();
-
 		try {
-			Navigation newQuoteNavigation = new Navigation();
+
 			newQuoteNavigation.NewQuote(driver);
 			app_logs.info("Navigated to NewQuote page");
 			test.log(LogStatus.PASS, "Navigated to NewQuote page");
 		} catch (Exception e) {
-			test.log(LogStatus.FAIL, "Failed to navigate to NewQuote page \n" + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + test.addScreenCapture(Utility.captureScreenShot(testName + "_NewQuote_" + Utility.getTimeStamp(), driver)));
-			app_logs.error("Failed to navigate to NewQuote page \n");
-			e.printStackTrace();
-			throw new SkipException(e.getMessage());
+			Utility.updateReport(e, "Failed to Click on New Quote", testName, "NewQuote");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Click on New Quote", testName, "NewQuote");
 		}
 
-		RateQuote rateQuotePage = new RateQuote();
+
 		try {
 			rateQuotePage.searchDetails(driver, RateQuoteNights, RateQuoteAdults, RateQuoteChildren,
 					RateQuoteRatePlanList, RateQuotePromoCode);
@@ -85,25 +83,21 @@ public class RateQuote_Book_Reservation extends TestCore {
 			app_logs.info("Clicked on Search button");
 			test.log(LogStatus.PASS, "Clicked on search button");
 		} catch (Exception e) {
-			test.log(LogStatus.FAIL, "Failed to click on search button \n" + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + test.addScreenCapture(Utility.captureScreenShot(testName + "_RageQuote_SearchButton_" + Utility.getTimeStamp(), driver)));
-			app_logs.error("Failed to click on Search button \n");
-			e.printStackTrace();
-			throw new SkipException(e.getMessage());
+			Utility.updateReport(e, "Failed to Click on Rate Quote Search", testName, "RateQuoteSearch");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Click on Rate Quote Search", testName, "RateQuoteSearch");
 		}
+
 
 		try {
 			rateQuotePage.clickBookicon(driver);
 			app_logs.info("Clicked on Book icon");
 			test.log(LogStatus.PASS, "Clicked on Book Icon");
 		} catch (Exception e) {
-			test.log(LogStatus.FAIL, "Failed to click book icon \n" + e.getMessage() + 
-			"\n\n <br> Attaching screenshot below : \n" + test.addScreenCapture(Utility.captureScreenShot(testName + "_RageQuote_BookIcon_" + Utility.getTimeStamp(), driver)));
-			app_logs.error("Failed to click on book icon \n");
-			e.printStackTrace();
-			throw new SkipException(e.getMessage());
+			Utility.updateReport(e, "Failed to Click on Rate Quote Book", testName, "RateQuoteBook");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Click on Rate Quote Book", testName, "RateQuoteBook");
 		}
-
 		try {
 			res.marketingInfo(driver, MarketSegment, Referral, Travel_Agent, ExtReservation);
 			app_logs.info("Entered marketing information");
@@ -118,12 +112,10 @@ public class RateQuote_Book_Reservation extends TestCore {
 			res.GetReservationnumber(driver);
 			test.log(LogStatus.PASS, "Reservation is created");
 			app_logs.info("Reservation is created");
-		} catch (Exception e) {
-			test.log(LogStatus.FAIL, "Failed to create reservation \n" + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + test.addScreenCapture(Utility.captureScreenShot(testName + "_Create_Reservation_" + Utility.getTimeStamp(), driver)));
-			app_logs.error("Failed to create reservation \n");
-			e.printStackTrace();
-			throw new SkipException(e.getMessage());
+		}catch (Exception e) {
+			Utility.updateReport(e, "Failed to Create Quote", testName, "CreateQuoteReservatiom");
+		} catch (Error e) {
+			Utility.updateReport(e, "Failed to Create Quote", testName, "CreateQuoteReservatiom");
 		}
 
 		extent.endTest(test);

@@ -92,15 +92,24 @@ public class ReservationFolio implements IReservationFolio {
 				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
 				Wait.wait2Second();
 				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
-				System.out.println(Processed_Amount + " -- "+Processed_Amount);
+				resFolioLogger.info(Processed_Amount + " -- "+Processed_Amount);
 				String RemoveCurreny []=Processed_Amount.split(" ");
 				processed_amount=Float.parseFloat(RemoveCurreny[1]);
-				System.out.println(processed_amount);
+				resFolioLogger.info(processed_amount);
 				
 				
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button of Payment popup");
-				Wait.wait15Second();
+				
+				if(Reservation.checkinpolicy==true)
+				{
+				resFolioLogger.info("This Reservation has Checkin policy ");
+				Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Click_on_confirm);
+				ReservationFolio.Click_on_confirm.click();
+				resFolioLogger.info("Clicked on Confirm button of Guest Registration Form in ReservationFolio.java");
+				Wait.wait3Second();
+				}
+				Wait.wait3Second();
 				Wait.explicit_wait_xpath(OR.Verify_Line_item);
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
 //				resFolioLogger.info("Balance: " + " " + GetBalance);
@@ -114,8 +123,7 @@ public class ReservationFolio implements IReservationFolio {
 					resFolioLogger.info("Selected Changed Value");
 				}
 				
-				processed_amount= Float.parseFloat(RemoveCurreny[1]);
-				
+							
 			} catch (Exception e) {
 				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using CASH \n"  + e.getMessage() + 
 						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_ByCash" + Utility.getTimeStamp(), driver)));
@@ -150,7 +158,7 @@ public class ReservationFolio implements IReservationFolio {
 					 */
 					ReservationFolio.Change_Amount.sendKeys(Keys.chord(Keys.CONTROL, "a"), ChangeAmountValue);
 				} else {
-					resFolioLogger.info("Processed complete amount");
+					resFolioLogger.info("Processing the amount displayed");
 				}
 				ReservationFolio.Click_Process.click();
 				resFolioLogger.info("Clicked on Process Button");
@@ -169,10 +177,10 @@ public class ReservationFolio implements IReservationFolio {
 				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
 				Wait.wait2Second();
 				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
-				System.out.println("Processed_Amount "+Processed_Amount + " -- "+Processed_Amount);
+				resFolioLogger.info("Processed_Amount "+Processed_Amount + " -- "+Processed_Amount);
 				String RemoveCurreny []=Processed_Amount.split(" ");
 				processed_amount=Float.parseFloat(RemoveCurreny[1]);
-				System.out.println(processed_amount);
+				resFolioLogger.info("Processed_Amount is "+processed_amount);
 				
 				
 				ReservationFolio.Click_Continue.click();
@@ -182,12 +190,20 @@ public class ReservationFolio implements IReservationFolio {
 				String GetMCCard = ReservationFolio.GetAddedLine_MC.getText();
 				resFolioLogger.info("Transaction Line Item: " + GetMCCard);
 				if (GetMCCard.equalsIgnoreCase("Name: MC Account #: XXXX5454 Exp. Date: 08/21")) {
-					resFolioLogger.info("Paymnet is successful");
+					resFolioLogger.info("Payment is successful");
 				} else {
-					resFolioLogger.info("Paymnet is Failed");
+					resFolioLogger.info("Payment is Failed");
+				}
+				if(Reservation.checkinpolicy==true)
+				{
+				resFolioLogger.info("This Reservation has Checkin policy ");
+				Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Click_on_confirm);
+				ReservationFolio.Click_on_confirm.click();
+				resFolioLogger.info("Clicked on Confirm button of Guest Registration Form in ReservationFolio.java");
+				Wait.wait3Second();
 				}
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
-//				resFolioLogger.info("Balance: " + " " + GetBalance);
+				resFolioLogger.info("Balance after payment: " + " " + GetBalance);
 				RemoveCurreny = GetBalance.split(" ");
 				resFolioLogger.info("Pending balance after payment: " + " " + RemoveCurreny[1]);
 				if (ChangeAmount.equalsIgnoreCase("No")) {
@@ -197,7 +213,7 @@ public class ReservationFolio implements IReservationFolio {
 					resFolioLogger.info("Selected Changed Value");
 				}
 				
-				processed_amount= Float.parseFloat(RemoveCurreny[1]);
+				
 				
 			} catch (Exception e) {
 				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using MC \n"  + e.getMessage() + 
@@ -239,10 +255,10 @@ public class ReservationFolio implements IReservationFolio {
 				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
 				Wait.wait2Second();
 				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
-				System.out.println(Processed_Amount + " -- "+Processed_Amount);
+				resFolioLogger.info(Processed_Amount + " -- "+Processed_Amount);
 				String RemoveCurreny []=Processed_Amount.split(" ");
 				processed_amount=Float.parseFloat(RemoveCurreny[1]);
-				System.out.println(processed_amount);
+				resFolioLogger.info(processed_amount);
 				
 				
 				
@@ -264,6 +280,7 @@ public class ReservationFolio implements IReservationFolio {
 				resFolioLogger.info("Clicked on CLOSE button of Guest Statement Report");
 				
 				
+				
 				Wait.wait3Second();
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
 //				resFolioLogger.info("Balance: " + " " + GetBalance);
@@ -276,7 +293,7 @@ public class ReservationFolio implements IReservationFolio {
 					resFolioLogger.info("Selected Changed Value");
 				}
 				
-				processed_amount= Float.parseFloat(RemoveCurreny[1]);
+				
 				
 			} catch (Exception e) {
 				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using swipe \n"  + e.getMessage() + 
@@ -286,7 +303,6 @@ public class ReservationFolio implements IReservationFolio {
 			}
 			
 		}
-		
 		return processed_amount;
 	}
 

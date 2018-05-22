@@ -108,6 +108,10 @@ public class Elements_Reservation_SearchPage {
 		public WebElement Commit;
 		
 		
+		//Bulk Cancellation
+		
+		@FindBy(xpath=OR.selectAllArrivals)
+		public WebElement selectAllArrivals;
 		
 		
 		

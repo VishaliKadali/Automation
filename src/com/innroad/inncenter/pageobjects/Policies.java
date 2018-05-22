@@ -1,5 +1,6 @@
 package com.innroad.inncenter.pageobjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,8 @@ import com.innroad.inncenter.webelements.WebElements_Policies;
 
 public class Policies implements IPolicies{
 
+	public static Logger policiesLogger = Logger.getLogger("Policies");
+	
 	//selects the given policy type and clicks new policy button
 	public void NewPolicybutton(WebDriver driver, String PolicyType) {
 		
@@ -118,7 +121,7 @@ public class Policies implements IPolicies{
 		CreatePolicy.Associate_Sources_Btn.click();
 		Wait.explicit_wait_xpath(OR.Associate_Assign_All_Btn);
 		int Available_Options_Count = driver.findElements(By.xpath(OR.Available_Options_In_Popup)).size();
-		System.out.println(Available_Options_Count);
+		policiesLogger.info(Available_Options_Count);
 		Wait.wait1Second();
 		CreatePolicy.Assoociate_Assign_All_Btn.click();
 		Wait.wait1Second();
@@ -218,7 +221,10 @@ public class Policies implements IPolicies{
 			CreatePolicy.Policy_Name_On_Policiespage.clear();
 			CreatePolicy.Policy_Name_On_Policiespage.sendKeys(PolicyName);
 			CreatePolicy.Search_On_On_Policiespage.click();
-			Wait.wait1Second();
+			Wait.wait2Second();
+	
+			if(CreatePolicy.First_Element_In_Search_Result.isDisplayed())
+			{
 			Wait.explicit_wait_xpath(OR.First_Element_In_Search_Result);
 			Assert.assertEquals(CreatePolicy.First_Element_In_Search_Result.getText(), PolicyName);
 			Wait.explicit_wait_visibilityof_webelement(CreatePolicy.Delete_Policy_Checkbox);
@@ -226,6 +232,12 @@ public class Policies implements IPolicies{
 			driver.findElement(By.xpath("//a[text()='"+PolicyName+"']/../following-sibling::td//input[@type='checkbox']")).click();
 //			CreatePolicy.Delete_Policy_Checkbox.click();
 			CreatePolicy.Delete_Policy_Btn.click();
+			}
+			
+			else
+			{
+				System.out.println("Given "+PolicyName+" Policy is not found");
+			}
 
 //			if(CreatePolicy.Verify_Toaster_Container.isDisplayed()){
 //			String getTotasterTitle_ReservationSucess=CreatePolicy.Toaster_Title.getText();
