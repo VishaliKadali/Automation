@@ -47,7 +47,7 @@ public class ReservationSearch implements IReservationSearchPage {
 			BufferedReader br = new BufferedReader(fr);
 
 			while ((ResNumber = br.readLine()) != null) {
-				resSearchLogger.info("ResNumber :" + ResNumber);
+				//resSearchLogger.info("ResNumber :" + ResNumber);
 				Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
 				resSearchLogger.info("ResNumber after loop:" + ResNumber);
 				resservationSearch.Basic_Res_Number.sendKeys(ResNumber);
@@ -59,7 +59,7 @@ public class ReservationSearch implements IReservationSearchPage {
 			}
 			br.close();
 		} catch (IOException e) {
-			System.out.println("File not found");
+			//System.out.println("File not found");
 		}
 
 	}
@@ -74,9 +74,9 @@ public class ReservationSearch implements IReservationSearchPage {
 		
 		while((ResNumber=br.readLine())!=null)
 		{*/
-			System.out.println("ResNumber :"+resNumber);
+			//System.out.println("ResNumber :"+resNumber);
 			Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
-			System.out.println("ResNumber after loop:" + resNumber);
+			
 			resservationSearch.Basic_Res_Number.sendKeys(resNumber);
 			resservationSearch.Click_BasicSearch.click();
 			Wait.explicit_wait_xpath(OR.Verify_Search_Loading_Gird);
@@ -91,7 +91,7 @@ public class ReservationSearch implements IReservationSearchPage {
 			WebDriverWait wait = new WebDriverWait(driver, 90);
 			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.NewRervations)));
-			System.out.println(resNumber);
+			//System.out.println(resNumber);
 			
 			String resLocator="//span[contains(text(),'"+resNumber.trim()+"')]/../../td[4]/div/a";
 			Wait.wait5Second();
@@ -105,7 +105,7 @@ public class ReservationSearch implements IReservationSearchPage {
 		}
 		catch(Exception e)
 		{
-			System.out.println("File not found");
+			//System.out.println("File not found");
 		}
 		
 		return str;
@@ -233,23 +233,28 @@ public class ReservationSearch implements IReservationSearchPage {
 		resservationSearch.Select_Delete.click();		
 		Wait.explicit_wait_visibilityof_webelement(resservationSearch.Verify_Bulk_Delete_popup);
 		String GetResNumber=resservationSearch.Verify_Res_Number.getText();
-		System.out.println("GetResNumber  :" + GetResNumber);
+		resSearchLogger.info("GetResNumber  :" + GetResNumber);
 		if(GetResNumber.equals(Res_Confirm_Number))
 		{
-			System.out.println("Verified GetResNumber in popup");
+			resSearchLogger.info("Verified GetResNumber in popup");
 		}
 		else
 		{
-			System.out.println("Fail to verify GetResNumber in popup");
+			resSearchLogger.info("Fail to verify GetResNumber in popup");
 		}
 		Wait.explicit_wait_visibilityof_webelement(resservationSearch.Click_Process_Button);
 		resservationSearch.Click_Process_Button.click();
 		
 		Wait.explicit_wait_visibilityof_webelement(resservationSearch.Verify_Bulk_Delete_Completed);
 	    resservationSearch.click_on_Close_icon.click();
-		Wait.wait5Second();
+		Wait.wait3Second();
+		
+//		Clear basic search and search for the deleted reservation
+		resservationSearch.Basic_Res_Number.clear();
+		resservationSearch.Basic_Res_Number.sendKeys(Res_Confirm_Number);
+		resservationSearch.Click_BasicSearch.click();		
+		Wait.wait2Second();
 		Assert.assertEquals(resservationSearch.Search_Results_Alert_Msg.getText(), "No records meet your criteria. Please change your criteria and search again.");
-      	
 		
 	}
 	
@@ -264,6 +269,7 @@ public class ReservationSearch implements IReservationSearchPage {
 		if(ReservationPage.Check_IsTaxExempt.isSelected()){
 			ReservationPage.Check_IsTaxExempt.click();
 			test.log(LogStatus.PASS, "Tax exempt check box un selected");
+			resSearchLogger.info("Tax exempt check box un selected");
 		}
 	}
 
@@ -272,25 +278,52 @@ public class ReservationSearch implements IReservationSearchPage {
 		Wait.wait5Second();
 		Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
 		resservationSearch.AddIncidental.click();
-		test.log(LogStatus.PASS, "click Add");
+		test.log(LogStatus.PASS, "Click Add");
+		resSearchLogger.info("Click Add");
+		
 		Select sel = new Select(resservationSearch.IncidentalCategory);
 		sel.selectByVisibleText(category);
-		test.log(LogStatus.PASS, "select the category : "+category);
+		test.log(LogStatus.PASS, "Select the category : "+category);
+		resSearchLogger.info("elect the category : "+category);
+		
 		resservationSearch.IncidentalAmount.sendKeys(amount);
 		test.log(LogStatus.PASS, "Enter the amount : "+amount);
+		resSearchLogger.info("Enter the amount : "+amount);
+		
 		resservationSearch.Commit.click();
-		test.log(LogStatus.PASS, "click commit");
+		test.log(LogStatus.PASS, "Click commit");
+		resSearchLogger.info("Click commit");
+		
 		Wait.wait5Second();
 		String str=driver.findElement(By.xpath("//td/span[contains(text(),'"+category+"')]/../following-sibling::td/following-sibling::td/following-sibling::td/span")).getText();
 		str=str.replace("$", "");
 		Double d=Double.parseDouble(str);
 		if(d==0){
 			test.log(LogStatus.PASS, "Tax value is zero");
+			resSearchLogger.info("Tax value is zero");
 		}else{
 			test.log(LogStatus.FAIL, "Tax value is not zero");	
+			resSearchLogger.info("Tax value is not zero");
 		}
 	}
-	
-	
+/*	
+	public void preDefinedQueriesTab(WebDriver driver) throws InterruptedException{
+		
+		Elements_Reservation_SearchPage res=new Elements_Reservation_SearchPage(driver);
+		res.inHouseReservations.click();
+		
+		//new Select(res.selectAllArrivals).selectByIndex(1);
+		Wait.wait10Second();
+		
+	}
+
+	public void bulkCancelOfReservation(WebDriver driver) throws InterruptedException{
+		Elements_Reservation_SearchPage res=new Elements_Reservation_SearchPage(driver);
+		res.selectAllRecords.click();
+		new Select(res.selectCancelFromBulkAction).selectByIndex(3);
+		Wait.wait10Second();
+		
+	}
+*/	
 
 }

@@ -89,5 +89,9 @@ public class Elements_MovieFolio {
 	@FindBy(xpath=OR.FirstOpenedReservationClose)
 	public WebElement FirstOpenedReservationClose;
 	
+	@FindBy(xpath=OR.Edit_Folio_Btn)
+	public WebElement Edit_Folio_Btn;
 	
+	@FindBy(xpath=OR.Delete_Folio_Btn)
+	public WebElement Delete_Folio_Btn;
 }

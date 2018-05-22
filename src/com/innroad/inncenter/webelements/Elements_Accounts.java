@@ -93,6 +93,12 @@ public class Elements_Accounts {
 		@FindBy(xpath=OR.Toaster_Message)
 		public WebElement Toaster_Message;
 		
+		@FindBy(xpath=OR.AccountName)
+		public WebElement AccountName;
+		
+		@FindBy(xpath=OR.AccountNo)
+		public WebElement AccountNo;
+		
 		@FindBy(xpath=OR.Account_Folio)
 		public WebElement Account_Folio;
 		
@@ -210,11 +216,19 @@ public class Elements_Accounts {
 		@FindBy(xpath=OR.Select_Account_Checkin_Policy)
 		public WebElement Select_Account_Checkin_Policy;
 		
+		@FindBy(xpath=OR.AccountsPage_Reset_Btn)
+		public WebElement AccountsPage_Reset_Btn;
 		
 		
+		@FindBy(xpath=OR.AccountsPage_Click_All)
+		public WebElement AccountsPage_Click_All;
 		
+		@FindBy(xpath=OR.First_Element_In_Account_SearchResults)
+		public WebElement First_Element_In_Account_SearchResults;
 		
-		
+	
+		@FindBy(xpath=OR.Enter_AccountName_On_SearchPage)
+		public WebElement Enter_AccountName_On_SearchPage;
 		
 		
 		

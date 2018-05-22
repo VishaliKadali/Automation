@@ -27,10 +27,19 @@ public class RateQuote implements IRateQuote {
 		
 		RateQuotePage.Click_Arrive_DatePicker.click();
 		RateQuotePage.Click_Today.click();
+		
+		RateQuotePage.Enter_RateQuoteNights.clear();
+		
 		RateQuotePage.Enter_RateQuoteNights.sendKeys(RateQuoteNights);
+		
+		RateQuotePage.Enter_RateQuoteAdults.clear();
 		RateQuotePage.Enter_RateQuoteAdults.sendKeys(RateQuoteAdults);
+		
+		RateQuotePage.Enter_RateQuoteChildren.clear();
 		RateQuotePage.Enter_RateQuoteChildren.sendKeys(RateQuoteChildren);
 		new Select (RateQuotePage.Select_RateQuoteRatePlanList).selectByVisibleText(RateQuoteRatePlanList);
+		
+		RateQuotePage.Enter_RateQuotePromoCode.clear();
 		RateQuotePage.Enter_RateQuotePromoCode.sendKeys(RateQuotePromoCode);
 		
 		rateQuoteLogger.info("Entered inputs for RateQuote Search fields");		
@@ -45,18 +54,27 @@ public class RateQuote implements IRateQuote {
 		RateQuotePage.Click_Arrive_DatePicker.click();
 		RateQuotePage.Click_Today.click();
 		test.log(LogStatus.PASS, "Clicked on Today in datepicker");
+		rateQuoteLogger.info("Clicked on Today in datepicker");
+		
 		RateQuotePage.Enter_RateQuoteNights.clear();
 		RateQuotePage.Enter_RateQuoteNights.sendKeys(RateQuoteNights);
 		test.log(LogStatus.PASS, "Number of Rate Quote nights : "+RateQuoteNights);
+		rateQuoteLogger.info("Number of Rate Quote nights : "+RateQuoteNights);
+		
 		RateQuotePage.Enter_RateQuoteAdults.clear();
 		RateQuotePage.Enter_RateQuoteAdults.sendKeys(RateQuoteAdults);
 		test.log(LogStatus.PASS, "Number of Rate Quote adults : "+RateQuoteAdults);
+		rateQuoteLogger.info("Number of Rate Quote adults : "+RateQuoteAdults);
+		
 		RateQuotePage.Enter_RateQuoteChildren.clear();
 		RateQuotePage.Enter_RateQuoteChildren.sendKeys(RateQuoteChildren);
 		new Select (RateQuotePage.Select_RateQuoteRatePlanList).selectByVisibleText(RateQuoteRatePlanList);
 		test.log(LogStatus.PASS, "Number of Rate Quote children : "+RateQuoteChildren);
+		rateQuoteLogger.info("Number of Rate Quote children : "+RateQuoteChildren);
+		
 		RateQuotePage.Enter_RateQuotePromoCode.sendKeys(RateQuotePromoCode);
-		test.log(LogStatus.PASS, "Number of Rate Quote promocode : "+RateQuotePromoCode);		
+		test.log(LogStatus.PASS, "Number of Rate Quote promocode : "+RateQuotePromoCode);	
+		rateQuoteLogger.info("Number of Rate Quote promocode : "+RateQuotePromoCode);
 	}
 
 
@@ -86,6 +104,7 @@ public class RateQuote implements IRateQuote {
 			
 			RateQuotePage.Click_searchRateQuote.click();
 			test.log(LogStatus.PASS, "Click Search");
+			rateQuoteLogger.info("AClick Search");
 			Wait.explicit_wait_xpath(OR.Verify_Room_Grid);
 		}
 
@@ -153,7 +172,7 @@ public class RateQuote implements IRateQuote {
 			}
 			catch(Exception e)
 			{
-				System.out.println("Rules Satisfied");
+				//System.out.println("Rules Satisfied");
 			}
 			Wait.wait3Second();
 			if(RateQuotePage.Verify_RulesBroken_Popup.isDisplayed())
@@ -165,7 +184,7 @@ public class RateQuote implements IRateQuote {
 			}
 			else
 			{
-				System.out.println("Satisfied Rules");
+				//System.out.println("Satisfied Rules");
 			}
 			
 		     try
@@ -174,7 +193,7 @@ public class RateQuote implements IRateQuote {
 		      }
 		      catch(Exception e)
 				{
-					System.out.println("Rooms are available");
+					//System.out.println("Rooms are available");
 				}
 		     Wait.wait3Second();
 		     if(RateQuotePage.Verify_OverBook_popup.isDisplayed())
@@ -186,7 +205,7 @@ public class RateQuote implements IRateQuote {
 				}
 				else
 				{
-					System.out.println("Satisfied Rules");
+					//System.out.println("Satisfied Rules");
 				}
 		     try{
 		    	 
@@ -195,13 +214,13 @@ public class RateQuote implements IRateQuote {
 		    	 WebElement ele=sel.getFirstSelectedOption();
 		    
 		    	 String str=ele.getText();
-		    	System.out.println(str);
+		    	//System.out.println(str);
 		    	assertTrue(str.equalsIgnoreCase("Quote"));
 		    	test.log(LogStatus.PASS, "Reservation status : "+str);
 		     }catch(Exception e)
 				{
 		    	 e.printStackTrace();
-					System.out.println("Reservation status is not Quote");
+					//System.out.println("Reservation status is not Quote");
 				}
 	}
 

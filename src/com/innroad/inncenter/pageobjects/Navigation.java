@@ -27,7 +27,7 @@ public class Navigation implements INavigation {
 		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
 		Navigate.New_Quote.click();
 		Wait.explicit_wait_xpath(OR.New_Quote_Search);
-
+		navigationLogger.info("Click on Newe Quote");
 	}
 
 	// Guest History
@@ -54,11 +54,12 @@ public class Navigation implements INavigation {
 		try {
 
 			Navigate.Accounts2.click();
+			
 		} catch (Exception e) {
 			Navigate.Accounts.click();
 		}
-		Wait.explicit_wait_xpath(OR.Accounts_sec_Nav);
-		Wait.wait15Second();
+		Wait.explicit_wait_visibilityof_webelement(Navigate.Accounts_sec_Nav);
+		
 
 	}
 
@@ -227,6 +228,8 @@ public class Navigation implements INavigation {
 		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
 		Navigate.Setup.click();
 		Wait.explicit_wait_xpath(OR.Setup_Grid);
+		navigationLogger.info("Click on Setup");
+		
 	}
 
 	// Properties
@@ -421,7 +424,7 @@ public class Navigation implements INavigation {
 
 	public void TaxesAfterCloseReservation(WebDriver driver) throws InterruptedException {
 		// TODO Auto-generated method stub
-		Wait.wait5Second();
+		Wait.wait3Second();
 		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
 		 driver.findElement(By.xpath("//a[contains(text(),'Taxes\')]")).click();
 		    Wait.explicit_wait_xpath(OR.Taxes_Grid);

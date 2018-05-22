@@ -100,7 +100,7 @@ public class Account implements IAccount {
 		
 		Elements_Accounts CreateAccount=new Elements_Accounts(driver);
 		CreateAccount.Account_save.click();
-		
+		Wait.explicit_wait_visibilityof_webelement(CreateAccount.Verify_Toaster_Container);
 		if(CreateAccount.Verify_Toaster_Container.isDisplayed())
 		{
 		String getTotasterTitle_ReservationSucess=CreateAccount.Toaster_Title.getText();
@@ -213,7 +213,8 @@ public class Account implements IAccount {
 		if(Authorizationtype.equalsIgnoreCase("Capture"))
 		{
 		AccountPayment.Click_Process_Account.click();
-		Wait.explicit_wait_xpath(OR.Apply_Advance_Deposite);
+		Wait.explicit_wait_visibilityof_webelement(AccountPayment.Apply_Advance_Deposite);
+//		Wait.explicit_wait_xpath(OR.Apply_Advance_Deposite);
 		AccountPayment.Click_Continue_Adv_Deposite.click();
 		}
 		Wait.wait3Second();

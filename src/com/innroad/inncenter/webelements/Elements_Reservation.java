@@ -24,6 +24,16 @@ public class Elements_Reservation {
 		}
 		
 		
+		
+		@FindBy(xpath=OR.reservation_mainMenu)
+		public WebElement reservation_mainMenu;
+		
+		@FindBy(xpath=OR.reservation_Menu)
+		public WebElement reservation_Menu;
+		
+		@FindBy(xpath=OR.clickNewReservationButton)
+		public WebElement clickNewReservationButton;	
+		
 		@FindBy(xpath=OR.New_Reservation_Button)
 		public WebElement New_Reservation_Button;
 		
@@ -129,6 +139,9 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Enter_Children)
 		public WebElement Enter_Children;
 		
+		@FindBy(xpath=OR.selectRackRate)
+		public WebElement selectRackRate;
+		
 		@FindBy(xpath=OR.Enter_Rate_Promocode)
 		public WebElement Enter_Rate_Promocode;
 		
@@ -177,6 +190,9 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Click_Save_ReservationDetails)
 		public WebElement Click_Save_ReservationDetails;
 		
+		@FindBy(xpath=OR.Save_SourceReservationDetails)
+		public WebElement Save_SourceReservationDetails;
+		
 		@FindBy(xpath=OR.Room_Assignment_PopUp)
 		public WebElement Room_Assignment_PopUp;
 		
@@ -201,7 +217,8 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Click_Send_Email)
 		public WebElement Click_Send_Email;
 		
-		
+		@FindBy(xpath=OR.getReservationStatus)
+		public WebElement getReservationStatus;
 		//Folio 
 		
 		
@@ -591,6 +608,45 @@ public class Elements_Reservation {
 		
 		@FindBy(xpath=OR.Processed_Amount_In_Paymentdetails_Popup)
 		public WebElement Processed_Amount_In_Paymentdetails_Popup;
+		
+		//Guest History
+		@FindBy(xpath=OR.Click_BasicSearch)
+		public WebElement Click_BasicSearch;
+		
+		@FindBy(xpath=OR.clickReservation)
+		public WebElement clickReservation;
+		
+		@FindBy(xpath=OR.findGuestProfile)
+		public WebElement findGuestProfile;
+		
+		@FindBy(xpath=OR.clickEditButton)
+		public WebElement clickEditButton;
+		
+		@FindBy(xpath=OR.selectGuest)
+		public WebElement selectGuest;
+		
+		@FindBy(xpath=OR.continueButton)
+		public WebElement continueButton;
+		
+		@FindBy(xpath=OR.reservation_Save)
+		public WebElement reservation_Save;
+		
+		@FindBy(xpath=OR.ReservationPage_Reset_Btn)
+		public WebElement ReservationPage_Reset_Btn;
+		
+
+		@FindBy(xpath=OR.Add_LineItem)
+		public WebElement Add_LineItem;
+		
+		@FindBy(xpath=OR.Select_LineItem_Category)
+		public WebElement Select_LineItem_Category;
+		
+		
+		@FindBy(xpath=OR.Enter_LineItem_Amount)
+		public WebElement Enter_LineItem_Amount;
+		
+		@FindBy(xpath=OR.Commit_LineItem)
+		public WebElement Commit_LineItem;
 		
 		
 		
