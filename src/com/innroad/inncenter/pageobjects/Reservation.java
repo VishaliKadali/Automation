@@ -874,12 +874,9 @@ public class Reservation implements IReservation {
 
 				long endTime = System.currentTimeMillis();
 				double totalTime = (endTime - startTime);
-				reservationLogger.info(totalTime + " in Millsecs");
 				double TotalTimeinsecs = totalTime / 1000;
 				double ActualTime = TotalTimeinsecs - waittime - 3;
-				reservationLogger.info(ActualTime + " in secs");
-				if (getToastermessage_ReservationSucess.endsWith("has been saved successfully"))
-					;
+				if (getToastermessage_ReservationSucess.endsWith("has been saved successfully"));
 			}
 		} catch (Exception e) {
 
@@ -956,7 +953,7 @@ public class Reservation implements IReservation {
 		Wait.explicit_wait_absenceofelement(OR.Verify_loading_popup_mailContentPopUp);
 		Wait.wait3Second();
 		String GetEmailid = ReservationPage.Get_email_Id.getText();
-		reservationLogger.info(GetEmailid + "" + GetEmailid);
+		//reservationLogger.info(GetEmailid + "" + GetEmailid);
 		if (GetEmailid.equals("dinesh.ganganaboina@gmail.com")) {
 
 		} else {

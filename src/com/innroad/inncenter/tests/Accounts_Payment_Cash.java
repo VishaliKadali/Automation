@@ -1,22 +1,19 @@
 package com.innroad.inncenter.tests;
 
 
-import org.apache.log4j.PropertyConfigurator;
+
 import org.testng.SkipException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import com.innroad.inncenter.pageobjects.Account;
 import com.innroad.inncenter.pageobjects.Login;
 import com.innroad.inncenter.pageobjects.Navigation;
-import com.innroad.inncenter.properties.OR;
 import com.innroad.inncenter.testcore.TestCore;
 import com.innroad.inncenter.utils.Utility;
-import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-import junit.framework.Assert;
+
 
 public class Accounts_Payment_Cash extends TestCore{
 
@@ -63,7 +60,6 @@ public class Accounts_Payment_Cash extends TestCore{
 			try{
 				
 				Nav.Accounts(driver);
-				Assert.assertTrue("Fail to navigate Accounts",Utility.return_element_status_after_explicit_wait(OR.Click_New_Account));
 				test.log(LogStatus.PASS, "Navigate Accounts");
 				
 			}catch (Exception e) {

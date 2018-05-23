@@ -107,7 +107,7 @@ public class RateQuote implements IRateQuote {
 			
 			RateQuotePage.Click_searchRateQuote.click();
 			test.log(LogStatus.PASS, "Click Search");
-			rateQuoteLogger.info("AClick Search");
+			rateQuoteLogger.info("Click Search");
 			Wait.explicit_wait_xpath(OR.Verify_Room_Grid);
 		}
 

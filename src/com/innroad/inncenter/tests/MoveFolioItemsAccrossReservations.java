@@ -29,7 +29,7 @@ public class MoveFolioItemsAccrossReservations extends TestCore{
 			
 			// Move folio items inside the reservation
 			@Test(dataProvider="getData", groups="Somke")
-			public void MoveFolioItemsAccrossReservations(String url,String ClientCode, String Username, String Password,String resNumber1,String resNumber2) throws InterruptedException, IOException{
+			public void MoveFolioItemsAccrossRes(String url,String ClientCode, String Username, String Password,String resNumber1,String resNumber2) throws InterruptedException, IOException{
 				
 				try{
 					ExtentTest test = extent.startTest("MoveFolioItemsAccrossReservations", "MoveFolioItemsAccrossReservations")
@@ -44,7 +44,7 @@ public class MoveFolioItemsAccrossReservations extends TestCore{
 						LOGIN.login(driver,url, ClientCode, Username, Password);
 						test.log(LogStatus.PASS, "System successfully logged in the site");
 					}catch(Exception e){
-						System.out.println(e);
+						
 						test.log(LogStatus.FAIL, "System fail to login");
 					}
 					

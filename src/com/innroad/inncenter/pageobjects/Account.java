@@ -13,9 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import com.innroad.inncenter.interfaces.IAccount;
-import com.innroad.inncenter.interfaces.IRateQuote;
 import com.innroad.inncenter.properties.OR;
 import com.innroad.inncenter.waits.Wait;
 import com.innroad.inncenter.webelements.Elements_Accounts;
@@ -347,13 +345,13 @@ public class Account implements IAccount {
 		test.log(LogStatus.PASS, "Click Account Search");
 		accountsLogger.info("Click Account Search");
 
-		int i=0;
+		/*int i=0;
 		while(true){
 
 			if(driver.findElements(By.xpath("//div[@id='toast-container']/div/div")).size()>0){
 
 				break;
-			}else if(i>0){
+			}else if(i<0){
 				test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
 				accountsLogger.info("There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
 				break;
@@ -362,7 +360,9 @@ public class Account implements IAccount {
 				i++;
 			}
 		}
-
+*/
+		
+		Wait.wait5Second();
 		int count =driver.findElements(By.xpath(OR.Number_Of_Accounts)).size();
 
 		if(count==0){
