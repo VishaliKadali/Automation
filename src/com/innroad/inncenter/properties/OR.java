@@ -1346,4 +1346,107 @@ public class OR {
 
 	//Account Search
 	public static final String Account_Search="//button[@data-bind='click: GetAccountsList']";
+	
+	
+	//******************************* Groups **********************************
+
+	//New Account
+	public static final String New_Account_Btn="//input[@id='MainContent_btnNew']";
+
+	//Group Name
+	public static final String Group_Name="//input[@id='MainContent_txtAccountFirstName']";
+
+	//Market Segment
+	public static final String Market_Segment="//select[@id='MainContent_drpMarketingSegment']";
+
+	//Referrals
+	public static final String Referrls="//select[@id='MainContent_drpReferral']";
+
+	//FirstName
+	public static final String FirstName="//input[@id='MainContent_txtMailing_contactFirstName']";
+
+	//LAst Name
+	public static final String LastName="//input[@id='MainContent_txtMailing_contactLastName']";
+
+	//Phone
+	public static final String Phone="//input[@id='MainContent_txtMailing_phoneNumber']";
+
+	//Address
+	public static final String Address1="//input[@id='MainContent_txtMailing_address1']";
+
+	//City
+	public static final String City="//input[@id='MainContent_txtMailing_city']";
+
+	//Country
+	public static final String Country="//select[@id='MainContent_drpBilling_countryID']";
+
+
+	//State
+	public static final String State="//select[@id='MainContent_drpMailing_territoryID']";
+
+	//Postalcode
+	public static final String PostalCode="//input[@id='MainContent_txtMailing_postalCode']";
+
+	//Mailing Info
+	public static final String Check_Mailing_Info="//input[@id='MainContent_ckUseMailingInfo']";
+
+
+	//Save
+	public static final String Group_Save="//input[@id='MainContent_btnSave']";
+
+	//Folio
+	public static final String Group_Folio="//input[@id='MainContent_btnFolio']";
+
+	//Add
+	public static final String Group_Folio_Add_LineItem="//input[@id='MainContent_Folio1_btnAdd']";
+
+	//Add Line Item
+	public static final String Group_Folio_Commit_Lineitem="//input[@id='MainContent_Folio1_btnDone']";
+
+	//Pay Buttom
+	public static final String Group_Folio_Pay="//input[@id='MainContent_Folio1_btnPay']";
+
+	//Card Info
+	public static final String Group_Folio_CardInfo="//input[@id='btnCardInfo']";
+
+	//Payment Method
+	public static final String  Group_Folio_PaymentMethod="//select[@id='drpPaymentMethod']";
+
+	//Name on card
+	public static final String  Group_Folio_NameOnCard="//input[@id='txtNameOnCard']";
+
+	//Card Number
+	public static final String  Group_Folio_CardNumber="//input[@id='txtCreditCardNo']";
+
+	//Exp Date
+	public static final String  Group_Folio_ExpDate="//input[@id='txtExpdate']";
+
+	//CVV
+	public static final String  Group_Folio_CVV="//input[@id='txtCVVCode']";
+
+	//OK
+	public static final String  Group_Folio_OK="//input[@id='btnOK']";
+
+	//Auth type
+	public static final String  Group_Folio_AuthType="//select[@id='drpAuthType']";
+
+	//Amount
+	public static final String  Group_Folio_Amount="//input[@id='txtAmount']";
+
+	//Process
+	public static final String  Group_Folio_Process="//input[@id='btnAgingProcess']";
+
+	//Continue
+	public static final String  Group_Folio_Continue="//input[@id='btnSaveTranPay']";
+
+	//Ending Balance
+	public static final String  Group_Folio_EndingBalance="//span[@id='MainContent_Folio1_fSummary1_lblAccEndBalance']";
+
+	//Add
+	public static final String  Group_Folio_Add="//input[@id='btnAgingAdd']";
+
+	//Group Autp Apply
+	public static final String  Group_Folio_AutoApply="//input[@id='btnAutoApplyPayment']";
+
+	
 }

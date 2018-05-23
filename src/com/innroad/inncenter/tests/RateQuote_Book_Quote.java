@@ -98,7 +98,7 @@ public class RateQuote_Book_Quote extends TestCore{
 			res.saveReservation(driver,test);
 			res.clickBook(driver);
 			res.saveReservationQuote(driver, test);
-			res.manualEmail(driver, test,Email, Attachment);
+			//res.manualEmail(driver, test,Email, Attachment);
 			res.GetReservationnumber(driver,test);
 			test.log(LogStatus.PASS, "Reservation created Success");
 		}catch (Exception e) {

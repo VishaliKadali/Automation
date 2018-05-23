@@ -898,7 +898,7 @@ public class Reservation implements IReservation {
 		long startTime = System.currentTimeMillis();
 		ReservationPage.Click_Save_ReservationDetails.click();
 		test.log(LogStatus.PASS, "Successfully clicked on save reservation");
-		Wait.wait3Second();
+		Wait.wait2Second();
 		try {
 			if (ReservationPage.Verify_Depos_policy.isDisplayed()) {
 				ReservationPage.Click_Without_Deposit.click();
@@ -915,10 +915,10 @@ public class Reservation implements IReservation {
 
 				long endTime = System.currentTimeMillis();
 				double totalTime = (endTime - startTime);
-				reservationLogger.info(totalTime + " in Millsecs");
+				//reservationLogger.info(totalTime + " in Millsecs");
 				double TotalTimeinsecs = totalTime / 1000;
 				double ActualTime = TotalTimeinsecs - waittime - 3;
-				reservationLogger.info(ActualTime + " in secs");
+				//reservationLogger.info(ActualTime + " in secs");
 				if (getToastermessage_ReservationSucess.endsWith("has been saved successfully"))
 					;
 			}
@@ -1617,7 +1617,7 @@ public class Reservation implements IReservation {
 		reservationLogger.info("Successfully clicked on Rooms Picker");
 		
 		Wait.explicit_wait_xpath(OR.Room_Assignment_PopUp);
-		Wait.wait3Second();
+		Wait.wait5Second();
 		ReservationPage.Click_Arrive_Datepicker.click();
 		test.log(LogStatus.PASS, "Successfully clicked on arrival date");
 		reservationLogger.info("Successfully clicked on arrival date");
