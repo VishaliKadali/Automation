@@ -4,11 +4,14 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.innroad.inncenter.interfaces.IAccount;
@@ -16,6 +19,8 @@ import com.innroad.inncenter.interfaces.IRateQuote;
 import com.innroad.inncenter.properties.OR;
 import com.innroad.inncenter.waits.Wait;
 import com.innroad.inncenter.webelements.Elements_Accounts;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class Account implements IAccount {
 	
@@ -319,4 +324,197 @@ public class Account implements IAccount {
 		 
 	}
 
+	
+	public void get_AccountDetails(WebDriver driver,ExtentTest test,String AccountType,String AccountName,String AccountNumber) throws InterruptedException{
+
+		Elements_Accounts Account=new Elements_Accounts(driver);
+		Wait.explicit_wait_xpath(OR.Account_Type);
+
+		Select sel = new Select(Account.Account_Type);
+		sel.selectByVisibleText(AccountType);
+		test.log(LogStatus.PASS, "Account type : "+AccountType);
+		accountsLogger.info("Account type : "+AccountType);
+
+		Account.Account_Name.sendKeys(AccountName);
+		test.log(LogStatus.PASS, "Account Name : "+AccountName);
+		accountsLogger.info("Account Name : "+AccountName);
+
+		Account.Account_Number.sendKeys(AccountNumber);
+		test.log(LogStatus.PASS, "Account Number : "+AccountNumber);
+		accountsLogger.info("Account Number : "+AccountNumber);
+
+		Account.Account_Search.click();
+		test.log(LogStatus.PASS, "Click Account Search");
+		accountsLogger.info("Click Account Search");
+
+		int i=0;
+		while(true){
+
+			if(driver.findElements(By.xpath("//div[@id='toast-container']/div/div")).size()>0){
+
+				break;
+			}else if(i>0){
+				test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+				accountsLogger.info("There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+				break;
+			}else{
+				Wait.wait1Second();
+				i++;
+			}
+		}
+
+		int count =driver.findElements(By.xpath(OR.Number_Of_Accounts)).size();
+
+		if(count==0){
+			test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+			accountsLogger.info("There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+		}else{
+			test.log(LogStatus.PASS, "Number of Accounts available with "+AccountName +" and Account Number "+AccountNumber +" in this page are "+count);
+			accountsLogger.info("Number of Accounts available with "+AccountName +" and Account Number "+AccountNumber +" in this page are "+count);
+		}
+	}
+
+
+	public void select_AccountFolio(WebDriver driver,ExtentTest test,String AccountName){
+
+		Elements_Accounts Account=new Elements_Accounts(driver);
+
+		String account="//table[@class='table table-striped table-bordered table-hover']/tbody/tr/td/a";
+		WebDriverWait wait = new WebDriverWait(driver,90);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(account))));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath(account))));
+
+		driver.findElement(By.xpath(account)).click();
+		test.log(LogStatus.PASS, "Clicking on Account name : "+AccountName);
+		accountsLogger.info("Clicking on Account name : "+AccountName);
+
+		wait.until(ExpectedConditions.visibilityOf(Account.Account_Folio));
+		wait.until(ExpectedConditions.elementToBeClickable(Account.Account_Folio));
+		Account.Account_Folio.click();
+		test.log(LogStatus.PASS, "Clicking on Account Folio");
+		accountsLogger.info("Clicking on Account Folio");
+	}
+
+
+
+	public void cashPayment(WebDriver driver,ExtentTest test,String AccountType,String AccountName,String AmountToPay,String PaymentType) throws InterruptedException{
+
+		Elements_Accounts Account=new Elements_Accounts(driver);
+
+
+		WebDriverWait wait = new WebDriverWait(driver,90);
+		wait.until(ExpectedConditions.visibilityOf(Account.Folio_Balance));
+
+		String balance = Account.Folio_Balance.getText();		
+		balance=balance.replace("$", "");
+
+
+		float bal = Float.parseFloat(balance);
+
+		if(bal>0){
+
+			test.log(LogStatus.PASS, "Borefore pay Balance "+bal);
+			accountsLogger.info("Borefore pay Balance "+bal);
+
+
+			Account.Account_pay.click();
+			test.log(LogStatus.PASS, "Clicking on Pay");
+			accountsLogger.info("Clicking on Pay");
+
+			new Select (Account.Select_Account_paymethod).selectByVisibleText(PaymentType);
+			test.log(LogStatus.PASS, "Select Payment type "+PaymentType);
+			accountsLogger.info("Select Payment type "+PaymentType);
+
+			Account.Enter_Change_Amount.sendKeys(Keys.chord(Keys.CONTROL, "a"),AmountToPay);
+			test.log(LogStatus.PASS, "Enter Amount to pay "+AmountToPay);
+			accountsLogger.info("Enter Amount to pay "+AmountToPay);
+
+			Wait.wait3Second();
+			if(AccountType.contains("Corporate")){
+
+				driver.findElement(By.xpath("//span[contains(text(),'Payment Details')]/../../../../following-sibling::div/div/div/div/div/div/ul/li/div/button[contains(text(),'Add')]")).click();
+
+				int i=0;
+				while(true){
+
+					if(driver.findElements(By.xpath(OR.Click_Continue_Adv_Deposite)).size()>0){
+						Account.Click_Continue_Adv_Deposite.click();
+						break;
+					}else if(i==1){
+
+						break;
+					}else{
+						Thread.sleep(1000);
+						i++;
+						//System.out.println(i);
+					}
+				}
+			}else{
+				driver.findElement(By.xpath("//span[contains(text(),'Payment Details')]/../../../../following-sibling::div[1]/div/div/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[6]/div/button[contains(text(),'Add')]")).click();
+			}
+
+			test.log(LogStatus.PASS, "Clicking on Add");
+			accountsLogger.info("Clicking on Add");
+
+			Wait.wait3Second();
+
+			Account.Folio_Cash_Continue_Btn.click();
+			test.log(LogStatus.PASS, "Clicking on Continue");
+			accountsLogger.info("Clicking on Continue");
+
+			Save(driver,test);
+			test.log(LogStatus.PASS, "Clicking on Save Account");
+			accountsLogger.info("Clicking on Save Account");
+
+
+			String balance1 = Account.Folio_Balance.getText();		
+			balance1=balance1.replace("$", "");
+
+
+			float bal1 = Float.parseFloat(balance1);
+
+			test.log(LogStatus.PASS, "After pay Folio balance "+bal1);
+			accountsLogger.info("After pay Folio balance "+bal1);
+
+			if(bal1+Float.parseFloat(AmountToPay)==bal){
+				test.log(LogStatus.PASS, "Cash Payment "+AmountToPay+ " is successful");
+				accountsLogger.info("Cash Payment "+AmountToPay+ " is successful");
+			}else{
+				test.log(LogStatus.FAIL, "Cash Payment "+AmountToPay+ " is Fail");
+				accountsLogger.info("Cash Payment "+AmountToPay+ " is Fail");
+			}
+
+
+
+
+		}else{
+			test.log(LogStatus.FAIL, "Account : "+AccountName + " balance is Zero");
+			accountsLogger.info("Account : "+AccountName + " balance is Zero");
+		}
+
+
+
+	}
+
+	public void Save(WebDriver driver,ExtentTest test) {
+
+		Elements_Accounts CreateAccount=new Elements_Accounts(driver);
+		CreateAccount.Account_save.click();
+		test.log(LogStatus.PASS, "Click on Save");
+		accountsLogger.info("Click on Save");
+
+		if(CreateAccount.Verify_Toaster_Container.isDisplayed())
+		{
+			String getTotasterTitle_ReservationSucess=CreateAccount.Toaster_Title.getText();
+			String getToastermessage_ReservationSucess=CreateAccount.Toaster_Message.getText();
+			Assert.assertEquals(getTotasterTitle_ReservationSucess, "Account Saved");
+			if(getToastermessage_ReservationSucess.equals("The account Test Account has been successfully created."));
+			test.log(LogStatus.PASS, "The account Test Account has been successfully Saved.");
+			accountsLogger.info("The account Test Account has been successfully Saved.");
+		}
+
+
+
+	}
+	
 }

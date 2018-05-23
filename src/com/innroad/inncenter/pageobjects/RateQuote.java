@@ -75,6 +75,9 @@ public class RateQuote implements IRateQuote {
 		RateQuotePage.Enter_RateQuotePromoCode.sendKeys(RateQuotePromoCode);
 		test.log(LogStatus.PASS, "Number of Rate Quote promocode : "+RateQuotePromoCode);	
 		rateQuoteLogger.info("Number of Rate Quote promocode : "+RateQuotePromoCode);
+		
+		
+		
 	}
 
 
