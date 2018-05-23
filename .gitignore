@@ -2,3 +2,6 @@
 #ignore folder
 test-output/
 log/
+extent-reports/
+
+screenshots/
