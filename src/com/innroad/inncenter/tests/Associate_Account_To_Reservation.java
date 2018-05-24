@@ -31,7 +31,7 @@ public class Associate_Account_To_Reservation extends TestCore{
 			String ExpiryDate, String BillingNotes,String Nights,String Adults,String Children,String CheckorUncheckAssign) throws InterruptedException, IOException {
 
 		test = extent.startTest("AssociateAccountToReservation", "AssociateAccountToReservation")
-				.assignCategory("AssociateAccountToReservation")
+				.assignCategory("Reservation")
 				.assignCategory("Regression");	
 
 		String testName = test.getTest().getName().toUpperCase();
@@ -50,6 +50,7 @@ public class Associate_Account_To_Reservation extends TestCore{
 		try{	
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {

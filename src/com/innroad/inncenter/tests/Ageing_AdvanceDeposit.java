@@ -28,7 +28,7 @@ public class Ageing_AdvanceDeposit extends TestCore{
 	public void Ageing(String url,String ClientCode, String Username, String Password,String AccountType,String AccountName,String MargetSegment,String Referral,String AccountFirstName,String AccountLastName,String Phonenumber,String alternativeNumber,String Address1,String Address2,String Address3,String Email,String city,String Country,String State,String Postalcode,String AmountToPay,String PaymentType,String CardName,String CCNumber,String CCExpiry,String CCVCode,String Authorizationtype,String ChangeAmount,String ChangeAmountValue) throws InterruptedException{
 
 		test = extent.startTest("Ageing_AdvanceDeposit", "Ageing_AdvanceDeposit")
-				.assignCategory("Ageing_AdvanceDeposit")
+				.assignCategory("Ageing")
 				.assignCategory("Regression");
 
 
@@ -51,6 +51,7 @@ public class Ageing_AdvanceDeposit extends TestCore{
 
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {
@@ -90,7 +91,7 @@ public class Ageing_AdvanceDeposit extends TestCore{
 
 			// Get Account Details
 			try{
-				account.get_AccountDetails(driver, test, AccountType, AccountName, AccountNumber);
+				account.get_AccountDetails(driver, test, AccountType, AccountName,AccountNumber);
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to get account details", testName, "AccountDetails");
 			} catch (Error e) {

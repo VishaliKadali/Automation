@@ -28,11 +28,11 @@ public class Accounts_Payment_Cash extends TestCore{
 
 	// Create split reservation
 	@Test(dataProvider="getData", groups="Regression")
-	public void AccountPayCash(String url,String ClientCode, String Username, String Password,String AccountType,String AccountName,String AccountNumber,String AmountToPay,String PaymentType){
+	public void AccountPayCash(String url,String ClientCode, String Username, String Password,String AccountType,String AccountName,String AmountToPay,String PaymentType,String MargetSegment,String Referral,String AccountFirstName,String AccountLastName,String Phonenumber,String alternativeNumber,String Address1,String Address2,String Address3,String Email,String city,String Country,String State,String Postalcode){
 		
 	
 			test = extent.startTest("Account Cash Payment", "Account Cash Payment")
-					.assignCategory("Account Cash Payment")
+					.assignCategory("Payment")
 					.assignCategory("Regression");
 
 			String testName = test.getTest().getName().toUpperCase();
@@ -46,10 +46,13 @@ public class Accounts_Payment_Cash extends TestCore{
 			Login 		LOGIN 	= new Login();
 			Navigation 	Nav		= new Navigation();
 			
+			String AccountNumber = null;
+			
 			// Login to InnCenter
 			try{
 				LOGIN.login(driver,url, ClientCode, Username, Password);
 				test.log(LogStatus.PASS, "System successfully logged in the site");
+				app_logs.info("System successfully logged in the site");
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to login", testName, "Login");
 			} catch (Error e) {
@@ -67,10 +70,25 @@ public class Accounts_Payment_Cash extends TestCore{
 			} catch (Error e) {
 				Utility.updateReport(e, "Failed to Navigate Accounts", testName, "NavigateAccounts");
 			}
+			
+			
+			try{
+				account.NewAccountbutton(driver, AccountType);
+				account.type_CorpAccName(driver, test, AccountName);
+				account.AccountAttributes(driver, test,MargetSegment, Referral);
+				account.Mailinginfo(driver, test,AccountFirstName, AccountLastName, Phonenumber, alternativeNumber, Address1, Address2, Address3, Email, city, State, Postalcode);
+				account.Billinginfo(driver,test);
+				account.Save(driver,test);
+				AccountNumber=account.getAccountNumber(driver, test,AccountName);
+			}catch (Exception e) {
+				Utility.updateReport(e, "Failed to Create Corporate Account", testName, "CorporateAccount");
+			} catch (Error e) {
+				Utility.updateReport(e, "Failed to Create Corporate Account", testName, "CorporateAccount");
+			}
 
 			// Get Account Details
 			try{
-				account.get_AccountDetails(driver, test, AccountType, AccountName, AccountNumber);
+				account.get_AccountDetails(driver, test, AccountType, AccountName,AccountNumber);
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to Get Account Details", testName, "AccountDetails");
 			} catch (Error e) {
@@ -81,6 +99,7 @@ public class Accounts_Payment_Cash extends TestCore{
 			//select account folio
 			try{
 				account.select_AccountFolio(driver, test, AccountName);
+				account.addLineItems(driver, test);
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to Select Account Folio", testName, "AccountFolio");
 			} catch (Error e) {

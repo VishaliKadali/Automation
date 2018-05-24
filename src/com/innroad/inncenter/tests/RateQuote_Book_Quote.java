@@ -36,7 +36,7 @@ public class RateQuote_Book_Quote extends TestCore{
 			String ExpiryDate, String BillingNotes	) throws InterruptedException, IOException {
 
 		test = extent.startTest("RateQuote_Book_Quote", "RateQuote_Book_Quote")
-				.assignCategory("RateQuote")
+				.assignCategory("BookQuote")
 				.assignCategory("Regression");	
 
 		String testName = test.getTest().getName().toUpperCase();
@@ -56,6 +56,7 @@ public class RateQuote_Book_Quote extends TestCore{
 
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {

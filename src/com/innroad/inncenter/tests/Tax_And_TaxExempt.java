@@ -32,8 +32,8 @@ public class Tax_And_TaxExempt extends TestCore{
 	@Test(dataProvider="getData", groups="Regression")
 	public void taxAndTaxExempt(String url,String ClientCode, String Username, String Password,String MarketSegment,String Referral,String FirstName,String LastName,String Line1, String City, String State, String Country,String Postalcode,String Phonenumber, String PaymentMethod,String AccountNumber,String ExpiryDate,String BillingNotes,String Nights,String Adults,String Children,String CheckorUncheckAssign,String RoomClassName,String taxName,String displayName,String description,String value,String category,String taxLedgerAccount,String amount){
 
-		test = extent.startTest("taxAndTaxExempt", "taxAndTaxExempt")
-				.assignCategory("taxAndTaxExempt")
+		test = extent.startTest("TaxAndTaxExempt", "TaxAndTaxExempt")
+				.assignCategory("TaxExempt")
 				.assignCategory("Regression");
 
 		String testName = test.getTest().getName().toUpperCase();
@@ -60,6 +60,7 @@ public class Tax_And_TaxExempt extends TestCore{
 
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {

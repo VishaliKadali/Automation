@@ -50,6 +50,18 @@ public class Reservation implements IReservation {
 		}
 	}
 
+	
+	public Double get_FolioBalance(WebDriver driver){
+		
+		String Balance=driver.findElement(By.xpath("//label[contains(text(),'Balance: ')]/following-sibling::span[@class='pamt']/span[@class='pamt']")).getText();
+		Balance=Balance.replace("$", "");
+
+		Double d = Double.parseDouble(Balance);
+		reservationLogger.info("Folio First Balance : "+d);
+		return d;
+		
+	}
+	
 	public void marketingInfo(WebDriver driver, String MarketSegment, String Referral, String Travel_Agent,
 			String ExtReservation) throws InterruptedException {
 
@@ -1397,7 +1409,7 @@ public class Reservation implements IReservation {
 		String taxAndServiceCharges = ReservationPage.TaxesAndServiceCharges.getText();
 		String Total = ReservationPage.TotalCharges.getText();
 
-		test.log(LogStatus.PASS, "Tax is : " + taxAndServiceCharges);
+		//test.log(LogStatus.PASS, "Tax is : " + taxAndServiceCharges);
 
 		roomChargers = roomChargers.replace("$", "").trim();
 		incidentals = incidentals.replace("$", "").trim();

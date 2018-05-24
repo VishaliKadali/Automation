@@ -323,7 +323,7 @@ public class Account implements IAccount {
 	}
 
 	
-	public void get_AccountDetails(WebDriver driver,ExtentTest test,String AccountType,String AccountName,String AccountNumber) throws InterruptedException{
+	public void get_AccountDetails(WebDriver driver,ExtentTest test,String AccountType,String AccountName) throws InterruptedException{
 
 		Elements_Accounts Account=new Elements_Accounts(driver);
 		Wait.explicit_wait_xpath(OR.Account_Type);
@@ -336,10 +336,6 @@ public class Account implements IAccount {
 		Account.Account_Name.sendKeys(AccountName);
 		test.log(LogStatus.PASS, "Account Name : "+AccountName);
 		accountsLogger.info("Account Name : "+AccountName);
-
-		Account.Account_Number.sendKeys(AccountNumber);
-		test.log(LogStatus.PASS, "Account Number : "+AccountNumber);
-		accountsLogger.info("Account Number : "+AccountNumber);
 
 		Account.Account_Search.click();
 		test.log(LogStatus.PASS, "Click Account Search");
@@ -363,14 +359,18 @@ public class Account implements IAccount {
 */
 		
 		Wait.wait5Second();
+		
+		WebDriverWait wait = new WebDriverWait(driver,90);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(OR.Number_Of_Accounts))));
+		
 		int count =driver.findElements(By.xpath(OR.Number_Of_Accounts)).size();
 
 		if(count==0){
-			test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
-			accountsLogger.info("There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+			test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName);
+			accountsLogger.info("There are No Accounts available with "+AccountName);
 		}else{
-			test.log(LogStatus.PASS, "Number of Accounts available with "+AccountName +" and Account Number "+AccountNumber +" in this page are "+count);
-			accountsLogger.info("Number of Accounts available with "+AccountName +" and Account Number "+AccountNumber +" in this page are "+count);
+			test.log(LogStatus.PASS, "Number of Accounts available with "+AccountName + " in this page are "+count);
+			accountsLogger.info("Number of Accounts available with "+AccountName +"  in this page are "+count);
 		}
 	}
 
@@ -496,6 +496,59 @@ public class Account implements IAccount {
 	
 	
 	
+	
+	public void get_AccountDetails(WebDriver driver,ExtentTest test,String AccountType,String AccountName,String AccountNumber) throws InterruptedException{
+
+		Elements_Accounts Account=new Elements_Accounts(driver);
+		Wait.explicit_wait_xpath(OR.Account_Type);
+
+		Select sel = new Select(Account.Account_Type);
+		sel.selectByVisibleText(AccountType);
+		test.log(LogStatus.PASS, "Account type : "+AccountType);
+		accountsLogger.info("Account type : "+AccountType);
+
+		Account.Account_Name.sendKeys(AccountName);
+		test.log(LogStatus.PASS, "Account Name : "+AccountName);
+		accountsLogger.info("Account Name : "+AccountName);
+
+		Account.Account_Number.sendKeys(AccountNumber);
+		test.log(LogStatus.PASS, "Account Number : "+AccountNumber);
+		accountsLogger.info("Account Number : "+AccountNumber);
+
+		Account.Account_Search.click();
+		test.log(LogStatus.PASS, "Click Account Search");
+		accountsLogger.info("Click Account Search");
+		Wait.wait3Second();
+		/*int i=0;
+		while(true){
+
+			if(driver.findElements(By.xpath("//div[@id='toast-container']/div/div")).size()>0){
+
+				break;
+			}else if(i>0){
+				test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+				accountsLogger.info("There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+				break;
+			}else{
+				Wait.wait1Second();
+				i++;
+				//System.out.println(i);
+			}
+		}*/
+
+		int count =driver.findElements(By.xpath(OR.Number_Of_Accounts)).size();
+
+		if(count==0){
+			test.log(LogStatus.PASS, "There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+			accountsLogger.info("There are No Accounts available with "+AccountName +" and Account Number "+AccountNumber);
+		}else{
+			test.log(LogStatus.PASS, "Number of Accounts available with "+AccountName +" and Account Number "+AccountNumber +" in this page are "+count);
+			accountsLogger.info("Number of Accounts available with "+AccountName +" and Account Number "+AccountNumber +" in this page are "+count);
+		}
+	}
+
+	
+	
 	public void addLineItems(WebDriver driver,ExtentTest test) throws InterruptedException{
 
 
@@ -504,7 +557,7 @@ public class Account implements IAccount {
 		CreateAccountlineitem.Account_Add.click();
 
 		new Select (CreateAccountlineitem.Select_Property_lineitem).selectByIndex(1);
-		Wait.wait2Second();
+		Wait.wait5Second();
 		new Select (CreateAccountlineitem.Select_Line_item_Category).selectByIndex(1);
 
 		String Cat1 = new Select(CreateAccountlineitem.Select_Line_item_Category).getFirstSelectedOption().getText();
@@ -598,39 +651,50 @@ public class Account implements IAccount {
 			Account.Account_pay.click();
 			test.log(LogStatus.PASS, "Clicking on Pay");
 			accountsLogger.info("Clicking on Pay");
-
+/*
 			new Select (Account.Select_Account_paymethod).selectByVisibleText(PaymentType);
 			test.log(LogStatus.PASS, "Select Payment type "+PaymentType);
 			accountsLogger.info("Select Payment type "+PaymentType);
 
 			Account.Enter_Change_Amount.sendKeys(Keys.chord(Keys.CONTROL, "a"),AmountToPay);
 			test.log(LogStatus.PASS, "Enter Amount to pay "+AmountToPay);
-			accountsLogger.info("Enter Amount to pay "+AmountToPay);
+			accountsLogger.info("Enter Amount to pay "+AmountToPay);*/
 
+			Wait.wait10Second();
+			new Select (Account.Select_Account_paymethod).selectByVisibleText(PaymentType);
+			test.log(LogStatus.PASS, "Select Payment type "+PaymentType);
+			accountsLogger.info("Select Payment type "+PaymentType);
+
+
+
+			Account.Enter_Change_Amount.sendKeys(Keys.chord(Keys.CONTROL, "a"),AmountToPay);
+			test.log(LogStatus.PASS, "Enter Amount to pay "+AmountToPay);
+			accountsLogger.info("Enter Amount to pay "+AmountToPay);
 			Wait.wait3Second();
+
+			/*String text;
+			String text=driver.findElement(By.xpath("//table[@class='table table-condensed table-striped table-borderd table-hover table-bordered']/tbody[1]/tr[1]/td[2]/span")).getText();
+			driver.findElement(By.xpath("//table[@class='table table-condensed table-striped table-borderd table-hover table-bordered']/tbody[1]/tr[1]/td[1]/input")).click();
+
+			AccountPayment.Account_AutoApply.click();
+			Wait.wait2Second();
+
+			if(driver.findElement(By.xpath("//table[@class='table table-condensed table-striped table-borderd table-hover table-bordered']/tbody[1]/tr[1]/td[1]/input")).isSelected()){
+				text=driver.findElement(By.xpath("//table[@class='table table-condensed table-striped table-borderd table-hover table-bordered']/tbody[1]/tr[1]/td[2]/span")).getText();
+			}*/
+
 			if(AccountType.contains("Corporate")){
 
 				driver.findElement(By.xpath("//span[contains(text(),'Payment Details')]/../../../../following-sibling::div/div/div/div/div/div/ul/li/div/button[contains(text(),'Add')]")).click();
+				test.log(LogStatus.PASS, "Clicking on Add");
+				accountsLogger.info("Clicking on Add");
+				Wait.wait3Second();
+				Wait.explicit_wait_xpath(OR.Apply_Advance_Deposite);
+				Account.Click_Continue_Adv_Deposite.click();
+				test.log(LogStatus.PASS, "Click Advance Deposit link");
+				accountsLogger.info("Click Advance Deposit link");
 
-				int i=0;
-				while(true){
-
-					if(driver.findElements(By.xpath(OR.Click_Continue_Adv_Deposite)).size()>0){
-						Account.Click_Continue_Adv_Deposite.click();
-						break;
-					}else if(i==1){
-
-						break;
-					}else{
-						Thread.sleep(1000);
-						i++;
-						//System.out.println(i);
-					}
-				}
-			}else{
-				driver.findElement(By.xpath("//span[contains(text(),'Payment Details')]/../../../../following-sibling::div[1]/div/div/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div[6]/div/button[contains(text(),'Add')]")).click();
 			}
-
 			test.log(LogStatus.PASS, "Clicking on Add");
 			accountsLogger.info("Clicking on Add");
 
@@ -1280,5 +1344,12 @@ public class Account implements IAccount {
 
 	}
 
+	
+	public void close_Account(WebDriver driver) throws InterruptedException{
+		Wait.wait2Second();
+		driver.findElement(By.xpath("//ul[@class='sec_nav']/li[7]/a/i")).click();
+		accountsLogger.info("Close Account");
+		Wait.wait2Second();
+	}
 	
 }

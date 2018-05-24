@@ -36,18 +36,19 @@
 				<class name="com.innroad.inncenter.tests.SourceDefaultStatus" /> 
 				<class name="com.innroad.inncenter.tests.CreateRule" />  -->
 	
-				<class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
-				<class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 
+				 <class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
+				 <class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 
 				<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
 				<class name="com.innroad.inncenter.tests.Tax_And_TaxExempt" />
 				<class name="com.innroad.inncenter.tests.ReservationWithSplitRooms" /> 
 				<class name="com.innroad.inncenter.tests.Accounts_Payment_Cash" /> 
 				<class name="com.innroad.inncenter.tests.AccountSearch" />
 				<class name="com.innroad.inncenter.tests.Associate_Account_To_Reservation" />
-				<class name="com.innroad.inncenter.tests.Ageing_Pay_Individual_Items_CashOrCard" />  
+				<class name="com.innroad.inncenter.tests.Ageing_Pay_Individual_Items_CashOrCard" />   
 				<class name="com.innroad.inncenter.tests.Ageing_AutoApply" />  
-				<class name="com.innroad.inncenter.tests.Ageing_AdvanceDeposit" />  
-				
+				<class name="com.innroad.inncenter.tests.Ageing_AdvanceDeposit" /> 
+				<class name="com.innroad.inncenter.tests.MoveFolioItems" />  
+				<class name="com.innroad.inncenter.tests.MoveFolioItemsAccrossReservations" />
 
 		</classes>
 	</test> <!-- Test -->

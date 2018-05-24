@@ -32,7 +32,7 @@ public class Ageing_Pay_Individual_Items_CashOrCard extends TestCore{
 
 
 		test = extent.startTest("Ageing_ItemLeavel", "Ageing_ItemLeavel")
-				.assignCategory("Ageing_ItemLeavel")
+				.assignCategory("Ageing")
 				.assignCategory("Regression");
 
 		String testName = test.getTest().getName().toUpperCase();
@@ -54,6 +54,7 @@ public class Ageing_Pay_Individual_Items_CashOrCard extends TestCore{
 
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {
@@ -90,7 +91,7 @@ public class Ageing_Pay_Individual_Items_CashOrCard extends TestCore{
 
 			// Get Account Details
 			try{
-				account.get_AccountDetails(driver, test, AccountType, AccountName, AccountNumber);
+				account.get_AccountDetails(driver, test, AccountType, AccountName,AccountNumber);
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to get account details", testName, "AccountDetails");
 			} catch (Error e) {
