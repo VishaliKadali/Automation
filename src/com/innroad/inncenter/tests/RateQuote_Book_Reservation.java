@@ -38,7 +38,7 @@ public class RateQuote_Book_Reservation extends TestCore {
 
 			) throws InterruptedException, IOException {
 
-		test = extent.startTest("RateQuote_Book_Quote", "RateQuote_Book_Quote")
+		test = extent.startTest("RateQuote_Book_Reservation", "RateQuote_Book_Reservation")
 				.assignCategory("RateQuote")
 				.assignCategory("Regression");	
 
@@ -108,7 +108,7 @@ public class RateQuote_Book_Reservation extends TestCore {
 			app_logs.info("Entered billing information");
 			res.saveReservation(driver);
 			app_logs.info("Saved the reservation");
-			res.manualEmail(driver, Email, Attachment);
+			//res.manualEmail(driver, Email, Attachment);
 			res.GetReservationnumber(driver);
 			test.log(LogStatus.PASS, "Reservation is created");
 			app_logs.info("Reservation is created");

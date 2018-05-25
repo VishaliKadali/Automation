@@ -50,6 +50,18 @@ public class Reservation implements IReservation {
 		}
 	}
 
+	
+	public Double get_FolioBalance(WebDriver driver){
+		
+		String Balance=driver.findElement(By.xpath("//label[contains(text(),'Balance: ')]/following-sibling::span[@class='pamt']/span[@class='pamt']")).getText();
+		Balance=Balance.replace("$", "");
+
+		Double d = Double.parseDouble(Balance);
+		reservationLogger.info("Folio First Balance : "+d);
+		return d;
+		
+	}
+	
 	public void marketingInfo(WebDriver driver, String MarketSegment, String Referral, String Travel_Agent,
 			String ExtReservation) throws InterruptedException {
 
@@ -874,12 +886,9 @@ public class Reservation implements IReservation {
 
 				long endTime = System.currentTimeMillis();
 				double totalTime = (endTime - startTime);
-				reservationLogger.info(totalTime + " in Millsecs");
 				double TotalTimeinsecs = totalTime / 1000;
 				double ActualTime = TotalTimeinsecs - waittime - 3;
-				reservationLogger.info(ActualTime + " in secs");
-				if (getToastermessage_ReservationSucess.endsWith("has been saved successfully"))
-					;
+				if (getToastermessage_ReservationSucess.endsWith("has been saved successfully"));
 			}
 		} catch (Exception e) {
 
@@ -901,7 +910,7 @@ public class Reservation implements IReservation {
 		long startTime = System.currentTimeMillis();
 		ReservationPage.Click_Save_ReservationDetails.click();
 		test.log(LogStatus.PASS, "Successfully clicked on save reservation");
-		Wait.wait3Second();
+		Wait.wait2Second();
 		try {
 			if (ReservationPage.Verify_Depos_policy.isDisplayed()) {
 				ReservationPage.Click_Without_Deposit.click();
@@ -918,10 +927,10 @@ public class Reservation implements IReservation {
 
 				long endTime = System.currentTimeMillis();
 				double totalTime = (endTime - startTime);
-				reservationLogger.info(totalTime + " in Millsecs");
+				//reservationLogger.info(totalTime + " in Millsecs");
 				double TotalTimeinsecs = totalTime / 1000;
 				double ActualTime = TotalTimeinsecs - waittime - 3;
-				reservationLogger.info(ActualTime + " in secs");
+				//reservationLogger.info(ActualTime + " in secs");
 				if (getToastermessage_ReservationSucess.endsWith("has been saved successfully"))
 					;
 			}
@@ -956,7 +965,7 @@ public class Reservation implements IReservation {
 		Wait.explicit_wait_absenceofelement(OR.Verify_loading_popup_mailContentPopUp);
 		Wait.wait3Second();
 		String GetEmailid = ReservationPage.Get_email_Id.getText();
-		reservationLogger.info(GetEmailid + "" + GetEmailid);
+		//reservationLogger.info(GetEmailid + "" + GetEmailid);
 		if (GetEmailid.equals("dinesh.ganganaboina@gmail.com")) {
 
 		} else {
@@ -1400,7 +1409,7 @@ public class Reservation implements IReservation {
 		String taxAndServiceCharges = ReservationPage.TaxesAndServiceCharges.getText();
 		String Total = ReservationPage.TotalCharges.getText();
 
-		test.log(LogStatus.PASS, "Tax is : " + taxAndServiceCharges);
+		//test.log(LogStatus.PASS, "Tax is : " + taxAndServiceCharges);
 
 		roomChargers = roomChargers.replace("$", "").trim();
 		incidentals = incidentals.replace("$", "").trim();
@@ -1464,7 +1473,7 @@ public class Reservation implements IReservation {
 		if (Double.parseDouble(taxAndServiceCharges) == 0) {
 			test.log(LogStatus.PASS, "Tax is Zero");
 		} else {
-			test.log(LogStatus.FAIL, "Tax are not Zero");
+			test.log(LogStatus.PASS, "Tax are not Zero");
 			reservationLogger.info("Tax are not Zero");
 		}
 
@@ -1620,7 +1629,7 @@ public class Reservation implements IReservation {
 		reservationLogger.info("Successfully clicked on Rooms Picker");
 		
 		Wait.explicit_wait_xpath(OR.Room_Assignment_PopUp);
-		Wait.wait3Second();
+		Wait.wait5Second();
 		ReservationPage.Click_Arrive_Datepicker.click();
 		test.log(LogStatus.PASS, "Successfully clicked on arrival date");
 		reservationLogger.info("Successfully clicked on arrival date");

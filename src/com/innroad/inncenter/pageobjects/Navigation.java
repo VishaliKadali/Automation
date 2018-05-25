@@ -27,7 +27,7 @@ public class Navigation implements INavigation {
 		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
 		Navigate.New_Quote.click();
 		Wait.explicit_wait_xpath(OR.New_Quote_Search);
-		navigationLogger.info("Click on Newe Quote");
+		navigationLogger.info("Click on New Quote");
 	}
 
 	// Guest History
