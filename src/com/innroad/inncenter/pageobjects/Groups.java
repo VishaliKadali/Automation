@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.innroad.inncenter.properties.OR;
 import com.innroad.inncenter.waits.Wait;
 import com.innroad.inncenter.webelements.Elements_Groups;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -873,5 +874,52 @@ public class Groups{
 				groupLogger.info("Cash Payment "+ChangeAmountValue+ " is Fail");
 			}
 		}	
+		
+		Wait.wait2Second();
+		String balance1 = group.Group_Folio_EndingBalance.getText();		
+		balance1=balance1.replace("$", "");
+		float bal1 = Float.parseFloat(balance1);
+		test.log(LogStatus.PASS, "After pay Folio balance "+bal1);
+		groupLogger.info("After  Advance deposit payFolio balance "+bal1);
+		
+		
+		String str=driver.findElement(By.xpath("//span[@id='MainContent_Folio1_fSummary1_lblAdvanceDepositBalance']")).getText();
+		str=str.replace("$", "");
+		str=str.trim();
+		float a = Float.parseFloat(str);
+		test.log(LogStatus.PASS, "Advanced deposit balance "+str);
+		
+		group.Group_Folio_AdvanceDeposit.click();
+		
+		Wait.wait3Second();
+		
+		driver.switchTo().defaultContent();
+		driver.switchTo().frame(driver.findElement(By.id("dialog-body0")));
+		Wait.wait3Second();
+		
+		Wait.explicit_wait_xpath(OR.Group_Folio_AdvanceDepositAutoApply);
+		group.Group_Folio_AdvanceDepositAutoApply.click();
+		Wait.wait2Second();
+		Wait.explicit_wait_xpath(OR.Group_Folio_AdvanceDepositAdd);
+		group.Group_Folio_AdvanceDepositAdd.click();
+		Wait.explicit_wait_xpath(OR.Group_Folio_AdvanceDepositContinue);
+		Wait.wait5Second();
+		group.Group_Folio_AdvanceDepositContinue.click();
+		Wait.wait3Second();
+		driver.switchTo().defaultContent();
+		Save(driver,test);
+		test.log(LogStatus.PASS, "Clicking on Save Account");
+		navigateFolio(driver, test);
+		Wait.wait3Second();
+		
+		if(driver.findElements(By.xpath("//span[@id='MainContent_Folio1_fSummary1_lblAdvanceDepositBalance']")).size()<=0){
+		
+		test.log(LogStatus.PASS, "Payment via Advance deposit link is successful");
+		groupLogger.info("Payment via Advance deposit link is successful");
+		}else{
+			test.log(LogStatus.PASS, "Payment via Advance deposit link is not successful");
+			groupLogger.info("Payment via Advance deposit link is not successful");
+		}
+		
 	}
 }

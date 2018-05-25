@@ -130,4 +130,16 @@ public class Elements_Groups {
 		public WebElement Group_Folio_AutoApply;
 		
 		
+		@FindBy(xpath=OR.Group_Folio_AdvanceDeposit)
+		public WebElement Group_Folio_AdvanceDeposit;
+		
+		@FindBy(xpath=OR.Group_Folio_AdvanceDepositAdd)
+		public WebElement Group_Folio_AdvanceDepositAdd;
+		
+		@FindBy(xpath=OR.Group_Folio_AdvanceDepositAutoApply)
+		public WebElement Group_Folio_AdvanceDepositAutoApply;
+		
+		@FindBy(xpath=OR.Group_Folio_AdvanceDepositContinue)
+		public WebElement Group_Folio_AdvanceDepositContinue;
+		
 }

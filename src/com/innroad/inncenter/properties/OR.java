@@ -1445,8 +1445,20 @@ public class OR {
 	//Add
 	public static final String  Group_Folio_Add="//input[@id='btnAgingAdd']";
 
-	//Group Autp Apply
+	//Group Auto Apply
 	public static final String  Group_Folio_AutoApply="//input[@id='btnAutoApplyPayment']";
+	
+	//Advance deposit
+	public static final String  Group_Folio_AdvanceDeposit="//a[@id='MainContent_Folio1_fSummary1_lbtnDisplaycaption']";
+	
+	//Advance deposit Add
+	public static final String  Group_Folio_AdvanceDepositAdd="//input[@id='btnAgingAdd']";
 
+	//Advance deposit AutoApply
+	public static final String  Group_Folio_AdvanceDepositAutoApply="//input[@id='btnAutoApplyPayment']";
+	
+	//Advance deposit Continue
+	public static final String  Group_Folio_AdvanceDepositContinue="//input[@id='btnSaveTranPay']";
+	
 	
 }
