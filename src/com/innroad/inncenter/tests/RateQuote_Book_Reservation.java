@@ -39,7 +39,7 @@ public class RateQuote_Book_Reservation extends TestCore {
 			) throws InterruptedException, IOException {
 
 		test = extent.startTest("RateQuote_Book_Reservation", "RateQuote_Book_Reservation")
-				.assignCategory("QuoteReservation")
+				.assignCategory("RateQuote")
 				.assignCategory("Regression");	
 
 		String testName = test.getTest().getName().toUpperCase();

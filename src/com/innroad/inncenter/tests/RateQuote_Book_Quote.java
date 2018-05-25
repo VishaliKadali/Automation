@@ -36,7 +36,7 @@ public class RateQuote_Book_Quote extends TestCore{
 			String ExpiryDate, String BillingNotes	) throws InterruptedException, IOException {
 
 		test = extent.startTest("RateQuote_Book_Quote", "RateQuote_Book_Quote")
-				.assignCategory("BookQuote")
+				.assignCategory("RateQuote")
 				.assignCategory("Regression");	
 
 		String testName = test.getTest().getName().toUpperCase();

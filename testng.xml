@@ -36,8 +36,8 @@
 				<class name="com.innroad.inncenter.tests.SourceDefaultStatus" /> 
 				<class name="com.innroad.inncenter.tests.CreateRule" />  -->
 	
-				 <class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
-				 <class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 
+				<class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
+				<class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 
 				<class name="com.innroad.inncenter.tests.RateQuote_Book_Reservation" /> 
 				<class name="com.innroad.inncenter.tests.Tax_And_TaxExempt" />
 				<class name="com.innroad.inncenter.tests.ReservationWithSplitRooms" /> 

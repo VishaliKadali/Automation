@@ -36,7 +36,7 @@ public class New_Edit_Delete_Folio extends TestCore{
 
 		
 		test = extent.startTest("New Edit Delete Folio", "New Edit Delete Folio")
-				.assignCategory("New Edit Delete Folio")
+				.assignCategory("Folio")
 				.assignCategory("Regression");
 
 		String testName = test.getTest().getName().toUpperCase();

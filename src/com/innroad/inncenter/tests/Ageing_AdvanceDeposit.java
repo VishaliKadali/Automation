@@ -137,7 +137,6 @@ public class Ageing_AdvanceDeposit extends TestCore{
 			try{
 				group.navigateFolio(driver, test);
 				group.addLineItems(driver, test);
-
 				group.ageingPaymentAdvanceDeposit(driver, test, AccountType, PaymentType, CardName, CCNumber, CCExpiry, CCVCode, Authorizationtype, ChangeAmount, ChangeAmountValue);
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to Pay the group advance deposit", testName, "GroupAdvanceDeposit");
