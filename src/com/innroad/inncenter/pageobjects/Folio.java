@@ -6,23 +6,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.innroad.inncenter.interfaces.IFolio;
 import com.innroad.inncenter.properties.OR;
-import com.innroad.inncenter.utils.Utility;
 import com.innroad.inncenter.waits.Wait;
 import com.innroad.inncenter.webelements.Elements_MovieFolio;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
-
-import junit.framework.Assert;
 
 public class Folio implements IFolio{
 
 
 	public static Logger folioLogger = Logger.getLogger("Folio");
 
-	public void MoveFolioInsideReservation(WebDriver driver,ExtentTest test,String resNumber1,String newFolioName,String newFolioDescription){
+	public void MoveFolioInsideReservation(WebDriver driver,ExtentTest test,String resNumber1,String newFolioName,String newFolioDescription) throws InterruptedException{
 
 
 		// Explicit wait object creation
@@ -31,186 +27,141 @@ public class Folio implements IFolio{
 		Elements_MovieFolio moveFolio = new Elements_MovieFolio(driver);
 
 		// Search Reservation
-		try{
-			ReservationSearch resSearch	= new ReservationSearch();
-			resSearch.basicSearch_WithResNumber(driver,resNumber1);
-			test.log(LogStatus.PASS, "System opened reservation number "+resNumber1);
-			
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "System fail to open reservation number");
-		}
 
+		/*ReservationSearch resSearch	= new ReservationSearch();
+		resSearch.basicSearch_WithResNumber(driver,resNumber1);
+		test.log(LogStatus.PASS, "System opened reservation number "+resNumber1);
+		folioLogger.info("System opened reservation number "+resNumber1);*/
 
 		// waiting for the visibility of guest info
-		try{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
 
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
+		wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
+		Wait.wait3Second();;
 
-			wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
-			Wait.wait3Second();;
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(OR.GuestInfo)));
 
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(OR.GuestInfo)));
+		moveFolio.MoveFolio_Folio.click();
 
-			moveFolio.MoveFolio_Folio.click();
-			
-			// Waiting for visibility of adjoining rooms
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
-			test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
+		// Waiting for visibility of adjoining rooms
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
+		test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
+		folioLogger.info("Successfully opened the Folio Tab");
 
-		}catch(Exception e){
-			e.printStackTrace();
-			
-			test.log(LogStatus.FAIL, "Folio Tab not opened");
-		}
 
 		// click on Folio Tab
-		try{
+		moveFolio.MoveFolio_NewFolio.click();
 
-			moveFolio.MoveFolio_NewFolio.click();
-		
-			// Waiting for visibility of new Folio Details
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolioDeatils)));
-			test.log(LogStatus.PASS, "Successfully New Folio Details pop up ");
-
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "New Folio Details pop up not opened");
-		}
-
+		// Waiting for visibility of new Folio Details
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolioDeatils)));
+		test.log(LogStatus.PASS, "Successfully New Folio Details pop up ");
+		folioLogger.info("Successfully New Folio Details pop up ");
 
 		// new Folio creation
-		try{
+		moveFolio.MoveFolio_NewFolio_Name.sendKeys(newFolioName);
+		test.log(LogStatus.PASS, "Successfully Entered the New Folio Name : "+newFolioName);
+		folioLogger.info("Successfully Entered the New Folio Name : "+newFolioName);
 
-			Assert.assertTrue("Fail to find new folio name",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Name));
+		moveFolio.MoveFolio_NewFolio_Description.sendKeys(newFolioDescription);
+		test.log(LogStatus.PASS, "Successfully Entered the New Folio Description : "+newFolioDescription);
+		folioLogger.info("Successfully Entered the New Folio Description : "+newFolioDescription);
 
-			moveFolio.MoveFolio_NewFolio_Name.sendKeys(newFolioName);
-			test.log(LogStatus.PASS, "Successfully Entered the New Folio Name : "+newFolioName);
-
-			//System.out.println("Enter thye new folio name");
-
-			Assert.assertTrue("Fail to find new folio description",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Description));
-
-			moveFolio.MoveFolio_NewFolio_Description.sendKeys(newFolioDescription);
-
-		//	System.out.println("Enter thye new folio description");
-
-			test.log(LogStatus.PASS, "Successfully Entered the New Folio Description : "+newFolioDescription);
-
-			Assert.assertTrue("Fail to find new folio close",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Close));
-			Assert.assertTrue("Fail to find new folio save",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Save));
-
-			moveFolio.MoveFolio_NewFolio_Save.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Folio");
-			
-			Wait.wait3Second();
-			// Waiting for visibility of adjoining rooms
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
-					
-
-			moveFolio.MoveFolio_NewFolio_SaveReservation.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Reservation");
-			
-
-		}catch(Exception e){
-		
-			test.log(LogStatus.FAIL, "New Folio Details pop up not opened");
-		}
+		moveFolio.MoveFolio_NewFolio_Save.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Folio");
+		folioLogger.info("Successfully clicked save Folio");
+		Wait.wait10Second();
+		// Waiting for visibility of adjoining rooms
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
+		moveFolio.MoveFolio_NewFolio_SaveReservation.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Reservation");
+		folioLogger.info("Successfully clicked save Reservation");
 
 		// select new folio
-		try{
-			
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div")));
-			Wait.wait2Second();
-			Select sel = new Select(moveFolio.MoveFolio_GuestFolio);
-			sel.selectByVisibleText(newFolioName);
-			test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
-			
-			sel.selectByIndex(0);
-			Wait.wait2Second();
-			sel.selectByVisibleText(newFolioName);
-			Wait.wait2Second();
-			sel.selectByIndex(0);
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "Fail to open New Folio : "+newFolioName);
-		}
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div")));
+		Wait.wait1Second();
+		Select sel = new Select(moveFolio.MoveFolio_GuestFolio);
+		sel.selectByVisibleText(newFolioName);
+		test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
+		folioLogger.info("Successfully opened the new Folio : "+newFolioName);
+
+		sel.selectByIndex(0);
+		Wait.wait1Second();
+		sel.selectByVisibleText(newFolioName);
+		Wait.wait1Second();
+		sel.selectByIndex(0);
+		Wait.wait2Second();
+		String Balance=driver.findElement(By.xpath("//label[contains(text(),'Balance: ')]/following-sibling::span[@class='pamt']/span[@class='pamt']")).getText();
+		Balance=Balance.replace("$", "");
+
+		Double d = Double.parseDouble(Balance);
+		folioLogger.info("Folio Balance : "+d);
 
 		// select the folio item to move
-		try{
-			Wait.wait3Second();
-			moveFolio.MoveFolio_SelectFiloItem.click();
-			test.log(LogStatus.PASS, "Successfully selected the folio Item");
-		
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "Unable to select the Fail item");
-		}
+		moveFolio.MoveFolio_SelectFiloItem.click();
+		test.log(LogStatus.PASS, "Successfully selected the folio Item");
+		folioLogger.info("Successfully selected the folio Item");
 
 		//Click on move
-		try{
-			Wait.wait3Second();
-			moveFolio.MoveFolio_Move.click();
-			test.log(LogStatus.PASS, "Successfully clieked on move");
-			
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "Unable to click on move");
-		}
-
+		Wait.wait3Second();
+		moveFolio.MoveFolio_Move.click();
+		test.log(LogStatus.PASS, "Successfully clieked on move");
+		folioLogger.info("Successfully clieked on move");
 
 		// Folio items to move to target folio pop up
-		try{
-			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_TargetFolio)));
-			Select sel = new Select(moveFolio.MoveFolio_TargetFolio);
-			sel.selectByVisibleText(newFolioName);
-			test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
-			
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "Fail to open New Folio : "+newFolioName);
-		}
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_TargetFolio)));
+		sel = new Select(moveFolio.MoveFolio_TargetFolio);
+		sel.selectByVisibleText(newFolioName);
+		test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
+		folioLogger.info("Successfully opened the new Folio : "+newFolioName);
 
 		//move folio items to target folio pop up
-		try{
-			moveFolio.MoveFolio_FolioItemToMove.click();
-			test.log(LogStatus.PASS, "Successfully clieked on folio item");
-			
-			moveFolio.MoveFolio_MoveSelectedItem.click();
-			test.log(LogStatus.PASS, "Successfully moved folio item");
-			
-			moveFolio.MoveFolio_Close.click();
-			test.log(LogStatus.PASS, "Successfully clicked on close");
-			
-			Wait.wait2Second();
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div[2]")));
-			
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "Unable to click on folio item");
-		}
+		moveFolio.MoveFolio_FolioItemToMove.click();
+		test.log(LogStatus.PASS, "Successfully clieked on folio item");
+		folioLogger.info("Successfully clieked on folio item");
+
+		moveFolio.MoveFolio_MoveSelectedItem.click();
+		test.log(LogStatus.PASS, "Successfully moved folio item");
+		folioLogger.info("Successfully moved folio item");
+
+		moveFolio.MoveFolio_Close.click();
+		test.log(LogStatus.PASS, "Successfully clicked on close");
+		folioLogger.info("Successfully clicked on close");
+
+		Wait.wait2Second();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div[2]")));
+
+		String Balance1=driver.findElement(By.xpath("//label[contains(text(),'Balance: ')]/following-sibling::span[@class='pamt']/span[@class='pamt']")).getText();
+		Balance1=Balance1.replace("$", "");
+
+		Double d1 = Double.parseDouble(Balance1);
+		folioLogger.info("Folio Old Balance : "+d1);
 
 		//validation folio items
-		try{
-			Select sel = new Select(moveFolio.MoveFolio_GuestFolio);
-			sel.selectByVisibleText(newFolioName);
-			test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
-			if(driver.findElements(By.xpath(OR.MoveFolio_SelectFiloItem)).size()>0){
-				test.log(LogStatus.PASS, "Successfully moved the folio Item to : "+newFolioName);
-				//System.out.println("Completed");
+		sel = new Select(moveFolio.MoveFolio_GuestFolio);
+		sel.selectByVisibleText(newFolioName);
+		test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
+		folioLogger.info("Successfully opened the new Folio : "+newFolioName);
+		if(driver.findElements(By.xpath(OR.MoveFolio_SelectFiloItem)).size()>0){
+			test.log(LogStatus.PASS, "Successfully moved the folio Item to : "+newFolioName);
+			folioLogger.info("Successfully moved the folio Item to : "+newFolioName);
+
+			String Balance2=driver.findElement(By.xpath("//label[contains(text(),'Balance: ')]/following-sibling::span[@class='pamt']/span[@class='pamt']")).getText();
+			Balance2=Balance2.replace("$", "");
+
+			Double d2 = Double.parseDouble(Balance2);
+			folioLogger.info("Folio New Balance : "+d2);
+			if(d==d1+d2){
+				test.log(LogStatus.PASS, "Successfully Validated Folio Balances");
+				folioLogger.info("Successfully Validated Folio Balances");
+			}else{
+				test.log(LogStatus.FAIL, "Folio Balance Fail");
+				folioLogger.info("Folio Balance Fail");
 			}
-
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.PASS, "not moved the folio Item to : "+newFolioName);
 		}
-
-
 	}
 
 	@Override
-	public void MoveFolioInsideReservation(WebDriver driver, ExtentTest test, String resNumber1, String resNumber2) {
+	public void MoveFolioInsideReservation(WebDriver driver, ExtentTest test, String resNumber1, String resNumber2,Double d,Double d2) throws Exception {
 		// Explicit wait object creation
 		WebDriverWait wait = new WebDriverWait(driver, 90);
 
@@ -219,142 +170,99 @@ public class Folio implements IFolio{
 		String resName;
 
 		// Search and open Reservation1
-		try{
-			ReservationSearch resSearch	= new ReservationSearch();
-			resName=resSearch.basicSearch_WithResNumber(driver,resNumber1);
-			test.log(LogStatus.PASS, "System opened reservation number "+resNumber1);
-			
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "System fail to open reservation number");
-		}
+		ReservationSearch resSearch	= new ReservationSearch();
+		resName=resSearch.basicSearch_WithResNumber(driver,resNumber1);
+		test.log(LogStatus.PASS, "System opened reservation number "+resNumber1);
+		folioLogger.info("System opened reservation number "+resNumber1);
 
 		// Search and open Reservation2
-		try{
-			moveFolio.Reservations.click();
-			Wait.wait5Second();
-			ReservationSearch resSearch	= new ReservationSearch();
-			resSearch.basicSearch_WithResNumber1(driver,resNumber2);
-			
-			test.log(LogStatus.PASS, "System opened reservation number "+resNumber2);
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "System fail to open reservation number");
-		}
-
+		moveFolio.Reservations.click();
+		Wait.wait5Second();
+		resSearch.basicSearch_WithResNumber(driver,resNumber2);
+		test.log(LogStatus.PASS, "System opened reservation number "+resNumber2);
+		folioLogger.info("System opened reservation number "+resNumber2);
 
 		//opening the first reservation tab
-		try{
-			moveFolio.FirstOpenedReservation.click();
+		moveFolio.FirstOpenedReservation.click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
+		wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
+		Wait.wait3Second();
+		moveFolio.MoveFolio_Folio.click();
 
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
-
-			wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
-			Wait.wait3Second();
-
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(OR.GuestInfo)));
-
-			moveFolio.MoveFolio_Folio.click();
-			
-			// Waiting for visibility of adjoining rooms
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
-			test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
-
-		}catch(Exception e){
-			e.printStackTrace();
-			System.out.println(e);
-			test.log(LogStatus.FAIL, "Folio Tab not opened");
-		}
-
+		// Waiting for visibility of adjoining rooms
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
+		test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
+		folioLogger.info("Successfully opened the Folio Tab");
 
 		// Select the folio item to move
-		try{
-			Wait.wait2Second();
-			moveFolio.MoveFolio_SelectFiloItem.click();
-			test.log(LogStatus.PASS, "Successfully selected the folio Item");
-			
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "Unable to select the Fail item");
-		}
+		Wait.wait2Second();
+		moveFolio.MoveFolio_SelectFiloItem.click();
+		test.log(LogStatus.PASS, "Successfully selected the folio Item");
+		folioLogger.info("Successfully selected the folio Item");
 
 		// click on move
-		try{
-			Wait.wait3Second();
-			moveFolio.MoveFolio_Move.click();
-			test.log(LogStatus.PASS, "Successfully clieked on move");
-			
-		}catch(Exception e){
-			System.out.println(e);
-			test.log(LogStatus.FAIL, "Unable to click on move");
-		}
+		Wait.wait3Second();
+		moveFolio.MoveFolio_Move.click();
+		test.log(LogStatus.PASS, "Successfully clieked on move");
+		folioLogger.info("Successfully clieked on move");
 
 		// Select the guest folio of another reservation
-		try{
-			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_TargetFolio)));
-			Select sel = new Select(moveFolio.MoveFolio_TargetFolio);
-			sel.selectByVisibleText("Guest Folio");
-			test.log(LogStatus.PASS, "Successfully opened the new Folio : "+"Guest Folio");
-		
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "Fail to open New Folio : "+"Guest Folio");
-		}
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_TargetFolio)));
+		Select sel = new Select(moveFolio.MoveFolio_TargetFolio);
+		sel.selectByVisibleText("Guest Folio");
+		test.log(LogStatus.PASS, "Successfully opened the new Folio : "+"Guest Folio");
+		folioLogger.info("Successfully opened the new Folio : "+"Guest Folio");
 
 		// move Folio item to another reservation folio
-		try{
-			moveFolio.MoveFolio_FolioItemToMove.click();
-			test.log(LogStatus.PASS, "Successfully clieked on folio item");
-			
-			moveFolio.MoveFolio_MoveSelectedItem.click();
-			test.log(LogStatus.PASS, "Successfully moved folio item");
-			
-			moveFolio.MoveFolio_Close.click();
-			test.log(LogStatus.PASS, "Successfully clicked on close");
-			
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div[2]")));
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "Unable to click on folio item");
-		}
+		moveFolio.MoveFolio_FolioItemToMove.click();
+		test.log(LogStatus.PASS, "Successfully clieked on folio item");
+		folioLogger.info("Successfully clieked on folio item");
+
+		moveFolio.MoveFolio_MoveSelectedItem.click();
+		test.log(LogStatus.PASS, "Successfully moved folio item");
+		folioLogger.info("Successfully moved folio item");
+
+		moveFolio.MoveFolio_Close.click();
+		test.log(LogStatus.PASS, "Successfully clicked on close");
+		folioLogger.info("Successfully clicked on close");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div[2]")));
 
 		// closing first reservation and validation second reservation folio
-		try{
-			moveFolio.FirstOpenedReservationClose.click();
+		moveFolio.FirstOpenedReservationClose.click();
+		moveFolio.FirstOpenedReservation.click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
+
+		wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
+		Wait.wait3Second();
+		moveFolio.MoveFolio_Folio.click();
+
+		// Waiting for visibility of guest folio
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
+		test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
+		folioLogger.info("Successfully opened the Folio Tab");
+		Wait.wait2Second();
+
+		String Balance1=driver.findElement(By.xpath("//label[contains(text(),'Balance: ')]/following-sibling::span[@class='pamt']/span[@class='pamt']")).getText();
+		Balance1=Balance1.replace("$", "");
+
+		Double d1 = Double.parseDouble(Balance1);
+		folioLogger.info("Folio First Balance : "+d1);
+
+		if(driver.findElements(By.xpath("//table[@class='table table-striped table-bordered table-hover trHeight25']/tbody/tr/td/input")).size()>1){
 			
-			moveFolio.FirstOpenedReservation.click();
-			
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
-
-			wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
-			Wait.wait3Second();
-
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(OR.GuestInfo)));
-
-			moveFolio.MoveFolio_Folio.click();
-			
-			// Waiting for visibility of guest folio
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
-			test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
-			Wait.wait2Second();
-
-			if(driver.findElements(By.xpath("//table[@class='table table-striped table-bordered table-hover trHeight25']/tbody/tr/td/input")).size()>1){
-
+			if(d1==d+d2){
 				test.log(LogStatus.PASS, "Successfully moved the folio Item");
-				
+				test.log(LogStatus.PASS, "Folio Balance is same : "+d1);
+				folioLogger.info("Folio Balance is same : "+d1);
+			}else{
+				test.log(LogStatus.FAIL, "Successfully moved the folio Item");
+				test.log(LogStatus.FAIL, "Folio Balance is same : "+d1);
+				folioLogger.info("Folio Balance is not same : "+d1);
 			}
 
-
-		}catch(Exception e){
-			e.printStackTrace();
 		}
 
-
-
-
 	}
-
 
 
 	public void newFolio(WebDriver driver,ExtentTest test,String resNumber1,String newFolioName,String newFolioDescription) throws InterruptedException{
@@ -367,209 +275,114 @@ public class Folio implements IFolio{
 
 		moveFolio.FirstOpenedReservationClose.click();
 		Wait.wait3Second();
+		
 		// Search Reservation
-		try{
-			resSearch.basicSearch_WithResNumber(driver,resNumber1);
-			test.log(LogStatus.PASS, "System opened reservation number "+resNumber1);
-			//System.out.println("System opened reservation number "+resNumber1);
-			folioLogger.info("System opened reservation number "+resNumber1);
-
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "System fail to open reservation number");
-			folioLogger.info("System fail to open reservation number"+resNumber1);
-		}
-
+		resSearch.basicSearch_WithResNumber(driver,resNumber1);
+		test.log(LogStatus.PASS, "System opened reservation number "+resNumber1);
+		//System.out.println("System opened reservation number "+resNumber1);
+		folioLogger.info("System opened reservation number "+resNumber1);
 
 		// waiting for the vivibility of guest info
-		try{
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
+		wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
+		Wait.wait3Second();
+		moveFolio.MoveFolio_Folio.click();
+		
 
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.GuestInfo)));
-
-			wait.until(ExpectedConditions.elementToBeClickable(moveFolio.GuestInfo));
-			Wait.wait3Second();
-
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(OR.GuestInfo)));
-
-			moveFolio.MoveFolio_Folio.click();
-			//System.out.println("clicked on Folio Tab");
-
-			// Waiting for visibility of adjoining rooms
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
-			test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
-			folioLogger.info("Clicked on Folio Tab");
-		}catch(Exception e){
-			e.printStackTrace();
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "Folio Tab not opened");
-			folioLogger.info("Folio Tab not opened");
-		}
+		// Waiting for visibility of adjoining rooms
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_GuestFolio)));
+		test.log(LogStatus.PASS, "Successfully opened the Folio Tab");
+		folioLogger.info("Clicked on Folio Tab");
 
 		// click on Folio Tab
-		try{
-
-			moveFolio.MoveFolio_NewFolio.click();
-			//System.out.println("clicked on New Folio IMG");
-			// Waiting for visibility of new Folio Details
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolioDeatils)));
-			test.log(LogStatus.PASS, "Successfully New Folio Details pop up");
-			folioLogger.info("Successfully New Folio Details pop up");
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "New Folio Details pop up not opened");
-			folioLogger.info("New Folio Details pop up not opened");
-		}
-
+		moveFolio.MoveFolio_NewFolio.click();
+		
+		// Waiting for visibility of new Folio Details
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolioDeatils)));
+		test.log(LogStatus.PASS, "Successfully New Folio Details pop up");
+		folioLogger.info("Successfully New Folio Details pop up");
 
 		// new Folio creation
-		try{
+		moveFolio.MoveFolio_NewFolio_Name.sendKeys(newFolioName);
+		test.log(LogStatus.PASS, "Successfully Entered the New Folio Name : "+newFolioName);
+		folioLogger.info("Successfully Entered the New Folio Name : "+newFolioName);
+		moveFolio.MoveFolio_NewFolio_Description.sendKeys(newFolioDescription);
 
-			Assert.assertTrue("Fail to find new folio name",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Name));
+		test.log(LogStatus.PASS, "Successfully Entered the New Folio Description : "+newFolioDescription);
+		folioLogger.info("Successfully Entered the New Folio Description : "+newFolioDescription);
 
-			moveFolio.MoveFolio_NewFolio_Name.sendKeys(newFolioName);
-			test.log(LogStatus.PASS, "Successfully Entered the New Folio Name : "+newFolioName);
-			folioLogger.info("Successfully Entered the New Folio Name : "+newFolioName);
-			
-			//System.out.println("Enter thye new folio name");
+		moveFolio.MoveFolio_NewFolio_Save.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Folio");
+		folioLogger.info("Successfully clicked save Folio");
 
-			Assert.assertTrue("Fail to find new folio description",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Description));
+		// Waiting for visibility of adjoining rooms
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
+		//test.log(LogStatus.FAIL, "Successfully New Folio Details pop up ");
 
-			moveFolio.MoveFolio_NewFolio_Description.sendKeys(newFolioDescription);
-
-			//System.out.println("Enter thye new folio description");
-
-			test.log(LogStatus.PASS, "Successfully Entered the New Folio Description : "+newFolioDescription);
-			folioLogger.info("Successfully Entered the New Folio Description : "+newFolioDescription);
-			
-			Assert.assertTrue("Fail to find new folio close",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Close));
-			Assert.assertTrue("Fail to find new folio save",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Save));
-
-			moveFolio.MoveFolio_NewFolio_Save.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Folio");
-			folioLogger.info("Successfully clicked save Folio");
-			
-			// Waiting for visibility of adjoining rooms
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
-			//test.log(LogStatus.FAIL, "Successfully New Folio Details pop up ");			
-			Wait.wait3Second();
-			moveFolio.MoveFolio_NewFolio_SaveReservation.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Reservation");
-			folioLogger.info("Successfully clicked save Reservation");
-
-		}catch(Exception e){
-			
-			test.log(LogStatus.FAIL, "New Folio Details pop up not opened");
-			folioLogger.info("New Folio Details pop up not opened");
-		}
+		Wait.wait3Second();
+		moveFolio.MoveFolio_NewFolio_SaveReservation.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Reservation");
+		folioLogger.info("Successfully clicked save Reservation");
 
 		// select new folio
-		try{
-			//Thread.sleep(8000);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div")));
-			Wait.wait3Second();
-			Select sel = new Select(moveFolio.MoveFolio_GuestFolio);
-			sel.selectByVisibleText(newFolioName);
-			test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
-			folioLogger.info("Successfully opened the new Folio : "+newFolioName);
-			Wait.wait3Second();
-		}catch(Exception e){
-			//System.out.println(e);
-			test.log(LogStatus.FAIL, "Fail to open New Folio : "+newFolioName);
-			folioLogger.info("Fail to open New Folio : "+newFolioName);
-		}
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div")));
+		Wait.wait3Second();
+		Select sel = new Select(moveFolio.MoveFolio_GuestFolio);
+		sel.selectByVisibleText(newFolioName);
+		test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName);
+		folioLogger.info("Successfully opened the new Folio : "+newFolioName);
+		Wait.wait5Second();
+		moveFolio.Edit_Folio_Btn.click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolioDeatils)));
+		moveFolio.MoveFolio_NewFolio_Name.clear();
+		moveFolio.MoveFolio_NewFolio_Name.sendKeys(newFolioName+"test");
+		test.log(LogStatus.PASS, "Successfully edited the New Folio Name : "+newFolioName+"test");
+		folioLogger.info("Successfully edited the New Folio Name : "+newFolioName+"test");
 
+		moveFolio.MoveFolio_NewFolio_Description.clear();
+		moveFolio.MoveFolio_NewFolio_Description.sendKeys(newFolioDescription+"test");
 
-		try{
-			Wait.wait5Second();
-			moveFolio.Edit_Folio_Btn.click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolioDeatils)));
-			moveFolio.MoveFolio_NewFolio_Name.clear();
-			moveFolio.MoveFolio_NewFolio_Name.sendKeys(newFolioName+"test");
-			test.log(LogStatus.PASS, "Successfully edited the New Folio Name : "+newFolioName+"test");
-			folioLogger.info("Successfully edited the New Folio Name : "+newFolioName+"test");
-			
-			
-			//System.out.println("edit the new folio name");
+		test.log(LogStatus.PASS, "Successfully edited the New Folio Description : "+newFolioDescription+"test");
+		folioLogger.info("Successfully edited the New Folio Description : "+newFolioDescription+"test");
 
-			Assert.assertTrue("Fail to find new folio description",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Description));
-			moveFolio.MoveFolio_NewFolio_Description.clear();
-			moveFolio.MoveFolio_NewFolio_Description.sendKeys(newFolioDescription+"test");
+		moveFolio.MoveFolio_NewFolio_Save.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Folio");
+		folioLogger.info("Successfully clicked save Folio");
+		//System.out.println("clicked on save folio");
+		Wait.wait3Second();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
+		//test.log(LogStatus.FAIL, "Successfully New Folio Details pop up ");			
 
-			//System.out.println("edit the new folio description");
-
-			test.log(LogStatus.PASS, "Successfully edited the New Folio Description : "+newFolioDescription+"test");
-			folioLogger.info("Successfully edited the New Folio Description : "+newFolioDescription+"test");
-			Assert.assertTrue("Fail to find new folio save",Utility.return_element_status_after_explicit_wait(OR.MoveFolio_NewFolio_Save));
-			
-			
-			
-			moveFolio.MoveFolio_NewFolio_Save.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Folio");
-			folioLogger.info("Successfully clicked save Folio");
-			//System.out.println("clicked on save folio");
-			Wait.wait3Second();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
-			//test.log(LogStatus.FAIL, "Successfully New Folio Details pop up ");			
-
-			moveFolio.MoveFolio_NewFolio_SaveReservation.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Reservation");
-			folioLogger.info("Successfully clicked save Reservation");
-			//System.out.println("clicked on save reservation");
-
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
+		moveFolio.MoveFolio_NewFolio_SaveReservation.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Reservation");
+		folioLogger.info("Successfully clicked save Reservation");
 
 		// select new folio
-		try{
-			//Thread.sleep(8000);
-			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div")));
-			Wait.wait3Second();
-			Select sel = new Select(moveFolio.MoveFolio_GuestFolio);
-			sel.selectByVisibleText(newFolioName+"test");
-			test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName+"test");
-			folioLogger.info("Successfully opened the new Folio : "+newFolioName+"test");
-			//System.out.println("selected the new folio from folio drop down");
-			sel.selectByIndex(0);
-			Wait.wait3Second();
-			sel.selectByVisibleText(newFolioName+"test");
-			Wait.wait3Second();
-		}catch(Exception e){
-		//	System.out.println(e);
-			test.log(LogStatus.FAIL, "Fail to open New Folio : "+newFolioName+"test");
-			folioLogger.info("Fail to open New Folio : "+newFolioName+"test");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='toast-container']/div/div")));
+		Wait.wait3Second();
+		sel = new Select(moveFolio.MoveFolio_GuestFolio);
+		sel.selectByVisibleText(newFolioName+"test");
+		test.log(LogStatus.PASS, "Successfully opened the new Folio : "+newFolioName+"test");
+		folioLogger.info("Successfully opened the new Folio : "+newFolioName+"test");
+
+		sel.selectByIndex(0);
+		Wait.wait1Second();
+		sel.selectByVisibleText(newFolioName+"test");
+		Wait.wait1Second();
+
+		//wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(OR.Delete_Folio_Btn)));
+		moveFolio.Delete_Folio_Btn.click();
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
+		//test.log(LogStatus.FAIL, "Successfully New Folio Details pop up ");			
+		moveFolio.MoveFolio_NewFolio_SaveReservation.click();
+		test.log(LogStatus.PASS, "Successfully clicked save Reservation");
+		folioLogger.info("Successfully clicked save Reservation");
+
+		Wait.wait10Second();
+		if(!(driver.findElements(By.xpath("//select[@class='form-control folioFil']/option")).size()>1)){
+			test.log(LogStatus.PASS, "Sucessfully deleted the folio : "+newFolioName+"test");
+			folioLogger.info("Sucessfully deleted the folio : "+newFolioName+"test");
 		}
-
-
-		try{
-			//wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(OR.Delete_Folio_Btn)));
-			moveFolio.Delete_Folio_Btn.click();
-			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.MoveFolio_NewFolio_SaveReservation)));
-			//test.log(LogStatus.FAIL, "Successfully New Folio Details pop up ");			
-
-			moveFolio.MoveFolio_NewFolio_SaveReservation.click();
-			test.log(LogStatus.PASS, "Successfully clicked save Reservation");
-			folioLogger.info("Successfully clicked save Reservation");
-			//System.out.println("clicked on save reservation");
-			Wait.wait10Second();
-			if(!(driver.findElements(By.xpath("//select[@class='form-control folioFil']/option")).size()>1)){
-				test.log(LogStatus.PASS, "Sucessfully deleted the folio : "+newFolioName+"test");
-				folioLogger.info("Sucessfully deleted the folio : "+newFolioName+"test");
-			}
-
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-
-
-
-
-
-
 	}
-
-
 
 }

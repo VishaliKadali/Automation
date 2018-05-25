@@ -36,10 +36,8 @@ public class New_Edit_Delete_Folio extends TestCore{
 
 		
 		test = extent.startTest("New Edit Delete Folio", "New Edit Delete Folio")
-				.assignCategory("New Edit Delete Folio")
+				.assignCategory("Folio")
 				.assignCategory("Regression");
-
-
 
 		String testName = test.getTest().getName().toUpperCase();
 
@@ -62,7 +60,7 @@ public class New_Edit_Delete_Folio extends TestCore{
 
 				LOGIN.login(driver,url, ClientCode, Username, Password);
 				test.log(LogStatus.PASS, "System successfully logged in the site");
-
+				app_logs.info("System successfully logged in the site");
 			}catch (Exception e) {
 				Utility.updateReport(e, "Failed to login", testName, "Login");
 			} catch (Error e) {

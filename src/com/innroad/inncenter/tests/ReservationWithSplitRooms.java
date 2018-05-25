@@ -30,7 +30,7 @@ public class ReservationWithSplitRooms extends TestCore{
 
 
 		test = extent.startTest("Reservation with Split Rooms", "Reservation with Split Rooms")
-				.assignCategory("Reservation with Split Rooms")
+				.assignCategory("SplitRooms")
 				.assignCategory("Regression");
 
 		String testName = test.getTest().getName().toUpperCase();
@@ -49,6 +49,7 @@ public class ReservationWithSplitRooms extends TestCore{
 
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {

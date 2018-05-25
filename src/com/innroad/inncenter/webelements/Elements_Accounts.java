@@ -232,13 +232,33 @@ public class Elements_Accounts {
 		
 		
 		
+		@FindBy(xpath=OR.Folio_Cash_Continue_Btn)
+		public WebElement Folio_Cash_Continue_Btn;
+		
+		@FindBy(xpath=OR.Account_CorpAccountName)
+		public WebElement Account_CorpAccountName;
+
+		@FindBy(xpath=OR.Account_AutoApply)
+		public WebElement Account_AutoApply;
+		
+		@FindBy(xpath=OR.Folio_Balance)
+		public WebElement Folio_Balance;
 		
 		
+		@FindBy(xpath=OR.Account_Name)
+		public WebElement Account_Name;
 		
+		@FindBy(xpath=OR.Account_Number)
+		public WebElement Account_Number;
 		
+		@FindBy(xpath=OR.Account_Search)
+		public WebElement Account_Search;
 		
+		@FindBy(xpath=OR.Number_Of_Accounts)
+		public WebElement Number_Of_Accounts;
 		
-		
+		@FindBy(xpath=OR.Account_Type)
+		public WebElement Account_Type;
 		
 		
 		

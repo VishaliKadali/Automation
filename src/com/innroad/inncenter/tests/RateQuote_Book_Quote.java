@@ -56,6 +56,7 @@ public class RateQuote_Book_Quote extends TestCore{
 
 			LOGIN.login(driver,url, ClientCode, Username, Password);
 			test.log(LogStatus.PASS, "System successfully logged in the site");
+			app_logs.info("System successfully logged in the site");
 		}catch (Exception e) {
 			Utility.updateReport(e, "Failed to login", testName, "Login");
 		} catch (Error e) {
@@ -98,7 +99,7 @@ public class RateQuote_Book_Quote extends TestCore{
 			res.saveReservation(driver,test);
 			res.clickBook(driver);
 			res.saveReservationQuote(driver, test);
-			res.manualEmail(driver, test,Email, Attachment);
+			//res.manualEmail(driver, test,Email, Attachment);
 			res.GetReservationnumber(driver,test);
 			test.log(LogStatus.PASS, "Reservation created Success");
 		}catch (Exception e) {

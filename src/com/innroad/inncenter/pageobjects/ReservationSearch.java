@@ -77,6 +77,8 @@ public class ReservationSearch implements IReservationSearchPage {
 			//System.out.println("ResNumber :"+resNumber);
 			Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
 			
+			resservationSearch.Basic_Res_Number.clear();
+			Wait.wait2Second();
 			resservationSearch.Basic_Res_Number.sendKeys(resNumber);
 			resservationSearch.Click_BasicSearch.click();
 			Wait.explicit_wait_xpath(OR.Verify_Search_Loading_Gird);
@@ -138,7 +140,7 @@ public class ReservationSearch implements IReservationSearchPage {
 			WebDriverWait wait = new WebDriverWait(driver, 90);
 			
 			wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.NewRervations)));
-			System.out.println(resNumber);
+			
 			
 			String resLocator="//span[contains(text(),'"+resNumber.trim()+"')]/../../td[4]/div/a";
 			//Thread.sleep(5000);
@@ -152,7 +154,7 @@ public class ReservationSearch implements IReservationSearchPage {
 		}
 		catch(Exception e)
 		{
-			System.out.println("File not found");
+			//System.out.println("File not found");
 		}
 		
 		
@@ -300,10 +302,10 @@ public class ReservationSearch implements IReservationSearchPage {
 		Double d=Double.parseDouble(str);
 		if(d==0){
 			test.log(LogStatus.PASS, "Tax value is zero");
-			resSearchLogger.info("Tax value is zero");
+			resSearchLogger.info("Tax value is zero : "+d);
 		}else{
 			test.log(LogStatus.FAIL, "Tax value is not zero");	
-			resSearchLogger.info("Tax value is not zero");
+			resSearchLogger.info("Tax value is not zero : "+d);
 		}
 	}
 /*	
