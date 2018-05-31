@@ -1,5 +1,7 @@
 package com.innroad.inncenter.webelements;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -349,6 +351,14 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.ReCal_Folio_Options_PopUp_Cancel_Btn)
 		public WebElement ReCal_Folio_Options_PopUp_Cancel_Btn;
 		
+		@FindBy(xpath=OR.Policy_Comparision_PopUp_Continue_Btn)
+		public WebElement Policy_Comparision_PopUp_Continue_Btn;
+		
+		@FindBy(xpath=OR.Select_Continue_with_OriginalPolicy)
+		public WebElement Select_Continue_with_OriginalPolicy;
+		
+		@FindBy(xpath=OR.Policy_Comparision_PopUp)
+		public WebElement Policy_Comparision_PopUp;
 		
 		//Notes
 		
@@ -648,6 +658,108 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Commit_LineItem)
 		public WebElement Commit_LineItem;
 		
+
+		@FindBy(xpath=OR.Reservation_Folio_Options)
+		public WebElement Reservation_Folio_Options;
+		
+		@FindBy(xpath=OR.Reservation_Folio_Details)
+		public WebElement Reservation_Folio_Details;
+				
+		@FindBy(xpath=OR.Select_Reservation_Checkin_Policy)
+		public WebElement Select_Reservation_Checkin_Policy;
+		
+		
+		@FindBy(xpath=OR.Select_Reservation_NoShow_Policy)
+		public WebElement Select_Reservation_NoShow_Policy;
+		
+		@FindBy(xpath=OR.Click_Reservation_Cancellation_Policy)
+		public WebElement Click_Reservation_Cancellation_Policy;
+		
+		@FindBy(xpath=OR.Select_Reservation_Deposit_Policy)
+		public WebElement Select_Reservation_Deposit_Policy;
+		
+		@FindBy(xpath=OR.Reservation_Folio)
+		public WebElement Reservation_Folio;
+		
+		@FindBy(xpath=OR.Already_Checked_In_Confirm_Popup)
+		public WebElement Already_Checked_In_Confirm_Popup;
+		
+		@FindBy(xpath=OR.Already_Checked_In_Confirm_Popup_Confirm_Btn)
+		public WebElement Already_Checked_In_Confirm_Popup_Confirm_Btn;
+		
+		//room assignment
+		@FindBy(xpath=OR.RoomAssignmentButton)
+	    public WebElement RoomAssignmentButton;
+		
+		@FindBy(css=OR.RoomAssignment_DatePicker_Button)
+	    public WebElement RoomAssignment_DateIcon;
+		
+		@FindBy(css=OR.SelectDate)
+	    public WebElement SelectDate;
+		
+		@FindBy(xpath=OR.RoomAssign_Check)
+	    public WebElement RoomAssign_Check;
+		
+		@FindBy(css=OR.SearchRoomButton)
+	    public WebElement SearchRoomButton;
+		
+		@FindBy(xpath=OR.SelectRoomClasses)
+	    public WebElement SelectRoomClasses;
+		
+		@FindBy(xpath=OR.SelectRoomNumbers)
+	    public WebElement SelectRoomNumbers;	
+		
+		@FindBy(css=OR.CheckRule)
+	    public WebElement CheckRule;
+		
+		@FindBy(xpath=OR.AvailableRoom)
+	    public WebElement AvailableRoom;
+		
+		@FindBy(xpath=OR.SelectButton)
+	    public WebElement SelectButton;
+		
+		@FindBy(css=OR.ContinueButton)
+	    public WebElement ContinueButton;
+		
+		@FindBy(xpath=OR.Continue)
+	    public List<WebElement> Continue;
+		
+		@FindBy(xpath=OR.RoleBroken_Continue)
+	    public WebElement RoleBroken_Continue;
+		
+		@FindBy(xpath=OR.ReservationSaveButton)
+	    public List<WebElement> ReservationSaveButton;
+		
+		@FindBy(css=OR.CancelDepositePolicy_Button)
+	    public List<WebElement> CancelDepositePolicy_Button;
+		
+		@FindBy(xpath=OR.CopyButton)
+	    public WebElement CopyButton;
+		
+		@FindBy(className=OR.ReservationTab)
+	    public List<WebElement> ReservationTab;
+		
+		@FindBy(xpath=OR.ExtendReservation_Button)
+	    public  WebElement ExtendReservation_Button;
+		
+		@FindBy(xpath=OR.RoomChargerPopup)
+	    public  WebElement RoomChargerPopup;
+		
+		@FindBy(xpath=OR.RecalculateFolio_RadioButton)
+	    public  WebElement RecalculateFolio_RadioButton;
+		
+		@FindBy(xpath=OR.SelectClickOnReCalculateFolios)
+	    public  WebElement Button_RoomChargerSelect;
+		
+		@FindBy(xpath=OR.ApplyDeltaEnabled_RadioButton)
+	    public  WebElement ApplyDeltaEnabled_RadioButton;
+		
+
+		@FindBy(xpath=OR.NoRoomCharger_RadioButton)
+	    public  WebElement NoRoomCharger_RadioButton;
+		
+		@FindBy(xpath=OR.Depart_Value)
+	    public  List<WebElement> Depart_Value;
 		
 		
 }

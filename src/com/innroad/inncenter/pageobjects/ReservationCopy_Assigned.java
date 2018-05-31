@@ -44,6 +44,7 @@ public static Logger resCopyAssignedLogger = Logger.getLogger("ReservationCopy_A
 		Wait.wait15Second();
 		ReservationPage.Click_Arrive_Datepicker.click();
 		ReservationPage.Click_Today.click();
+		ReservationPage.Enter_Nigts.clear();
 		ReservationPage.Enter_Nigts.sendKeys(Nights);
 		ReservationPage.Enter_Adults.sendKeys(Adults);
 		ReservationPage.Enter_Children.sendKeys(Children);
@@ -87,8 +88,8 @@ public static Logger resCopyAssignedLogger = Logger.getLogger("ReservationCopy_A
 			List<WebElement> getAllRoomNumbers=getRoomNumber.getOptions();
 			
 			for(WebElement getEachRoomNumber: getAllRoomNumbers)
-//				resCopyAssignedLogger.info(getEachRoomNumber.getText());
-				resCopyAssignedLogger.info("Total no of rooms " +getAllRoomNumbers.size());
+			//	resCopyAssignedLogger.info(getEachRoomNumber.getText());
+			//	resCopyAssignedLogger.info("Total no of rooms " +getAllRoomNumbers.size());
 				nextRoom=getAllRoomNumbers.get(1).getText();
 				resCopyAssignedLogger.info(" Next  availble Room is " +nextRoom);
 				WebElement EachRoom=getRoomNumber.getFirstSelectedOption();
@@ -175,10 +176,10 @@ public void saveReservation(WebDriver driver) throws InterruptedException {
 		Assert.assertEquals(getTotasterTitle_ReservationSucess, "Reservation Saved");
 		 long endTime   = System.currentTimeMillis();
 		 double totalTime = (endTime - startTime); 
-      	 resCopyAssignedLogger.info(totalTime + " in Millsecs");
+      	// resCopyAssignedLogger.info(totalTime + " in Millsecs");
       	 double TotalTimeinsecs = totalTime/1000;
       	 double ActualTime = TotalTimeinsecs - waittime - 3;
-      	 resCopyAssignedLogger.info(ActualTime + " in secs");
+      	// resCopyAssignedLogger.info(ActualTime + " in secs");
 		if(getToastermessage_ReservationSucess.endsWith("has been saved successfully"));
 		
 		}

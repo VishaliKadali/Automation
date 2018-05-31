@@ -58,8 +58,8 @@ public void new_RateDerived(WebDriver driver, String ratename, String offsetAmou
 	derivedRateLogger.info(" No of Derived rates : " +itemSize);
 	
     for(int i = 0; i < itemSize ; i++){
-        String optionsValue = options.get(i).getText();
-        derivedRateLogger.info("Derived rate Plans : " +optionsValue);
+       // String optionsValue = options.get(i).getText();
+       // derivedRateLogger.info("Derived rate Plans : " +optionsValue);
         
       new Select(derivedrate.selectDerivedRatePlan).selectByIndex(itemSize);
      

@@ -1,12 +1,13 @@
 package com.innroad.inncenter.webelements;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.innroad.inncenter.properties.OR;
 
 public class Elements_TapeChart {
@@ -69,8 +70,35 @@ public class Elements_TapeChart {
 		public WebElement Click_First_Available_In_First_Roomclass;
 		
 		
+		@FindBy(className=OR.ReservationsLink)
+	    public WebElement ReservationsLink;
 		
+		@FindBy(xpath=OR.Tape_Chart)
+	    public WebElement Tape_Chart;
 		
+		@FindBy(css=OR.BlackOutCell)
+	    public List<WebElement> BlackOutCell;
+		
+		@FindBy(xpath=OR.NewQuote)
+	    public  WebElement NewQuote;
+		
+		@FindBy(css=OR.DatePickerIcon)
+	    public  List<WebElement> DatePickerIcon;
+		
+		@FindBy(xpath=OR.Quote_SearchButton)
+	    public  WebElement Quote_SearchButton;
+		
+		@FindBy(xpath=OR.BlackOutAlert)
+	    public  WebElement BlackOutAlert;
+		
+		@FindBy(xpath=OR.Blackout_OkButton)
+	    public  WebElement Blackout_OkButton;
+		
+		@FindBy(css=OR.SelectDate)
+	    public WebElement SelectDate;
+		
+		@FindBy(className=OR.BookButton)
+	    public  List<WebElement> BookButton;
 		
 
 }

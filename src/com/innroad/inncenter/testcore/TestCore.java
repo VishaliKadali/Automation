@@ -134,7 +134,7 @@ public class TestCore {
 		// testUtil.zip(System.getProperty("user.dir")+"\\screenshot");
 		// mail.sendMail(TestConfig.server, TestConfig.from, TestConfig.to,"Test Report", "Please find the attached report",TestConfig.reportPath, "Reports.zip");
 		extent.flush();
-		driver.close();
+		//driver.close();
 
 	}
 

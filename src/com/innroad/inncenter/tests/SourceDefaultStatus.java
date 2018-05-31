@@ -34,7 +34,7 @@ public class SourceDefaultStatus extends TestCore{
 			{
 			
 			test = extent.startTest("changeSourceDefaultStatus", " Change default status for Source")
-					 				 .assignCategory("changeSourceDefaultStatus")
+					 				 .assignCategory("SourceDefaultStatus")
 					 				 .assignCategory("Regression");
 			 
 			 String testName=test.getTest().getName().toUpperCase();

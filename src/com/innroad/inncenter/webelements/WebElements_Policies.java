@@ -153,6 +153,9 @@ public class WebElements_Policies {
 	
 	@FindBy(xpath=OR.Delete_Policy_Btn)
 	public WebElement Delete_Policy_Btn;
+	
+	@FindBy(xpath=OR.Policy_Reset_Btn)
+	public WebElement Policy_Reset_Btn;
 	 
 	
 	

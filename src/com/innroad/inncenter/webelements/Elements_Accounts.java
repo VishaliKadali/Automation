@@ -78,6 +78,9 @@ public class Elements_Accounts {
 		@FindBy(xpath=OR.Account_save)
 		public WebElement Account_save;
 		
+		@FindBy(xpath=OR.Account_Save_Clsoe)
+		public WebElement Account_Save_Clsoe;
+		
 		@FindBy(xpath=OR.Select_Referrals)
 		public WebElement Select_Referrals;
 		
@@ -230,6 +233,9 @@ public class Elements_Accounts {
 		@FindBy(xpath=OR.Enter_AccountName_On_SearchPage)
 		public WebElement Enter_AccountName_On_SearchPage;
 		
+		@FindBy(xpath=OR.Click_SearchBtn_On_AccountsPage)
+		public WebElement Click_SearchBtn_On_AccountsPage;
+		
 		
 		
 		@FindBy(xpath=OR.Folio_Cash_Continue_Btn)
@@ -260,14 +266,16 @@ public class Elements_Accounts {
 		@FindBy(xpath=OR.Account_Type)
 		public WebElement Account_Type;
 		
+		@FindBy(xpath=OR.NewReservation_Button)
+		public WebElement NewReservation_Button;
+		
+		@FindBy(xpath=OR.Account_Save_Button)
+		public WebElement Account_Save_Button;
+		
+	
 		
 		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 }

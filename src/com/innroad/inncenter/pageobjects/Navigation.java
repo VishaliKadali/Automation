@@ -59,6 +59,7 @@ public class Navigation implements INavigation {
 			Navigate.Accounts.click();
 		}
 		Wait.explicit_wait_visibilityof_webelement(Navigate.Accounts_sec_Nav);
+		Wait.wait2Second();
 		
 
 	}
@@ -424,8 +425,10 @@ public class Navigation implements INavigation {
 
 	public void TaxesAfterCloseReservation(WebDriver driver) throws InterruptedException {
 		// TODO Auto-generated method stub
-		Wait.wait3Second();
+		//Wait.wait3Second();
 		Elements_On_All_Navigation Navigate = new Elements_On_All_Navigation(driver);
+		
+		Wait.WaitForElement(driver, "//a[contains(text(),'Taxes\')]");
 		 driver.findElement(By.xpath("//a[contains(text(),'Taxes\')]")).click();
 		    Wait.explicit_wait_xpath(OR.Taxes_Grid);
 	}

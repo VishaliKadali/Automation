@@ -17,6 +17,8 @@ public interface IFolioLineItemsVoid {
 	void IPropertySelector(WebDriver driver,String PropertyName)throws InterruptedException;
 	
 	void saveReservation(WebDriver driver)throws InterruptedException;
+	
+	void adjustLineItem(WebDriver driver,String folioitemDescription, String folioLineAmount, String folioNotes) throws InterruptedException;
 
 	void folioLineItemsVoid(WebDriver driver, String Category, String Amount, String Notes)throws InterruptedException; 
 }

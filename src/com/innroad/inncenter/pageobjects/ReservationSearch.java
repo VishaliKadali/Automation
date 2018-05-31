@@ -77,14 +77,21 @@ public class ReservationSearch implements IReservationSearchPage {
 			//System.out.println("ResNumber :"+resNumber);
 			Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
 			
-			resservationSearch.Basic_Res_Number.clear();
 			Wait.wait2Second();
+			Wait.WaitForElement(driver, OR.Basic_Res_Number);
+			resservationSearch.Basic_Res_Number.clear();
+			//Wait.wait2Second();
+			
+			Wait.WaitForElement(driver, OR.Basic_Res_Number);
 			resservationSearch.Basic_Res_Number.sendKeys(resNumber);
 			resservationSearch.Click_BasicSearch.click();
 			Wait.explicit_wait_xpath(OR.Verify_Search_Loading_Gird);
-			Wait.wait10Second();
+			//Wait.wait10Second();
+			
+			Wait.WaitForElement(driver, OR.Get_Res_Number);
 			String GetResNumber=resservationSearch.Get_Res_Number.getText();
-			Assert.assertEquals(resNumber, GetResNumber);
+			Wait.wait3Second();
+			//Assert.assertEquals(resNumber, GetResNumber);
 	//	}
 		//br.close();
 			
@@ -96,11 +103,11 @@ public class ReservationSearch implements IReservationSearchPage {
 			//System.out.println(resNumber);
 			
 			String resLocator="//span[contains(text(),'"+resNumber.trim()+"')]/../../td[4]/div/a";
-			Wait.wait5Second();
+			//Wait.wait5Second();
 			/*
 			Elements_MovieFolio moveFolio = new Elements_MovieFolio(driver);
 			moveFolio.NewRervations.click();*/
-			
+			Wait.WaitForElement(driver, resLocator);
 			str=driver.findElement(By.xpath(resLocator)).getText();
 	
 			driver.findElement(By.xpath(resLocator)).click();
@@ -264,11 +271,13 @@ public class ReservationSearch implements IReservationSearchPage {
 	public void uncheck_TaxExempt(WebDriver driver,ExtentTest test) throws InterruptedException{
 		Elements_Reservation ReservationPage = new Elements_Reservation(driver);
 
-		Wait.wait5Second();
+		Wait.wait2Second();
 		// Java script object creation
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,1000)");
 		if(ReservationPage.Check_IsTaxExempt.isSelected()){
+			
+			Wait.WaitForElement(driver, OR.Check_IsTaxExempt);
 			ReservationPage.Check_IsTaxExempt.click();
 			test.log(LogStatus.PASS, "Tax exempt check box un selected");
 			resSearchLogger.info("Tax exempt check box un selected");
@@ -277,8 +286,10 @@ public class ReservationSearch implements IReservationSearchPage {
 
 	
 	public void addIncidentals(WebDriver driver,ExtentTest test,String category,String amount) throws InterruptedException{
-		Wait.wait5Second();
+		//Wait.wait5Second();
 		Elements_Reservation_SearchPage resservationSearch = new Elements_Reservation_SearchPage(driver);
+		
+		Wait.WaitForElement(driver, OR.AddIncidental);
 		resservationSearch.AddIncidental.click();
 		test.log(LogStatus.PASS, "Click Add");
 		resSearchLogger.info("Click Add");

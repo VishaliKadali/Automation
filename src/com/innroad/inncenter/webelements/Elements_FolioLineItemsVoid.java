@@ -1,5 +1,7 @@
 package com.innroad.inncenter.webelements;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -237,11 +239,38 @@ public class Elements_FolioLineItemsVoid {
 		@FindBy(xpath=OR.reservationGuestName2)
 		public WebElement reservationGuestName2;
 		
-		@FindBy(xpath=OR.lineItem1)
-		public WebElement lineItem1;
+		@FindBy(xpath=OR.verifyCheckboxPendingStatus)
+		public WebElement verifyCheckboxPendingStatus;
 		
-		@FindBy(xpath=OR.lineItem2)
-		public WebElement lineItem2;
+		@FindBy(xpath=OR.lineItemPendingStatus)
+		public WebElement lineItemPendingStatus;
+		
+		@FindBy(xpath=OR.verifyCheckboxPostStatus)
+		public WebElement verifyCheckboxPostStatus;
+		
+		@FindBy(xpath=OR.lineItemPostStatus)
+		public WebElement lineItemPostStatus;
+		
+		@FindBy(xpath=OR.pendingItemDescription)
+		public WebElement pendingItemDescription;
+		
+		@FindBy(xpath=OR.selectCategoryItem)
+		public WebElement selectCategoryItem;
+		
+		@FindBy(xpath=OR.itemDescription)
+		public WebElement itemDescription;
+		
+		@FindBy(xpath=OR.foliolineItemAmount)
+		public WebElement foliolineItemAmount;
+		
+		@FindBy(xpath=OR.foliolineItemNotes)
+		public WebElement foliolineItemNotes;
+		
+		@FindBy(xpath=OR.foliolineItemAddButton)
+		public WebElement foliolineItemAddButton;
+		
+		@FindBy(xpath=OR.foliolineItemContinueButton)
+		public WebElement foliolineItemContinueButton;
 		
 		@FindBy(xpath=OR.clickOnDescription)
 		public WebElement clickOnDescription;
@@ -252,6 +281,25 @@ public class Elements_FolioLineItemsVoid {
 		@FindBy(xpath=OR.clickContinueButton)
 		public WebElement clickContinueButton;
 		
-		}
+		@FindBy(xpath=OR.folioSaveButton)
+		public WebElement folioSaveButton;
+		
+		@FindBy(css=OR.SelectCategory)
+		public WebElement SelectCategory;
+		
+		@FindBy(css=OR.LineItemsFields)
+		public List<WebElement> LineItemsAmountFields;
+		
+		@FindBy(xpath=OR.CommitButton)
+		public List<WebElement> CommitButton;
+		
+		@FindBy(css=OR.LineItems)
+		public List<WebElement> LineItems;
+		
+		@FindBy(xpath=OR.RoomCharger_Tax)
+		public List<WebElement> RoomCharger_Tax;
+		
+		
+}
 
 	

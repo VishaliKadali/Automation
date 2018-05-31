@@ -38,7 +38,7 @@ public class Reservation_With_NonRackRate  extends TestCore{
 			String ExpiryDate, String BillingNotes,String PropertyName1, String Nights, String Adults, String Children, String RatepromoCode,String CheckorUncheckAssign, String RoomClassName, String RoomNumber) throws InterruptedException, IOException
 	{
  	 test = extent.startTest("createReservationNonrackRate", "Create reservation with non rack rate ")
- 			 				 .assignCategory("ReservationWithRackRate")
+ 			 				 .assignCategory("NonRackRateReservation")
  			 				 .assignCategory("Regression");
  	 
  	 String testName=test.getTest().getName().toUpperCase();

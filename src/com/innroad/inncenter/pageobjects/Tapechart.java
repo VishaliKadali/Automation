@@ -1,5 +1,7 @@
 package com.innroad.inncenter.pageobjects;
 
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -30,11 +32,7 @@ public class Tapechart implements ITapeChart {
 		Wait.wait3Second();
 		TapeChart.Enter_promoCode_Tapechart.sendKeys(PromoCode);
 		TapeChart.Click_Search_TapeChart.click();
-		Wait.wait5Second();
-		
-		
-		
-		
+		Wait.wait5Second();	
 		
 	}
 
@@ -92,4 +90,29 @@ public class Tapechart implements ITapeChart {
 //		Wait.explicit_wait_xpath(OR.New_Reservation_Tab);
 		Wait.explicit_wait_xpath(OR.New_Reservation_Page_Load);
 	}
+	
+	public void Verify_BlackOutRoom(WebDriver driver) throws InterruptedException{
+		
+		Elements_TapeChart TapeChart = new Elements_TapeChart(driver);
+		TapeChart.ReservationsLink.click();
+		Wait.wait2Second();
+		TapeChart.Tape_Chart.click();
+		Wait.wait2Second();
+		String blackout = TapeChart.BlackOutCell.get(0).getText();
+		assertEquals(blackout, "B", "Vlaue does not match");
+		TapeChart.NewQuote.click();
+		Wait.wait2Second();
+		TapeChart.DatePickerIcon.get(5).click();
+		Wait.wait2Second();
+		TapeChart.SelectDate.click();
+		TapeChart.Quote_SearchButton.click();
+		Wait.wait2Second();
+		TapeChart.BookButton.get(0).click();
+		Wait.wait2Second();
+		assertEquals(TapeChart.BlackOutAlert.getText(), "Blackouts Alert!",
+				"Blackout alert box does not display");
+		TapeChart.Blackout_OkButton.click();
+		Wait.wait2Second();
+	}
+	
 }
