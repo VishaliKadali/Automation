@@ -41,7 +41,7 @@ public class VerifySaveBtnFuncForReservation extends TestCore {
 	) throws InterruptedException, IOException {
 
 		test = extent.startTest("VerifySaveBtnFunctionalityForReservation", "VerifySaveBtnFunctionalityForReservation")
-				.assignCategory("Reservation").assignCategory("Regression");
+				.assignCategory("Savefeature").assignCategory("Regression");
 
 		String testName = test.getTest().getName().toUpperCase();
 		app_logs.info("##################################################################################");

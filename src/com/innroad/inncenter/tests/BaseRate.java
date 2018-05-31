@@ -29,7 +29,7 @@ public class BaseRate extends TestCore{
 		{
 		
 		 test = extent.startTest("createBaseRate", " Create Base Rate")
-				 				 .assignCategory("createBaseRate")
+				 				 .assignCategory("BaseRate")
 				 				 .assignCategory("Regression");
 		 
 		 String testName=test.getTest().getName().toUpperCase();

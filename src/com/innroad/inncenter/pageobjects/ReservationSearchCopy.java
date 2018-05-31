@@ -49,6 +49,7 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	Wait.wait15Second();
 	ReservationPage.Click_Arrive_Datepicker.click();
 	ReservationPage.Click_Today.click();
+	ReservationPage.Enter_Nigts.clear();
 	ReservationPage.Enter_Nigts.sendKeys(Nights);
 	ReservationPage.Enter_Adults.sendKeys(Adults);
 	ReservationPage.Enter_Children.sendKeys(Children);

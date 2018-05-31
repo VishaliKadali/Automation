@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,8 +15,10 @@ import com.innroad.inncenter.waits.Wait;
 import com.relevantcodes.extentreports.LogStatus;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 
 public class Utility extends TestCore {
 
@@ -63,41 +64,46 @@ public class Utility extends TestCore {
 
 	}
 
-	/*##########################################################################################################################################################################
-
-	' Method Name:	customDateTimeFormat()
-	' Description:  This Utility method returns a current time stamp which is used to generate the unique extent report file for each run
-	' Input parameters: NA
-	' Return value: Time-stamp in String representation
-	' Created By: Surender Avula
-	' Created On: 06/05/2017		(MM/DD/YYYY)
-	' Modified By | Description of Modification:
-
-	###########################################################################################################################################################################*/
-
+	/*
+	 * #########################################################################
+	 * #########################################################################
+	 * ########################
+	 * 
+	 * ' Method Name: customDateTimeFormat() ' Description: This Utility method
+	 * returns a current time stamp which is used to generate the unique extent
+	 * report file for each run ' Input parameters: NA ' Return value:
+	 * Time-stamp in String representation ' Created By: Surender Avula '
+	 * Created On: 06/05/2017 (MM/DD/YYYY) ' Modified By | Description of
+	 * Modification:
+	 * 
+	 * #########################################################################
+	 * #########################################################################
+	 * #########################
+	 */
 
 	public static String getTimeStamp() {
 		return new SimpleDateFormat("dd-M-yyyy hh:mm:ss").format(new Date()).replaceAll("[-: ]", "_");
 	}
 
-	/*##########################################################################################################################################################################
-
-	' Method Name:	archiveExtentReports()
-	' Description:  This Utility method will back up the old reports present in the 'reports' directory to 'reports\old' directory.
-	' Input parameters: path
-	' Return value: NA
-	' Created By: Surender Avula
-	' Created On: 06/06/2017		(MM/DD/YYYY)
-	' Modified By | Description of Modification:
-	  ------------------------------------------
-	  07/04/2017:Surender Avula:
-	  1.Renamed method name from backUpReportFiles()
-	  2.Add path argument to method.
-	  3.Modified implementation such that checks for the path argument value, root directory and archived (sub-directory) in project working directly and
-	    report accordingly.
-	  4.Added comments for better readability
-	###########################################################################################################################################################################*/
-
+	/*
+	 * #########################################################################
+	 * #########################################################################
+	 * ########################
+	 * 
+	 * ' Method Name: archiveExtentReports() ' Description: This Utility method
+	 * will back up the old reports present in the 'reports' directory to
+	 * 'reports\old' directory. ' Input parameters: path ' Return value: NA '
+	 * Created By: Surender Avula ' Created On: 06/06/2017 (MM/DD/YYYY) '
+	 * Modified By | Description of Modification:
+	 * ------------------------------------------ 07/04/2017:Surender Avula:
+	 * 1.Renamed method name from backUpReportFiles() 2.Add path argument to
+	 * method. 3.Modified implementation such that checks for the path argument
+	 * value, root directory and archived (sub-directory) in project working
+	 * directly and report accordingly. 4.Added comments for better readability
+	 * #########################################################################
+	 * #########################################################################
+	 * #########################
+	 */
 
 	public static void archiveExtentReports(String path) {
 
@@ -158,18 +164,20 @@ public class Utility extends TestCore {
 		}
 	}
 
-	/*##########################################################################################################################################################################
-
-	' Method Name:	captureScreenShot(String, WebDriver)
-	' Description:  This Utility method returns screenshot file path
-	' Input parameters: String, WebDriver
-	' Return value: String
-	' Created By: Surender Avula
-	' Created On: 06/04/2018	(MM/DD/YYYY)
-	' Modified By | Description of Modification:
-
-	###########################################################################################################################################################################*/
-
+	/*
+	 * #########################################################################
+	 * #########################################################################
+	 * ########################
+	 * 
+	 * ' Method Name: captureScreenShot(String, WebDriver) ' Description: This
+	 * Utility method returns screenshot file path ' Input parameters: String,
+	 * WebDriver ' Return value: String ' Created By: Surender Avula ' Created
+	 * On: 06/04/2018 (MM/DD/YYYY) ' Modified By | Description of Modification:
+	 * 
+	 * #########################################################################
+	 * #########################################################################
+	 * #########################
+	 */
 
 	public static String captureScreenShot(String name, WebDriver driver) {
 		String screenShotPath = System.getProperty("user.dir") + "\\screenshots\\" + name + ".png";
@@ -186,7 +194,7 @@ public class Utility extends TestCore {
 
 	public static void ScrollToElement(WebElement element) throws InterruptedException {
 		((JavascriptExecutor) TestCore.driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Wait.wait2Second();
+		Wait.wait3Second();
 	}
 
 	public static String getScreenhot() throws Exception {
@@ -266,5 +274,18 @@ public class Utility extends TestCore {
 		e.printStackTrace();
 		throw new SkipException(e.getMessage());
 
+	}
+
+	public static WebElement ElementFinderUntillNotShow(By locator,WebDriver driver) {
+		WebElement element;
+		try {
+			element = driver.findElement(locator);
+			element.getTagName();
+			return element;
+		} catch (StaleElementReferenceException  e) {
+			// TODO: handle exception
+			System.out.println("in wait");
+			return ElementFinderUntillNotShow(locator, driver);
+		}
 	}
 }

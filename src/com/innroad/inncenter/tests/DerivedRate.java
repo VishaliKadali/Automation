@@ -30,7 +30,7 @@ public class DerivedRate extends TestCore{
 		{
 		
 		test = extent.startTest("createDerivedRate", " create Derived Rate")
-				 				 .assignCategory("createDerivedRate")
+				 				 .assignCategory("DerivedRate")
 				 				 .assignCategory("Regression");
 		 
 		 String testName=test.getTest().getName().toUpperCase();

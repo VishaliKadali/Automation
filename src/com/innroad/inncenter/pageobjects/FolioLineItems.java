@@ -146,6 +146,7 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	Wait.wait15Second();
 	FolioLineItems.Click_Arrive_Datepicker.click();
 	FolioLineItems.Click_Today.click();
+	FolioLineItems.Enter_Nigts.clear();
 	FolioLineItems.Enter_Nigts.sendKeys(Nights);
 	FolioLineItems.Enter_Adults.sendKeys(Adults);
 	FolioLineItems.Enter_Children.sendKeys(Children);
@@ -234,7 +235,7 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	}
 }
 
-
+//Save the Reservation
 public void saveReservation(WebDriver driver) throws InterruptedException {
 	
 
@@ -263,10 +264,10 @@ public void saveReservation(WebDriver driver) throws InterruptedException {
 	Assert.assertEquals(getTotasterTitle_ReservationSucess, "Reservation Saved");
 	 long endTime   = System.currentTimeMillis();
 	 double totalTime = (endTime - startTime); 
-	 folioVoidLogger.info(totalTime + " in Millsecs");
+	// folioVoidLogger.info(totalTime + " in Millsecs");
   	 double TotalTimeinsecs = totalTime/1000;
   	 double ActualTime = TotalTimeinsecs - waittime - 3;
-  	folioVoidLogger.info(ActualTime + " in secs");
+  //	folioVoidLogger.info(ActualTime + " in secs");
 	if(getToastermessage_ReservationSucess.endsWith("has been saved successfully"));
 	
 	}
@@ -277,8 +278,92 @@ public void saveReservation(WebDriver driver) throws InterruptedException {
 	}
 	Wait.wait10Second();
 }
- 
 
+
+//Add Line Items in Folio
+/*public void addLineItem(WebDriver driver, String Amount) throws InterruptedException {
+	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
+	FolioLineItems.click_Add_Button.click();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.selectCategory);
+	new Select(FolioLineItems.selectCategory).selectByIndex(9);
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.enterAmount);
+	FolioLineItems.enterAmount.sendKeys(Amount);
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickCommitButton);
+	FolioLineItems.clickCommitButton.click();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickSaveButton);
+	FolioLineItems.clickSaveButton.click();
+	Wait.wait10Second();
+	
+}*/
+
+
+/*//Folio Line Items Post and Rollback 
+public void adjustLineItem(WebDriver driver) throws InterruptedException{
+	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
+	//boolean lineItemStatusPending=FolioLineItems.lineItem1.isDisplayed();
+	//boolean checkbox=FolioLineItems.verifyCheckbox.isEnabled();
+	//boolean lineItemStatusPostFutureDate=FolioLineItems.clickOkForPopup.isDisplayed();
+	Wait.wait10Second();
+	if(FolioLineItems.lineItemPendingStatus.isDisplayed()==true)
+	{
+		if(FolioLineItems.verifyCheckboxPendingStatus.isEnabled())
+		{
+		FolioLineItems.lineItemPendingStatus.click();
+		Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickSaveButton);
+		FolioLineItems.clickSaveButton.click();
+		Wait.wait10Second();
+		folioVoidLogger.info(" Posted the Line Item successfully ");
+		Wait.wait15Second();	
+		}
+			FolioLineItems.clickSaveButton.click();
+			Wait.wait10Second();
+			FolioLineItems.clickOnDescription.click();
+			Wait.wait10Second();
+			FolioLineItems.clickRollBackButtonInPopUp.click();
+			Wait.wait10Second();
+			FolioLineItems.clickContinueButton.click();
+			Wait.wait10Second();
+			FolioLineItems.clickSaveButton.click();
+			Wait.wait10Second();
+		
+	}
+	//boolean lineItemStatusPosted=FolioLineItems.lineItem2.isDisplayed();
+	
+//	try{
+		
+		
+		if(FolioLineItems.lineItemPostStatus.isDisplayed()==true)
+		{
+			if(FolioLineItems.verifyCheckboxPostStatus.isEnabled()!=true){
+				FolioLineItems.clickOnDescription.click();
+				Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickRollBackButtonInPopUp);
+				FolioLineItems.clickRollBackButtonInPopUp.click();
+				Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickContinueButton);
+				FolioLineItems.clickContinueButton.click();
+				Wait.wait10Second();
+				folioVoidLogger.info(" Posted Line Item Rolled back successfully ");
+				Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickSaveButton);
+				FolioLineItems.clickSaveButton.click();
+				Wait.wait10Second();
+			}
+			else {
+				Assert.fail("Failed to Disable the checkbox after posting the line Item");
+				
+			}
+		}
+		
+	
+	
+	
+	catch(Exception e){
+		
+		addOrPostLineItemLogger.info(e.getMessage());
+		
+	}
+*/
+
+ 
+//Add and Void Folio Line Items 
 public void folioLineItemsVoid(WebDriver driver, String Category, String Amount, String Notes) throws InterruptedException{
 	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
 	FolioLineItems.click_Folio_tab.click();
@@ -293,13 +378,13 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 	}
 	
 	FolioLineItems.click_Add_Button.click();
-	Thread.sleep(3000);
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.selectCategory);
 	new Select(FolioLineItems.selectCategory).selectByVisibleText(Category);
-	Thread.sleep(5000);
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.enterAmount);
 	FolioLineItems.enterAmount.sendKeys(Amount);
-	Wait.wait5Second();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickCommitButton);
 	FolioLineItems.clickCommitButton.click();
-	Wait.wait5Second();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.getBalanceFolioLineItems);
 	String getBalance= FolioLineItems.getBalanceFolioLineItems.getText();
 	folioVoidLogger.info(" Balance of the Folio Line Items " +getBalance);
 	FolioLineItems.selectAllLineItems.click();
@@ -317,7 +402,7 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 		
 	}
 	FolioLineItems.enterNotes.sendKeys(Notes);
-	Wait.wait5Second();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickVoidButtonInNotes);
 	FolioLineItems.clickVoidButtonInNotes.click();
 	Wait.wait10Second();
 	
@@ -334,10 +419,20 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 		JavascriptExecutor js1 = (JavascriptExecutor) driver;
         js1.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Wait.wait10Second();
-        folioVoidLogger.info(" Balance of the Folio Line Items is " );
-	String getBalance1= FolioLineItems.getBalanceFolioLineItems.getText();
-	folioVoidLogger.info(" Balance of the Folio Line Items after void " +getBalance1);
-	Wait.wait5Second();
+        String getBalance1= FolioLineItems.getBalanceFolioLineItems.getText();
+        folioVoidLogger.info(" Balance of the Folio Line Items after void " +getBalance1);
+        Wait.explicit_wait_visibilityof_webelement(FolioLineItems.folioSaveButton);
+        FolioLineItems.folioSaveButton.click();
+        Wait.wait10Second();
+}
+
+
+
+
+@Override
+public void adjustLineItem(WebDriver driver, String folioitemDescription, String folioLineAmount, String folioNotes)
+		throws InterruptedException {
+	// TODO Auto-generated method stub
 	
 }
 

@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.innroad.inncenter.interfaces.INavigation;
@@ -42,9 +43,9 @@ public class ReservationFolio implements IReservationFolio {
 			String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue,
 			String traceData) throws InterruptedException {
 		Elements_Reservation ReservationFolio = new Elements_Reservation(driver);
-
-		float processed_amount=0;
-		
+		Actions action = new Actions(driver);
+		float processed_amount = 0;
+		Elements_Reservation ReservationPage = new Elements_Reservation(driver);
 		Wait.explicit_wait_xpath(OR.Verify_Payment_Details_poup);
 		Wait.wait10Second();
 
@@ -70,8 +71,12 @@ public class ReservationFolio implements IReservationFolio {
 					GetPaymentMethod = ReservationFolio.Get_Payment_Method.getText();
 					resFolioLogger.info("PaymentMethod: " + " " + GetPaymentMethod);
 				} catch (Exception e) {
-					TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-							"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+					TestCore.test.log(LogStatus.FAIL,
+							"Payment verification failed \n" + e.getMessage()
+									+ "\n\n <br> Attaching screenshot below : \n"
+									+ TestCore.test.addScreenCapture(
+											Utility.captureScreenShot(TestCore.test.getTest().getName()
+													+ "_Payment_Verification" + Utility.getTimeStamp(), driver)));
 					resFolioLogger.info("Payment verification failed \n");
 					e.printStackTrace();
 				}
@@ -82,51 +87,74 @@ public class ReservationFolio implements IReservationFolio {
 						resFolioLogger.info("Paymnet is Failed");
 					}
 				} catch (Exception e) {
-					TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-							"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+					TestCore.test.log(LogStatus.FAIL,
+							"Payment verification failed \n" + e.getMessage()
+									+ "\n\n <br> Attaching screenshot below : \n"
+									+ TestCore.test.addScreenCapture(
+											Utility.captureScreenShot(TestCore.test.getTest().getName()
+													+ "_Payment_Verification" + Utility.getTimeStamp(), driver)));
 					resFolioLogger.info("Payment verification failed \n");
 					e.printStackTrace();
 				}
-				
+
 				Wait.wait1Second();
 				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
 				Wait.wait2Second();
-				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
-				resFolioLogger.info(Processed_Amount + " -- "+Processed_Amount);
-				String RemoveCurreny []=Processed_Amount.split(" ");
-				processed_amount=Float.parseFloat(RemoveCurreny[1]);
+				String Processed_Amount = ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
+				resFolioLogger.info(Processed_Amount + " -- " + Processed_Amount);
+				String RemoveCurreny[] = Processed_Amount.split(" ");
+				processed_amount = Float.parseFloat(RemoveCurreny[1]);
 				resFolioLogger.info(processed_amount);
-				
-				
+
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button of Payment popup");
-				
-				if(Reservation.checkinpolicy==true)
-				{
-				resFolioLogger.info("This Reservation has Checkin policy ");
-				Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Click_on_confirm);
-				ReservationFolio.Click_on_confirm.click();
-				resFolioLogger.info("Clicked on Confirm button of Guest Registration Form in ReservationFolio.java");
-				Wait.wait3Second();
+
+				if (Reservation.checkinpolicy == true) {
+					resFolioLogger.info("This Reservation has Checkin policy ");
+					Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Click_on_confirm);
+					ReservationFolio.Click_on_confirm.click();
+					resFolioLogger
+							.info("Clicked on Confirm button of Guest Registration Form in ReservationFolio.java");
+					Wait.wait3Second();
+				}
+
+				try {
+					if (Reservation.flag == true) {
+						Wait.explicit_wait_10sec(ReservationPage.Policy_Comparision_PopUp);
+						if (ReservationPage.Policy_Comparision_PopUp.isDisplayed()) {
+							Wait.explicit_wait_elementToBeClickable(ReservationPage.Select_Continue_with_OriginalPolicy);
+							action.moveToElement(ReservationPage.Select_Continue_with_OriginalPolicy).click().build().perform();
+							Wait.explicit_wait_elementToBeClickable(
+									ReservationPage.Policy_Comparision_PopUp_Continue_Btn);
+							action.moveToElement(ReservationPage.Policy_Comparision_PopUp_Continue_Btn).click().build().perform();
+							Wait.wait2Second();
+						}
+					}
+				} catch (Exception e) {
+					resFolioLogger.info("No conflicts with Policies");
+
 				}
 				Wait.wait3Second();
 				Wait.explicit_wait_xpath(OR.Verify_Line_item);
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
-//				resFolioLogger.info("Balance: " + " " + GetBalance);
+				// resFolioLogger.info("Balance: " + " " + GetBalance);
 				RemoveCurreny = GetBalance.split(" ");
 				resFolioLogger.info("Pending balance after payment: " + " " + RemoveCurreny[1]);
-				
+
 				if (ChangeAmount.equalsIgnoreCase("NO")) {
 					if (RemoveCurreny[1].equals("0.00"))
 						;
 				} else {
 					resFolioLogger.info("Selected Changed Value");
 				}
-				
-							
+
 			} catch (Exception e) {
-				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using CASH \n"  + e.getMessage() + 
-						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_ByCash" + Utility.getTimeStamp(), driver)));
+				TestCore.test.log(LogStatus.FAIL,
+						"Exception occured while paying using CASH \n" + e.getMessage()
+								+ "\n\n <br> Attaching screenshot below : \n"
+								+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+										TestCore.test.getTest().getName() + "_Payment_ByCash" + Utility.getTimeStamp(),
+										driver)));
 				resFolioLogger.info("Exception occured while paying using CASH \n");
 				e.printStackTrace();
 			}
@@ -171,18 +199,16 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Paymnet is Failed");
 				}
-				
-				
+
 				Wait.wait1Second();
 				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
 				Wait.wait2Second();
-				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
-				resFolioLogger.info("Processed_Amount "+Processed_Amount + " -- "+Processed_Amount);
-				String RemoveCurreny []=Processed_Amount.split(" ");
-				processed_amount=Float.parseFloat(RemoveCurreny[1]);
-				resFolioLogger.info("Processed_Amount is "+processed_amount);
-				
-				
+				String Processed_Amount = ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
+				resFolioLogger.info("Processed_Amount " + Processed_Amount + " -- " + Processed_Amount);
+				String RemoveCurreny[] = Processed_Amount.split(" ");
+				processed_amount = Float.parseFloat(RemoveCurreny[1]);
+				resFolioLogger.info("Processed_Amount is " + processed_amount);
+
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button");
 				Wait.wait3Second();
@@ -194,14 +220,32 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Payment is Failed");
 				}
-				if(Reservation.checkinpolicy==true)
-				{
-				resFolioLogger.info("This Reservation has Checkin policy ");
-				Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Click_on_confirm);
-				ReservationFolio.Click_on_confirm.click();
-				resFolioLogger.info("Clicked on Confirm button of Guest Registration Form in ReservationFolio.java");
-				Wait.wait3Second();
+				if (Reservation.checkinpolicy == true) {
+					resFolioLogger.info("This Reservation has Checkin policy ");
+					Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Click_on_confirm);
+					ReservationFolio.Click_on_confirm.click();
+					resFolioLogger
+							.info("Clicked on Confirm button of Guest Registration Form in ReservationFolio.java");
+					Wait.wait3Second();
 				}
+				try {
+					if (Reservation.flag == true) {
+						Wait.explicit_wait_10sec(ReservationPage.Policy_Comparision_PopUp);
+						if (ReservationPage.Policy_Comparision_PopUp.isDisplayed()) {
+							Wait.explicit_wait_elementToBeClickable(ReservationPage.Select_Continue_with_OriginalPolicy);
+							action.moveToElement(ReservationPage.Select_Continue_with_OriginalPolicy).click().build()
+									.perform();
+							Wait.explicit_wait_elementToBeClickable(ReservationPage.Policy_Comparision_PopUp_Continue_Btn);
+							action.moveToElement(ReservationPage.Policy_Comparision_PopUp_Continue_Btn).click().build()
+									.perform();
+							Wait.wait2Second();
+						}
+					}
+				} catch (Exception e) {
+					resFolioLogger.info("No conflicts with Policies");
+
+				}
+				Wait.explicit_wait_visibilityof_webelement(ReservationFolio.Verify_Balance_Zero);
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
 				resFolioLogger.info("Balance after payment: " + " " + GetBalance);
 				RemoveCurreny = GetBalance.split(" ");
@@ -212,12 +256,14 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Selected Changed Value");
 				}
-				
-				
-				
+
 			} catch (Exception e) {
-				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using MC \n"  + e.getMessage() + 
-						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_ByMC" + Utility.getTimeStamp(), driver)));
+				TestCore.test.log(LogStatus.FAIL,
+						"Exception occured while paying using MC \n" + e.getMessage()
+								+ "\n\n <br> Attaching screenshot below : \n"
+								+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+										TestCore.test.getTest().getName() + "_Payment_ByMC" + Utility.getTimeStamp(),
+										driver)));
 				resFolioLogger.info("Exception occured while paying using MC \n");
 				e.printStackTrace();
 			}
@@ -250,18 +296,16 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Paymnet is failed");
 				}
-				
+
 				Wait.wait1Second();
 				Utility.ScrollToElement(ReservationFolio.Processed_Amount_In_Paymentdetails_Popup);
 				Wait.wait2Second();
-				String Processed_Amount=ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
-				resFolioLogger.info(Processed_Amount + " -- "+Processed_Amount);
-				String RemoveCurreny []=Processed_Amount.split(" ");
-				processed_amount=Float.parseFloat(RemoveCurreny[1]);
+				String Processed_Amount = ReservationFolio.Processed_Amount_In_Paymentdetails_Popup.getText();
+				resFolioLogger.info(Processed_Amount + " -- " + Processed_Amount);
+				String RemoveCurreny[] = Processed_Amount.split(" ");
+				processed_amount = Float.parseFloat(RemoveCurreny[1]);
 				resFolioLogger.info(processed_amount);
-				
-				
-				
+
 				ReservationFolio.Click_Continue.click();
 				resFolioLogger.info("Clicked on continue button");
 				Wait.wait3Second();
@@ -273,17 +317,15 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Paymnet is failed");
 				}
-				
+
 				Wait.wait5Second();
 				Wait.waitUntilPresenceOfElementLocated(OR.Click_Close);
 				driver.findElement(By.xpath(OR.Click_Close)).click();
 				resFolioLogger.info("Clicked on CLOSE button of Guest Statement Report");
-				
-				
-				
+
 				Wait.wait3Second();
 				String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
-//				resFolioLogger.info("Balance: " + " " + GetBalance);
+				// resFolioLogger.info("Balance: " + " " + GetBalance);
 				RemoveCurreny = GetBalance.split(" ");
 				resFolioLogger.info("Balance: " + RemoveCurreny[1]);
 				if (ChangeAmount.equalsIgnoreCase("NO")) {
@@ -292,16 +334,18 @@ public class ReservationFolio implements IReservationFolio {
 				} else {
 					resFolioLogger.info("Selected Changed Value");
 				}
-				
-				
-				
+
 			} catch (Exception e) {
-				TestCore.test.log(LogStatus.FAIL, "Exception occured while paying using swipe \n"  + e.getMessage() + 
-						"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_BySwipe" + Utility.getTimeStamp(), driver)));
+				TestCore.test.log(LogStatus.FAIL,
+						"Exception occured while paying using swipe \n" + e.getMessage()
+								+ "\n\n <br> Attaching screenshot below : \n"
+								+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+										TestCore.test.getTest().getName() + "_Payment_BySwipe" + Utility.getTimeStamp(),
+										driver)));
 				resFolioLogger.error("Exception occured while paying using swipe \n");
 				e.printStackTrace();
 			}
-			
+
 		}
 		return processed_amount;
 	}
@@ -330,8 +374,11 @@ public class ReservationFolio implements IReservationFolio {
 			GetPaymentMethod = ReservationFolio.Get_Payment_Method.getText();
 			resFolioLogger.info("PaymentMethod: " + " " + GetPaymentMethod);
 		} catch (Exception e) {
-			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n" + e.getMessage()
+					+ "\n\n <br> Attaching screenshot below : \n"
+					+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+							TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(),
+							driver)));
 			resFolioLogger.info("Payment verification failed \n");
 			e.printStackTrace();
 		}
@@ -342,8 +389,11 @@ public class ReservationFolio implements IReservationFolio {
 				resFolioLogger.info("Paymnet Failed");
 			}
 		} catch (Exception e) {
-			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n" + e.getMessage()
+					+ "\n\n <br> Attaching screenshot below : \n"
+					+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+							TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(),
+							driver)));
 			resFolioLogger.info("Payment verification failed \n");
 			e.printStackTrace();
 		}
@@ -352,7 +402,7 @@ public class ReservationFolio implements IReservationFolio {
 		try {
 			Wait.explicit_wait_xpath(OR.Verify_CP_Lineitem);
 			String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
-//			resFolioLogger.info(GetBalance + " " + GetBalance);
+			// resFolioLogger.info(GetBalance + " " + GetBalance);
 			String RemoveCurreny[] = GetBalance.split(" ");
 			resFolioLogger.info("Balance after payment: " + RemoveCurreny[1]);
 			if (ChangeAmount.equalsIgnoreCase("NO")) {
@@ -402,8 +452,11 @@ public class ReservationFolio implements IReservationFolio {
 			GetPaymentMethod = ReservationFolio.Get_Payment_Method.getText();
 			resFolioLogger.info("PaymentMethod: " + " " + GetPaymentMethod);
 		} catch (Exception e) {
-			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n" + e.getMessage()
+					+ "\n\n <br> Attaching screenshot below : \n"
+					+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+							TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(),
+							driver)));
 			resFolioLogger.info("Payment verification failed \n");
 			e.printStackTrace();
 		}
@@ -414,8 +467,11 @@ public class ReservationFolio implements IReservationFolio {
 				resFolioLogger.info("Paymnet Failed");
 			}
 		} catch (Exception e) {
-			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n" + e.getMessage()
+					+ "\n\n <br> Attaching screenshot below : \n"
+					+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+							TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(),
+							driver)));
 			resFolioLogger.info("Payment verification failed \n");
 			e.printStackTrace();
 		}
@@ -424,7 +480,7 @@ public class ReservationFolio implements IReservationFolio {
 		try {
 			Wait.explicit_wait_xpath(OR.Verify_CP_Lineitem);
 			String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
-//			resFolioLogger.info("Balance: " + " " + GetBalance);
+			// resFolioLogger.info("Balance: " + " " + GetBalance);
 			String RemoveCurreny[] = GetBalance.split(" ");
 			resFolioLogger.info(RemoveCurreny[1]);
 			if (ChangeAmount.equalsIgnoreCase("NO")) {
@@ -485,8 +541,11 @@ public class ReservationFolio implements IReservationFolio {
 			GetPaymentMethod = ReservationFolio.Get_Payment_Method.getText();
 			resFolioLogger.info("PaymentMethod: " + GetPaymentMethod);
 		} catch (Exception e) {
-			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n" + e.getMessage()
+					+ "\n\n <br> Attaching screenshot below : \n"
+					+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+							TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(),
+							driver)));
 			resFolioLogger.info("Payment verification failed \n");
 			e.printStackTrace();
 		}
@@ -497,8 +556,11 @@ public class ReservationFolio implements IReservationFolio {
 				resFolioLogger.info("Paymnet Failed");
 			}
 		} catch (Exception e) {
-			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n"  + e.getMessage() + 
-					"\n\n <br> Attaching screenshot below : \n" + TestCore.test.addScreenCapture(Utility.captureScreenShot(TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(), driver)));
+			TestCore.test.log(LogStatus.FAIL, "Payment verification failed \n" + e.getMessage()
+					+ "\n\n <br> Attaching screenshot below : \n"
+					+ TestCore.test.addScreenCapture(Utility.captureScreenShot(
+							TestCore.test.getTest().getName() + "_Payment_Verification" + Utility.getTimeStamp(),
+							driver)));
 			resFolioLogger.info("Payment verification failed \n");
 			e.printStackTrace();
 		}
@@ -507,7 +569,7 @@ public class ReservationFolio implements IReservationFolio {
 		try {
 			Wait.explicit_wait_xpath(OR.Verify_CP_Lineitem);
 			String GetBalance = ReservationFolio.Verify_Balance_Zero.getText();
-//			resFolioLogger.info(GetBalance + " " + GetBalance);
+			// resFolioLogger.info(GetBalance + " " + GetBalance);
 			String RemoveCurreny[] = GetBalance.split(" ");
 			resFolioLogger.info("Balance: " + RemoveCurreny[1]);
 			if (ChangeAmount.equalsIgnoreCase("NO")) {

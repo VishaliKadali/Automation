@@ -24,6 +24,13 @@ WebDriver driver;
 	@FindBy(id=OR.clientTextBox)
 	public WebElement clientTextBox;
 	
+	@FindBy(xpath=OR.Settings_Icon)
+	public WebElement Settings_Icon;
 	
+	@FindBy(xpath=OR.Pencil_Icon)
+	public WebElement Pencil_Icon;
+	
+	@FindBy(xpath=OR.Enter_client_TextBox)
+	public WebElement Enter_client_TextBox;
 
 }

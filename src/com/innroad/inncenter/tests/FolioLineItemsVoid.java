@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.innroad.inncenter.pageobjects.AddOrPostLineItem;
 import com.innroad.inncenter.pageobjects.FolioLineItems;
 import com.innroad.inncenter.pageobjects.Login;
 import com.innroad.inncenter.pageobjects.Reservation;
@@ -34,12 +35,12 @@ public class FolioLineItemsVoid extends TestCore {
 			String saluation, String FirstName, String LastName, String Address, String Line1, String Line2, String Line3, String City, String Country, String State,
 			String Postalcode, String Phonenumber, String alternativenumber, String Email, String Account, String IsTaxExempt,String TaxEmptext, String PaymentMethod, String AccountNumber,
 			String ExpiryDate, String BillingNotes,String PropertyName, String Nights, String Adults, String Children, String RatepromoCode,String CheckorUncheckAssign, String RoomClassName, String RoomNumber, String 
-			Attachment, String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData, String Category, String Amount, String Notes) throws InterruptedException, IOException
+			Attachment, String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData, String Category, String Amount, String Notes, String folioitemDescription, String folioLineAmount, String folioNotes) throws InterruptedException, IOException
 		
  
  		{
 	 	 test = extent.startTest("FolioLineItemsVoid", "Folio Line Items Void")
-	 			 				 .assignCategory("FolioLineItemsVoid")
+	 			 				 .assignCategory("FolioLineItems")
 	 			 				 .assignCategory("Regression");
 	 	 
 	 	String testName=test.getTest().getName().toUpperCase();
@@ -78,7 +79,7 @@ public class FolioLineItemsVoid extends TestCore {
 	     
 	     try
 	     {
-		    	 FolioLineItems res = new  FolioLineItems();
+		 FolioLineItems res = new  FolioLineItems();
 	 	 res.clickNewReservationButton(driver);
 	 	 test.log(LogStatus.PASS, "Clicked new Reservation button");
 	 	 app_logs.info(" Clicked on New Reservation button ");
@@ -92,7 +93,7 @@ public class FolioLineItemsVoid extends TestCore {
 	  //*********************Enter the Reservation details and save the Reservation******************//	
 	     try
 	     {
-	    	 FolioLineItems res = new  FolioLineItems();
+	    FolioLineItems res = new  FolioLineItems();
 	    
 	 	 res.marketingInfo(driver, MarketSegment, Referral, Travel_Agent, ExtReservation);
 	 	app_logs.info("Entered Marketing Information");
@@ -116,22 +117,40 @@ public class FolioLineItemsVoid extends TestCore {
 	     }
 	     
 	     
-	   //*********************Add the Folio Line Items and Void the Line Items******************//	    
-	    try
-	    { 
-	    	FolioLineItems res=new  FolioLineItems();
-	    	res.folioLineItemsVoid(driver, Category, Amount, Notes);
-	    	test.log(LogStatus.PASS, " Folio Line Items Void");
-	    	app_logs.info("Folio Line Items void is successful");
-	    	
-	    }
-	    
-	    catch (Exception e) {
-	         Utility.updateReport(e, "Failed to Void Folio Line Items", testName, "FolioLineItems_Void");
+	    //********************************Adjust Folio line items**********************************//
+	     try
+		 {
+	    	AddOrPostLineItem FolioLineItems= new AddOrPostLineItem();
+	    	//FolioLineItems.addLineItem(driver, Category, Amount);	
+	    	FolioLineItems.adjustLineItem(driver, folioitemDescription, folioLineAmount,folioNotes);
+	    	test.log(LogStatus.PASS, " Adjusted the Line Items ");
+	    	app_logs.info(" Adjusted the Line Items ");
+		 }
+		
+		catch (Exception e) {
+	         Utility.updateReport(e, "Failed to Adjust Line Item", testName, "AdjustFolioLineItem");
 	     } catch (Error e) {
-	         Utility.updateReport(e, "Failed to Void Folio Line Items", testName, "FolioLineItems_Void");
+	         Utility.updateReport(e, "Failed to Adjust Line Item", testName, "AdjustFolioLineItem");
 	     }
-	   
+	    
+	    
+		   //*********************Add the Folio Line Items and Void the Line Items******************//	    
+		    try
+		    { 
+		    	FolioLineItems res=new  FolioLineItems();
+		    	res.folioLineItemsVoid(driver, Category, Amount, Notes);
+		    	test.log(LogStatus.PASS, " Folio Line Items Void");
+		    	app_logs.info("Folio Line Items void is successful");
+		    	
+		    }
+		    
+		    catch (Exception e) {
+		         Utility.updateReport(e, "Failed to Void Folio Line Items", testName, "FolioLineItems_Void");
+		     } catch (Error e) {
+		         Utility.updateReport(e, "Failed to Void Folio Line Items", testName, "FolioLineItems_Void");
+		     }
+		   
+	    
 	     extent.endTest(test);
  	
  		}

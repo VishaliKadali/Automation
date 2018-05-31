@@ -27,7 +27,7 @@ public class CreateGuestHistoryReservation extends TestCore {
 		{
 		
 		test = extent.startTest("createGuestHistoryReservation", "Guest History Reservation")
-				 				 .assignCategory("createGuestHistoryReservation")
+				 				 .assignCategory("GuestHistoryReservation")
 				 				 .assignCategory("Regression");
 		 
 		String testName=test.getTest().getName().toUpperCase();

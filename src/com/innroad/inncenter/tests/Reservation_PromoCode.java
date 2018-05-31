@@ -38,7 +38,7 @@ public class Reservation_PromoCode extends TestCore {
 		{
 			
 		 test = extent.startTest("Reservation_PromoCode", "Create Reservation with Promocode")
-				 				 .assignCategory("ReservationPromoCode")
+				 				 .assignCategory("Promocode")
 				 				 .assignCategory("Regression");
 		 
 		 String testName=test.getTest().getName().toUpperCase();

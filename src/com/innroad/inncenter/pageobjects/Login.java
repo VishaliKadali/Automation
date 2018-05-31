@@ -7,6 +7,7 @@ import org.testng.Assert;
 import com.innroad.inncenter.interfaces.ILogin;
 import com.innroad.inncenter.properties.OR;
 import com.innroad.inncenter.testcore.TestCore;
+import com.innroad.inncenter.utils.Utility;
 import com.innroad.inncenter.waits.Wait;
 import com.innroad.inncenter.webelements.*;
 
@@ -32,6 +33,8 @@ public class Login implements ILogin {
 //		Assert.assertEquals("x", "y");
 		wl.Login.click();
 		loginLogger.info("Clicked on login button");
+		
+		Wait.WaitForElement(driver, OR.New_Reservation_Button);
 		Wait.waitUntilPresenceOfElementLocated(OR.New_Reservation_Button);
 //		Wait.explicit_wait_absenceofelement("//div[@class='dvLoading']");
 //		Wait.waitUntilPresenceOfElementLocated("//small[.='Items Per Page']");

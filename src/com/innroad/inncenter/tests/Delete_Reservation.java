@@ -36,7 +36,7 @@ public class Delete_Reservation extends TestCore {
 			String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData
 
 	) throws InterruptedException, IOException {
-		test = extent.startTest("delete_Reservation", "Deleting Reservation").assignCategory("Reservations")
+		test = extent.startTest("delete_Reservation", "Deleting Reservation").assignCategory("Delete")
 				.assignCategory("Regression");
 
 		String testName = test.getTest().getName().toUpperCase();

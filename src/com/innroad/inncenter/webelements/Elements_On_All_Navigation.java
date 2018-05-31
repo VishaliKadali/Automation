@@ -212,7 +212,7 @@ public class Elements_On_All_Navigation {
 		@FindBy(xpath=OR.Task_Management)
 		public WebElement Task_Management;
 		
-		@FindBy(id=OR.Admin)
+		@FindBy(xpath=OR.Admin)
 		public WebElement Admin;
 		
 

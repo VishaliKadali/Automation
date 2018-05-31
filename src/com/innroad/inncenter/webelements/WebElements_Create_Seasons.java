@@ -45,6 +45,14 @@ public class WebElements_Create_Seasons {
 	@FindBy(xpath=OR.NG_Season_Save)
 	public WebElement NG_Season_Save;
 	
+	@FindBy(xpath=OR.NG_Season_Search)
+	public WebElement NG_Season_Search;
+	
+	@FindBy(xpath=OR.First_Element_In_Season_SearchResults)
+	public WebElement First_Element_In_Season_SearchResults;
+	
+	@FindBy(xpath=OR.SeasonsPage_Reset_Btn)
+	public WebElement SeasonsPage_Reset_Btn;
 	
 	@FindBy(id=OR.EG_Season_Name)
 	public WebElement EG_Season_Name;
@@ -64,6 +72,7 @@ public class WebElements_Create_Seasons {
 	@FindBy(id=OR.EG_Season_Save)
 	public WebElement EG_Season_Save;
 	
+	@FindBy(xpath=OR.NG_New_Season_Btn)
+	public WebElement NG_New_Season_Btn;
 	
-
 }

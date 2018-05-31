@@ -29,7 +29,7 @@ public class PackageRate extends TestCore{
 		{
 		
 		 test = extent.startTest("createPackageRate", " create Package Rate")
-				 				 .assignCategory("createPackageRate")
+				 				 .assignCategory("PackageRate")
 				 				 .assignCategory("Regression");
 		 
 		 String testName=test.getTest().getName().toUpperCase();

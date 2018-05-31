@@ -41,7 +41,7 @@ public class CheckoutWithZeroBalance extends TestCore {
 			throws InterruptedException, IOException {
 
 		test = extent.startTest("CheckOutWithZeroBalance", "CheckOutWithZeroBalance")
-					 .assignCategory("Reservations")
+					 .assignCategory("Check Out")
 					 .assignCategory("Regression");
 		
 		String testName = test.getTest().getName().toUpperCase();
@@ -94,6 +94,7 @@ public class CheckoutWithZeroBalance extends TestCore {
 					RoomClassName, RoomNumber);
 			res.saveReservation(driver);
 			res.GetReservationnumber(driver);
+			res.Close_Tab(driver);
 			test.log(LogStatus.PASS, "Entered required fields and saved the reservation");
 			app_logs.info("Entered required fields and saved the reservation");
 		} catch (Exception e) {

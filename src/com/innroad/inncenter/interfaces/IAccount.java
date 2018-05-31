@@ -2,9 +2,11 @@ package com.innroad.inncenter.interfaces;
 
 import org.openqa.selenium.WebDriver;
 
+import com.relevantcodes.extentreports.ExtentTest;
+
 public interface IAccount {
 	
-	void NewAccountbutton(WebDriver driver, String Accounttype);
+	void NewAccountbutton(WebDriver driver ,String Accounttype);
 
 	void AccountDetails(WebDriver driver,String AccountType, String AccountName);
 			
@@ -15,6 +17,8 @@ public interface IAccount {
 	void Billinginfo(WebDriver driver)throws InterruptedException;
 	
 	void Save(WebDriver driver);
+	
+	void SaveandClose(WebDriver driver) throws InterruptedException;
 	
 	void addLineitem(WebDriver driver,String propertyName, String SelectCategory, String Amount)throws InterruptedException;
 	

@@ -42,8 +42,6 @@ public class RetainPaymentInfoAfterEdit extends TestCore {
 					 .assignCategory("Reservations")
 					 .assignCategory("Regression");
 
-		System.out.println("Executing: " + test.getTest().getName() + " test.");
-
 		String testName = test.getTest().getName().toUpperCase();
 
 		app_logs.info("##################################################################################");
