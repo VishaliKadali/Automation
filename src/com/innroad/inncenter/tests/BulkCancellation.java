@@ -28,55 +28,62 @@ public class BulkCancellation extends TestCore {
 			}
 
 	 @Test(dataProvider="getData")
-		public void bulkCancellationOfReservation(String url,String ClientCode, String Username, String Password, String PropertyName) throws InterruptedException
+		public void bulkCancellationOfReservation(String url,String ClientCode, String Username, String Password) throws InterruptedException
 		{
 		
-		 ExtentTest test = extent.startTest("AddPostLineItem", "addOrPostLineItem")
-				 				 .assignCategory("addOrPostLineItem")
-				 				 .assignCategory("Smoke");
+		 test = extent.startTest("BulkCancellation", "Bulk Cancellation of Reservation")
+				 .assignCategory("BulkCancellation")
+				 .assignCategory("Regression");
+
+		 String testName=test.getTest().getName().toUpperCase();
+
+		 app_logs.info("##################################################################################");
+		 app_logs.info("EXECUTING: " + testName + " TEST.");
+		 app_logs.info("##################################################################################");
 		 
-		 System.out.println("Executing: " + test.getTest().getName()+ " test.");
+		 
+
+		 Login 				LOGIN 			= new Login();
+		 ReservationSearch 	bulkCancel		= new ReservationSearch();
+		 
+		 
+		 
+		 
+		 
+		 
 		 
 		 //**************** Login*******************//
-		 
-		 try{
-	    	 Login LOGIN = new Login();
-	    	 LOGIN.login(driver,url, ClientCode, Username, Password);
-	    	 test.log(LogStatus.PASS, "System successfully logged in the site");
-		 }
-		 catch(Exception e)
-		 {
-			 test.log(LogStatus.FAIL, "System fail to login");
-		 }
-	    
-		//*******************Select Property ****************//
+
 		 try
 		 {
-	    	Reservation res= new Reservation();
-	    	res.IPropertySelector(driver,PropertyName);
-	    	test.log(LogStatus.PASS, "System successfully changed property");
-		 }
-		 catch(Exception e)
+			 
+			 LOGIN.login(driver, url, ClientCode, Username, Password);
+			 test.log(LogStatus.PASS, "Logged into the application");
+			 app_logs.info("Logged into the application");
+		 } 
+		 	catch (Exception e) 
 		 {
-			 test.log(LogStatus.FAIL, "System fail to select Property \n" +e.getStackTrace());
+		 	Utility.updateReport(e, "Failed to Login into the application", testName, "Login");
 		 }
 		 
-		//*********************Click All Arrivals from Queries tab**********************//
+
+		 
+		 //*********************Bulk Cancellation of Reservation**********************//
 		 try
 		 {
-		ReservationSearch bulkCancel= new ReservationSearch();
-//		bulkCancel.preDefinedQueriesTab(driver);
-//		bulkCancel.bulkCancelOfReservation(driver);	
-	    test.log(LogStatus.PASS, "System Succesfully Navigated to reservation predefined queries tab");
-		 }
-	 	catch(Exception e)
-	 	{
-	 		test.log(LogStatus.FAIL, "System fail to Navigated to reservation predefined queries tab \n" +e.getStackTrace());
-	 	} 
-		extent.endTest(test); 	
+		
+		bulkCancel.bulkCancellation(driver);
+		test.log(LogStatus.PASS, "Bulk Cancellation Successful");
+		app_logs.info("Bulk Cancellation");
 		}
-	 
-	 	
+		catch (Exception e) {
+	     Utility.updateReport(e, "Fail to Cancel the Reservation", testName, "BulkCancellation");
+		} catch (Error e) {
+	     Utility.updateReport(e, "Fail to Cancel the Reservation", testName, "BulkCancellation");
+		}
+		 extent.endTest(test);
+	 	}
+		
 	 
 	 
 	 @DataProvider
@@ -84,6 +91,6 @@ public class BulkCancellation extends TestCore {
 			
 			//return test data from the sheetname provided
 			
-			return Utility.getData("NavigationFlow",excel);
+			return Utility.getData("BulkCancellation",excel);
 		}
 }

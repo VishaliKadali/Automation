@@ -512,8 +512,32 @@ public class OR {
 	public static final String Check_First_SearchResult = "(//td//input[contains(@data-bind,'DeleteReservation')])[1]";
 
 	// Bulk Cancellation
-	public static final String selectAllArrivals = "//li[@class='all-arrivals active predefinedQueryOption']";
-	public static final String inHouseReservations = "//li[@class='in-house predefinedQueryOption active']";
+	public static final String selectAllArrivals="//li[@class='all-arrivals active predefinedQueryOption']";
+	//public static final String inHouseReservations="//li[@class='in-house active predefinedQueryOption']";
+	public static final String inHouseReservations="//li[@class='in-house predefinedQueryOption active']";
+	public static final String unassignedReservations="//li[@class='unassigned active predefinedQueryOption']";
+	public static final String folioCancelReservation="//a[contains(@title,'Cancel')]";
+	public static final String payment_AddButton="(//button[.='Add'])[2]";
+	public static final String payment_ContinueButton="(//button[.='Continue'])[9]";
+	public static final String enterResNumber="//input[contains(@data-bind,'value: AdvReservationNumber')]";
+	public static final String resNumber="//span[contains(@data-bind,' text: typeof ConfirmationNumberString')]";
+	public static final String selectReservation="(//input[contains(@data-bind,'enable: CanUserAccessThisResProperty')])[1]";
+	public static final String closeAdvancedSearch="//button[contains(@data-bind,'click: $parent.GoBasicLink')]";
+	public static final String advanced="//button[.='Advanced']";
+	public static final String advancedSearchStatus="//button[contains(@title,'Status')]";
+	public static final String advancedSearchReservedStatus="//button[contains(@title,'Reserved')]";
+	public static final String reservedStatus="//button[@title='Status']//following-sibling::div//span[text()='Reserved']";
+	public static final String reservedTocancelledStatus="//button[@title='Reserved']//following-sibling::div//span[text()='Cancelled']";
+	public static final String selectCancel="//span[.='Cancel']";
+	public static final String bulkCancelpopup="//h4[.='Bulk Cancel']";
+	public static final String enterCancellationReason="(//textarea[@placeholder='Cancellation reason'])[2]";
+	public static final String processButton="(//button[.='Process'])[3]";
+	public static final String bulkCancellationMessage="//h4[.='Bulk Cancel Completed']";
+	public static final String bulkPopupClose="(//button[.='Close'])[7]";
+	public static final String cancelledReservation="(//span[.='Cancelled'])[3]";
+	
+	
+	
 
 	// Folio
 

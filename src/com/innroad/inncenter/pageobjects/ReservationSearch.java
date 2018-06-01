@@ -25,6 +25,7 @@ import com.relevantcodes.extentreports.LogStatus;
 public class ReservationSearch implements IReservationSearchPage {
 
 	public String ResNumber;
+	public static String ReservationNumber;
 	public static Logger resSearchLogger = Logger.getLogger("ReservationSearch");
 
 	public void basicSearch_WithGuestName(WebDriver driver, String GuestName) throws InterruptedException {
@@ -232,6 +233,104 @@ public class ReservationSearch implements IReservationSearchPage {
 
 	}
 	
+	
+	public void bulkCancellation(WebDriver driver) throws InterruptedException{
+		Elements_Reservation_SearchPage reservationSearch = new Elements_Reservation_SearchPage(driver);
+		//reservationSearch.unassignedReservations.click();			
+		reservationSearch.advanced.click();
+		Wait.explicit_wait_visibilityof_webelement_120(reservationSearch.advancedSearchStatus);
+		reservationSearch.advancedSearchStatus.click();
+		reservationSearch.reservedStatus.click();
+		Wait.explicit_wait_visibilityof_webelement_120(reservationSearch.searchButton);
+		Wait.WaitForElement(driver, OR.searchButton);
+		reservationSearch.searchButton.click();
+		Wait.explicit_wait_visibilityof_webelement_120(reservationSearch.clickReservation);
+		reservationSearch.clickReservation.click();
+		Wait.WaitForElement(driver, OR.click_Folio_tab);
+		//Wait.explicit_wait_visibilityof_webelement_120(reservationSearch.click_Folio_tab);
+		reservationSearch.click_Folio_tab.click();
+		Wait.explicit_wait_visibilityof_webelement_120(reservationSearch.Click_Pay_Button);
+		//float folioBalance=Float.parseFloat(reservationSearch.getBalanceFolioLineItems.getText());
+		double processedamount = 0;
+		double endingbalance;
+		String GetEndingBalance = reservationSearch.Payment_Details_Folio_Balance.getText();
+		resSearchLogger.info(GetEndingBalance);
+		String RemoveCurreny[] = GetEndingBalance.split(" ");
+		endingbalance = Double.parseDouble(RemoveCurreny[1]);
+		resSearchLogger.info("Ending balance before Payment " + endingbalance);
+		Wait.wait10Second();
+		ReservationNumber = reservationSearch.resNumber.getText();
+		resSearchLogger.info(ReservationNumber);
+		Wait.wait5Second();
+		
+		//.String resLocator="//span[contains(text(),'"+resNumber.trim()+"')]/../../td[4]/div/a";
+		if(endingbalance!=0.0){
+			reservationSearch.Click_Pay_Button.click();
+			Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.Verify_Payment_Details_poup);
+			new Select(reservationSearch.Select_Paymnet_Method).selectByVisibleText("Cash");
+			Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.payment_AddButton);
+			Wait.WaitForElement(driver, OR.payment_AddButton);
+			reservationSearch.payment_AddButton.click();
+			Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.payment_ContinueButton);
+			Wait.WaitForElement(driver, OR.payment_ContinueButton);
+			reservationSearch.payment_ContinueButton.click();
+			Wait.WaitForElement(driver, OR.Payment_Details_Folio_Balance);
+			Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.Payment_Details_Folio_Balance);
+			Wait.WaitForElement(driver, OR.Payment_Details_Folio_Balance);
+			String GetEndingBalanceafterpayment = reservationSearch.Payment_Details_Folio_Balance.getText();
+			String RemoveCurreny1[] = GetEndingBalanceafterpayment.split(" ");
+			double balanceAfterPayment = Double.parseDouble(RemoveCurreny1[1]);
+			resSearchLogger.info("Ending balance After Payment " + balanceAfterPayment);
+			
+			Wait.explicit_wait_visibilityof_webelement(reservationSearch.folioSaveButton);
+			reservationSearch.folioSaveButton.click();
+			Wait.explicit_wait_visibilityof_webelement(reservationSearch.Toaster_Title);
+			Assert.assertEquals(reservationSearch.Toaster_Title.getText(), "Reservation Saved");
+			Wait.wait5Second();
+		}
+		Wait.explicit_wait_visibilityof_webelement(reservationSearch.closeReservation);
+		reservationSearch.closeReservation.click();
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.searchButton);
+		reservationSearch.enterResNumber.sendKeys(ReservationNumber);
+		reservationSearch.searchButton.click();
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.Check_Reservation);
+		reservationSearch.Check_Reservation.click();
+		resSearchLogger.info("Reservation is selected");
+		reservationSearch.Click_Bulk_Action.click();
+		resSearchLogger.info("Clicked on bulk action");
+		reservationSearch.selectCancel.click();
+		//Wait.explicit_wait_visibilityof_webelement(reservationSearch.enterCancellationReason);
+		//Wait.explicit_wait_visibilityof_webelement(reservationSearch.bulkCancelpopup);
+		Wait.WaitForElement(driver, OR.bulkCancelpopup);
+		reservationSearch.enterCancellationReason.sendKeys("Reservation bulk Cancellation");
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.processButton);
+		reservationSearch.processButton.click();
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.bulkCancellationMessage);
+		String bulkCancelRes=reservationSearch.bulkCancellationMessage.getText();
+		Assert.assertEquals(bulkCancelRes, "Bulk Cancel Completed");
+		reservationSearch.bulkPopupClose.click();
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.advancedSearchReservedStatus);
+		reservationSearch.advancedSearchReservedStatus.click();
+		
+		
+		
+		/*Utility.ScrollToElement(reservationSearch.reservedTocancelledStatus);
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,-250)", "");*/
+		
+		//Wait.explicit_wait_visibilityof_webelement(reservationSearch.reservedTocancelledStatus);
+		reservationSearch.reservedTocancelledStatus.click();
+		//Wait.WaitForElement(driver, OR.searchButton);
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.searchButton);
+		reservationSearch.searchButton.click();	
+		//Wait.WaitForElement(driver, OR.cancelledReservation);
+		Wait.explicit_wait_visibilityof_webelement_150(reservationSearch.cancelledReservation);
+		
+		String bulkCancelledReservationStatus=reservationSearch.cancelledReservation.getText();
+		Assert.assertEquals(bulkCancelledReservationStatus, "Cancelled", "Verified Bulk Cancellation");
+		resSearchLogger.info("Bulk Cancellation Successful");
+		Wait.wait5Second();
+		
+	}
 	
 	public void delete_Res_WithResNumber(WebDriver driver,String Res_Confirm_Number ) throws InterruptedException {
 		

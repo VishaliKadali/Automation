@@ -10,4 +10,6 @@ public interface IReservationSearchPage {
 	
     void Bulkcheckin(WebDriver driver, String GuestName)throws InterruptedException;
     void Bulkcheckout(WebDriver driver, String GuestName)throws InterruptedException;
+    void bulkCancellation(WebDriver driver) throws InterruptedException;
+    
 }
