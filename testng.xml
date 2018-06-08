@@ -45,7 +45,7 @@
 				<class name="com.innroad.inncenter.tests.CreateRule" /> 
 				<class name="com.innroad.inncenter.tests.BulkCancel" /> 
 				<class name="com.innroad.inncenter.tests.BulkNoShow" /> 
-				 
+				<class name="com.innroad.inncenter.tests.BulkCheckInWithZeroBalance" />
 				
 	
 				<class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
