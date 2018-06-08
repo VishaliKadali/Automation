@@ -253,6 +253,13 @@ public class Utility extends TestCore {
 		app_logs.error(logMessage + "\n");
 
 		e.printStackTrace();
+		
+		try{
+			Thread.sleep(500);
+		}catch(InterruptedException ie){
+			
+		}
+		
 		throw new SkipException(e.getMessage());
 
 	}
@@ -272,6 +279,13 @@ public class Utility extends TestCore {
 		app_logs.error(logMessage + "\n");
 
 		e.printStackTrace();
+		
+		
+		try{
+			Thread.sleep(500);
+		}catch(InterruptedException ie){
+			
+		}
 		throw new SkipException(e.getMessage());
 
 	}

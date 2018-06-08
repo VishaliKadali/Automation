@@ -63,6 +63,7 @@ public class OR {
 	// Lock Unlock Reservation
 
 	public static final String advancedSearch = "//button[contains(text(),'Advanced')]";
+	public static final String basicSearchIcon="(//button[contains(@value,'Search')])[1]";
 	public static final String searchButton = "(//button[.='Search'])[1]";
 	public static final String getInHouseReservations = "//span[contains(text(),'In House')]/ ../span[contains(@data-bind,'text: valueText')]";
 	public static final String getAllArrivalsReservations = "//span[contains(text(),'All Arrivals')]/ ../span[1]";
@@ -517,9 +518,12 @@ public class OR {
 	public static final String inHouseReservations="//li[@class='in-house predefinedQueryOption active']";
 	public static final String unassignedReservations="//li[@class='unassigned active predefinedQueryOption']";
 	public static final String folioCancelReservation="//a[contains(@title,'Cancel')]";
+	public static final String clickRollBackButton="//a[@title='Rollback']";
+	public static final String roomAssignmentpopUpSelectButton="(//button[.='Select'])[11]";
 	public static final String payment_AddButton="(//button[.='Add'])[2]";
 	public static final String payment_ContinueButton="(//button[.='Continue'])[9]";
-	public static final String enterResNumber="//input[contains(@data-bind,'value: AdvReservationNumber')]";
+	public static final String enterResNumber="//input[contains(@data-bind,'textInput: BasicConfirmationNumber')]";
+	public static final String enterAdvResNumber="//input[contains(@data-bind,'value: AdvReservationNumber')]";
 	public static final String resNumber="//span[contains(@data-bind,' text: typeof ConfirmationNumberString')]";
 	public static final String selectReservation="(//input[contains(@data-bind,'enable: CanUserAccessThisResProperty')])[1]";
 	public static final String closeAdvancedSearch="//button[contains(@data-bind,'click: $parent.GoBasicLink')]";
@@ -531,17 +535,24 @@ public class OR {
 	public static final String selectCancel="//span[.='Cancel']";
 	public static final String bulkCancelpopup="//h4[.='Bulk Cancel']";
 	public static final String enterCancellationReason="(//textarea[@placeholder='Cancellation reason'])[2]";
+	public static final String voidRoomChargesCheckBox="//input[contains(@data-bind,'enable: BulkVoidChargesEnable()')]";
 	public static final String processButton="(//button[.='Process'])[3]";
-	public static final String bulkCancellationMessage="//h4[.='Bulk Cancel Completed']";
+	public static final String bulkCancellationMessage="//h4[.='Bulk Cancel Completed']";	
+	
 	public static final String bulkPopupClose="(//button[.='Close'])[7]";
+	public static final String basicSearchcancelledReservation="(//span[.='Cancelled'])[2]";
+	
 	public static final String cancelledReservation="(//span[.='Cancelled'])[3]";
 	
-	
-	
-
+	//Bulk NoShow
+	public static final String selectNoShow="(//span[.='No Show'])[2]";
+	public static final String bulkNoShowpopup="//h4[.='Bulk No-Show']";
+	public static final String bulkNoShowMessage="//h4[.='Bulk No-Show Completed']";
+	public static final String basicSearchNoShowReservation="//span[.='No-Show']";
 	// Folio
 
 	public static final String Click_Pay_Button = "//button[.='Pay']";
+	public static final String Verify_Payment_Details_popup="//span[.='Payment Details']";
 	public static final String Verify_Payment_Details_poup = "//span[.='Payment Details']";
 	public static final String Select_Paymnet_Method = "//div[@id='ReservationPaymetItemDetail']//select[contains(@data-bind,'options: $parent.PaymentMethodsList')]";
 	public static final String Click_ADD_Button = "//div[@id='ReservationPaymetItemDetail']//button[.='Add'] [contains(@data-bind,'parent.btnAddEnabled()')]";
@@ -567,6 +578,11 @@ public class OR {
 	public static final String Change_Amount = "//div[@id='ReservationPaymetItemDetail']//input[contains(@data-bind,'value: $parent.formattedAmount')]";
 
 	public static final String Payment_Details_Folio_Balance = ".//*[@id='StayInfo']//label[text()='Folio Balance:']/..//p/span";
+	
+	//Reservation Summary Tab
+	public static final String clickSummaryTab="//a[.='Summary']";
+	public static final String notesDelete="//span[contains(@class,'ButtonDeleteNormal')]/i[2]/::before";
+	public static final String clickGuestInfoTab="//a[.='Guest Info']";
 
 	// Folio Line items void
 

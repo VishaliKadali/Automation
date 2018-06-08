@@ -47,8 +47,13 @@ public class Elements_Reservation_SearchPage {
 		@FindBy(xpath=OR.Click_Bulk_Action)
 		public WebElement Click_Bulk_Action;
 		
+	
+		
 		@FindBy(xpath=OR.Select_Checkin)
 		public WebElement Select_Checkin;
+		
+		@FindBy(xpath=OR.Verify_Bulk_Checkin_popup)
+		public WebElement Verify_Bulk_Checkin_popup;
 		
 		@FindBy(xpath=OR.Click_Process_Button)
 		public WebElement Click_Process_Button;
@@ -121,6 +126,15 @@ public class Elements_Reservation_SearchPage {
 					
 		@FindBy(xpath=OR.click_Folio_tab)
 		public WebElement click_Folio_tab;
+		
+		@FindBy(xpath=OR.clickVoidButton)
+		public WebElement clickVoidButton;
+		
+		@FindBy(xpath=OR.clickRollBackButton)
+		public WebElement clickRollBackButton;
+		
+		@FindBy(xpath=OR.roomAssignmentpopUpSelectButton)
+		public WebElement roomAssignmentpopUpSelectButton;
 					
 		@FindBy(xpath=OR.folioCancelReservation)
 		public WebElement folioCancelReservation;
@@ -152,8 +166,12 @@ public class Elements_Reservation_SearchPage {
 		@FindBy(xpath=OR.closeReservation)
 		public WebElement closeReservation;
 					
+		@FindBy(xpath=OR.enterAdvResNumber)
+		public WebElement enterAdvResNumber;
+		
 		@FindBy(xpath=OR.enterResNumber)
 		public WebElement enterResNumber;
+		
 					
 		@FindBy(xpath=OR.resNumber)
 		public WebElement resNumber;
@@ -163,6 +181,9 @@ public class Elements_Reservation_SearchPage {
 		
 		@FindBy(xpath=OR.enterCancellationReason)
 		public WebElement enterCancellationReason;	
+		
+		@FindBy(xpath=OR.voidRoomChargesCheckBox)
+		public WebElement voidRoomChargesCheckBox;
 		
 		@FindBy(xpath=OR.processButton)
 		public WebElement processButton;
@@ -187,6 +208,9 @@ public class Elements_Reservation_SearchPage {
 		
 		@FindBy(xpath=OR.searchButton)
 		public WebElement searchButton;
+		
+		@FindBy(xpath=OR.basicSearchIcon)
+		public WebElement basicSearchIcon;
 					
 		@FindBy(xpath=OR.selectReservation)
 		public WebElement selectReservation;
@@ -197,14 +221,41 @@ public class Elements_Reservation_SearchPage {
 		@FindBy(xpath=OR.bulkCancellationMessage)
 		public WebElement bulkCancellationMessage;
 		
+		@FindBy(xpath=OR.bulkNoShowMessage)
+		public WebElement bulkNoShowMessage;
+		
 		@FindBy(xpath=OR.bulkPopupClose)
 		public WebElement bulkPopupClose;
 		
 		@FindBy(xpath=OR.cancelledReservation)
 		public WebElement cancelledReservation;
 		
+		@FindBy(xpath=OR.basicSearchNoShowReservation)
+		public WebElement basicSearchNoShowReservation;
+		
+		@FindBy(xpath=OR.basicSearchcancelledReservation)
+		public WebElement basicSearchcancelledReservation;
+		
 		@FindBy(xpath=OR.Toaster_Title)
 		public WebElement Toaster_Title;
+		
+		//Bulk No Show
+		@FindBy(xpath=OR.selectNoShow)
+		public WebElement selectNoShow;
+		
+		@FindBy(xpath=OR.bulkNoShowpopup)
+		public WebElement bulkNoShowpopup;
+		
+		//SummaryTab
+		
+		@FindBy(xpath=OR.clickSummaryTab)
+		public WebElement clickSummaryTab;
+		
+		@FindBy(xpath=OR.clickGuestInfoTab)
+		public WebElement clickGuestInfoTab;
+		
+		@FindBy(xpath=OR.notesDelete)
+		public WebElement notesDelete;
 		
 		
 }

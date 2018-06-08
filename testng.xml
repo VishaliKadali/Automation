@@ -9,22 +9,13 @@
 				<classes>
 	
 			
-		 <!--    <class name="com.innroad.inncenter.tests.Create_Corporate_Acc" />
-            <class name="com.innroad.inncenter.tests.Create_TravelAgent_Account" />
-            <class name="com.innroad.inncenter.tests.Create_Unitowner_Account" />
-            <class name="com.innroad.inncenter.tests.VerifyCashPayInRes" />
-           	<class name="com.innroad.inncenter.tests.CopyReservation" />
-           	
-            <class name="com.innroad.inncenter.tests.BlackoutRoom" />  
-             <class name="com.innroad.inncenter.tests.SwipePayment" /> 
-              <class name="com.innroad.inncenter.tests.ApplyDelta" /> 
-               <class name="com.innroad.inncenter.tests.RecalculateFolio" /> -->
-               <class name="com.innroad.inncenter.tests.Extending_Decreasing_Stay_Dates" /> 
+		 		<class name="com.innroad.inncenter.tests.Create_Corporate_Acc" />
+           		<class name="com.innroad.inncenter.tests.Create_TravelAgent_Account" />
+            	<class name="com.innroad.inncenter.tests.Create_Unitowner_Account" />
+            	<class name="com.innroad.inncenter.tests.VerifyCashPayInRes" />
+           		<class name="com.innroad.inncenter.tests.CopyReservation" />
                
-              
-             
-               
- 			 <!-- 	 <class name="com.innroad.inncenter.tests.Clean_Room_Classes" /> 
+ 			 	<class name="com.innroad.inncenter.tests.Clean_Room_Classes" /> 
 				<class name="com.innroad.inncenter.tests.Delete_Reservation" />
 				<class name="com.innroad.inncenter.tests.Create_New_Policy" />
 				<class name="com.innroad.inncenter.tests.RetainPaymentInfoAfterEdit" />
@@ -37,7 +28,6 @@
 				<class name="com.innroad.inncenter.tests.VerifyResetOption" />
 				<class name="com.innroad.inncenter.tests.Res_Acc_Policy_Verification" />
 				
-
 				<class name="com.innroad.inncenter.tests.GuestHistoryAccount" />
 				<class name="com.innroad.inncenter.tests.CreateGuestHistoryReservation" /> 
 				<class name="com.innroad.inncenter.tests.AssociateResWithGuestHistory" />
@@ -52,7 +42,11 @@
 				<class name="com.innroad.inncenter.tests.DerivedRate" /> 
 				<class name="com.innroad.inncenter.tests.PackageRate" /> 
 				<class name="com.innroad.inncenter.tests.SourceDefaultStatus" /> 
-				<class name="com.innroad.inncenter.tests.CreateRule" />  
+				<class name="com.innroad.inncenter.tests.CreateRule" /> 
+				<class name="com.innroad.inncenter.tests.BulkCancel" /> 
+				<class name="com.innroad.inncenter.tests.BulkNoShow" /> 
+				 
+				
 	
 				<class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
 				<class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 
@@ -68,9 +62,7 @@
 				<class name="com.innroad.inncenter.tests.MoveFolioItems" />   
 				<class name="com.innroad.inncenter.tests.MoveFolioItemsAccrossReservations" />
 
-                
-                 
-                  -->
+                  
                 
 		</classes>
 	</test> <!-- Test -->

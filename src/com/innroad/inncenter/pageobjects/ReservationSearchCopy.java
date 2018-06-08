@@ -46,7 +46,9 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	{
 		new Select(ReservationPage.Select_property_RoomAssign2).selectByVisibleText(PropertyName);
 	}*/
-	Wait.wait15Second();
+	
+	Wait.explicit_wait_visibilityof_webelement(ReservationPage.Click_Arrive_Datepicker);
+	//Wait.wait15Second();
 	ReservationPage.Click_Arrive_Datepicker.click();
 	ReservationPage.Click_Today.click();
 	ReservationPage.Enter_Nigts.clear();
@@ -88,21 +90,7 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	 resunassignedCopyLogger.info( " Selected Room number is " +selectedRoom);
 	 
 	 Thread.sleep(5000);
-		//Select getRoomNumber=new Select(ReservationPage.Validating_UnAssgined_DDL);
-		/*List<WebElement> getAllRoomNumbers=getRoomNumber.getOptions();
-		for(WebElement getEachRoomNumber: getAllRoomNumbers)
-			resunassignedCopyLogger.info(getEachRoomNumber.getText());
-			resunassignedCopyLogger.info("Total no of rooms " +getAllRoomNumbers.size());*/
-			
 		
-		//	nextRoom=getRoomNumber.getFirstSelectedOption().getText();
-	 
-	 
-	 
-		
-				/*WebElement EachRoom=getRoomNumber.getFirstSelectedOption();
-				resunassignedCopyLogger.info("The Selected Rooom Number is " +EachRoom.getText());
-				*/
 		 
 		Wait.wait5Second();
 	}

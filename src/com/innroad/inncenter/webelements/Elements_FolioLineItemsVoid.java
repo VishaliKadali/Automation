@@ -300,6 +300,36 @@ public class Elements_FolioLineItemsVoid {
 		public List<WebElement> RoomCharger_Tax;
 		
 		
+		
+		
+		//Folio Payments Bulk Cancellation
+	
+		@FindBy(xpath=OR.resNumber)
+		public WebElement resNumber;
+		
+		@FindBy(xpath=OR.Click_Pay_Button)
+		public WebElement Click_Pay_Button;
+		
+		@FindBy(xpath=OR.Verify_Payment_Details_popup)
+		public WebElement Verify_Payment_Details_popup;
+		
+		@FindBy(xpath=OR.Verify_Payment_Details_poup)
+		public WebElement Verify_Payment_Details_poup;
+		
+		@FindBy(xpath=OR.Select_Paymnet_Method)
+		public WebElement Select_Paymnet_Method;
+		
+		@FindBy(xpath=OR.payment_AddButton)
+		public WebElement payment_AddButton;
+		
+		@FindBy(xpath=OR.payment_ContinueButton)
+		public WebElement payment_ContinueButton;
+		
+		@FindBy(xpath=OR.Payment_Details_Folio_Balance)
+		public WebElement Payment_Details_Folio_Balance;
+		
+	
+		
 }
 
 	
