@@ -279,7 +279,7 @@ public class BulkCheckOutWithZeroBalance extends TestCore{
 		public Object [][] getData(){
 			
 			//return test data from the sheetname provided
-			return Utility.getData("BulkCheckInWithZeroBalance",excel);
+			return Utility.getData("BulkCheckOutWithZeroBalance",excel);
 		}
 	 
 }
