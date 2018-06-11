@@ -3,6 +3,7 @@ package com.innroad.inncenter.tests;
 import java.io.IOException;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.WebDriver;
 import org.testng.SkipException;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
@@ -16,9 +17,8 @@ import com.innroad.inncenter.testcore.TestCore;
 import com.innroad.inncenter.utils.Utility;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class BulkCheckInWithZeroBalance extends TestCore{
+public class BulkCheckOutWithZeroBalance extends TestCore{
 	
-
 	 @BeforeTest
 		public void checkRunMode(){
 			
@@ -32,15 +32,15 @@ public class BulkCheckInWithZeroBalance extends TestCore{
 
 	
 	 @Test(dataProvider="getData")
-		public void bulkCheckInWithZeroBal(String url,String ClientCode, String Username, String Password, String MarketSegment, String Referral, String Travel_Agent, String ExtReservation,
+		public void bulkCheckOutWithZeroBal(String url,String ClientCode, String Username, String Password, String MarketSegment, String Referral, String Travel_Agent, String ExtReservation,
 				String saluation, String FirstName, String LastName, String Address, String Line1, String Line2, String Line3, String City, String Country, String State,
 				String Postalcode, String Phonenumber, String alternativenumber, String Email, String Account, String IsTaxExempt,String TaxEmptext, String PaymentMethod, String AccountNumber,
 				String ExpiryDate, String BillingNotes,String PropertyName, String Nights, String Adults, String Children, String RatepromoCode,String CheckorUncheckAssign, String RoomClassName, String RoomNumber, String 
-				Attachment, String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData) throws InterruptedException, IOException
+				Attachment, String PaymentType, String CardName, String CCNumber, String CCExpiry, String CCVCode, String Authorizationtype, String ChangeAmount, String ChangeAmountValue, String traceData, String GuestName) throws InterruptedException, IOException
 		{
 		
-		 test = extent.startTest("BulkCheckInWithZeroBalance", "Bulk Check In with Zero Balance")
-				 .assignCategory("BulkCheckInWithZeroRes")
+		 test = extent.startTest("BulkCheckOutWithZeroBalance", "Bulk Check Out with Zero Balance")
+				 .assignCategory("BulkCheckOutWithZeroBalance")
 				 .assignCategory("Regression");
 
 		 String testName=test.getTest().getName().toUpperCase();
@@ -127,7 +127,7 @@ public class BulkCheckInWithZeroBalance extends TestCore{
 			     {
 			     
 			     res.billingInformation(driver, PaymentMethod, AccountNumber, ExpiryDate, BillingNotes);
-			     test.log(LogStatus.PASS, " Enter Billing Information ");
+			     test.log(LogStatus.PASS, " Entered Billing Information ");
 			     app_logs.info(" Entered Billing Information ");
 			     }
 			     catch (Exception e) {
@@ -213,8 +213,9 @@ public class BulkCheckInWithZeroBalance extends TestCore{
 				} catch (Error e) {
 						Utility.updateReport(e, "Fail to Verify Folio Balanace", testName, "FolioBalance");
 				}
-					 
-			     
+				
+				
+				 
 				//************************************Close the Reservation**********************************// 
 				 try
 				 {
@@ -254,19 +255,31 @@ public class BulkCheckInWithZeroBalance extends TestCore{
 					 Utility.updateReport(e, " Fail to Bulk CheckIn the Reservation with Zero Balance ", testName, " bulkCheckInWithZeroBal ");
 				 }
 				 
-		
+				//***********************************Bulk CheckOut Reservation***********************************//	
+				 
+				 try
+				 {
+				 bulkAction.Bulkcheckout(driver, GuestName);
+				 test.log(LogStatus.PASS, " Bulk CheckOut of Reservation with Zero Balance is successful");
+				 app_logs.info("Bulk CheckOut of Reservation with Zero Balance is successful");
+				 }
+				 catch (Exception e) {
+					 Utility.updateReport(e, " Fail to Bulk CheckOut the Reservation with Zero Balance ", testName, " bulkCheckOutWithZeroBal ");
+				 } catch (Error e) {
+					 Utility.updateReport(e, " Fail to Bulk CheckOut the Reservation with Zero Balance ", testName, " bulkCheckOutWithZeroBal ");
+				 }
+				 
+				 
+				 
 			     extent.endTest(test);
 		 
-	 			}
-			 		 
-	
-	 		@DataProvider
-			public Object [][] getData(){
-				
-				//return test data from the sheetname provided
-				return Utility.getData("BulkCheckInWithZeroBalance",excel);
-				
-				}	 
-					 
-
 		}
+	 
+	 	@DataProvider
+		public Object [][] getData(){
+			
+			//return test data from the sheetname provided
+			return Utility.getData("BulkCheckInWithZeroBalance",excel);
+		}
+	 
+}

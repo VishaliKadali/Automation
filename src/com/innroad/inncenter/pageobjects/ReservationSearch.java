@@ -253,6 +253,7 @@ public class ReservationSearch implements IReservationSearchPage {
 		resservationSearch.Select_Checkout.click();
 		resSearchLogger.info("Clicked on bulk action - CHECKOUT option");
 		Wait.explicit_wait_xpath(OR.Verify_Bulk_Checkout_popup);
+/*		
 		String GetGuestName = resservationSearch.Verify_Guest_Name.getAttribute("title");
 		resSearchLogger.info("GuestName  :" + GuestName);
 		if (GetGuestName.equals(GuestName)) {
@@ -260,6 +261,7 @@ public class ReservationSearch implements IReservationSearchPage {
 		} else {
 			resSearchLogger.info("Fail to verify Guest Name");
 		}
+*/		
 		Wait.wait5Second();
 		resservationSearch.Click_Process_Button.click();
 		resSearchLogger.info("Clicked on Process button");
@@ -268,12 +270,14 @@ public class ReservationSearch implements IReservationSearchPage {
 		resservationSearch.click_on_Close_icon.click();
 		resSearchLogger.info("Clicked on Close button");
 		Wait.wait5Second();
+		assertTrue(resservationSearch.Get_Reservation_Status.getText().equals("Departed"), "Reservation Status is not changed to Departed after bulk checkout");
+/*		
 		if (resservationSearch.Get_Reservation_Status.getText().equals("Departed")) {
 			resSearchLogger.info("Departed Success");
 		} else {
 			resSearchLogger.info("Failed to checkout");
 		}
-
+*/
 	}
 	
 	public void searchResWithAdvancedSearch(WebDriver driver){
