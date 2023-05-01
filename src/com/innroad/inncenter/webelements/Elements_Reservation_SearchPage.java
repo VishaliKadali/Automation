@@ -114,6 +114,12 @@ public class Elements_Reservation_SearchPage {
 		
 		
 		//Bulk Cancellation
+<<<<<<< HEAD
+		
+		@FindBy(xpath=OR.selectAllArrivals)
+		public WebElement selectAllArrivals;
+=======
+>>>>>>> feature/AUTOMATION-90
 		
 		@FindBy(xpath=OR.selectAllArrivals)
 		public WebElement selectAllArrivals;

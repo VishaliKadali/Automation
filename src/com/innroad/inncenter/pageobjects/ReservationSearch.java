@@ -618,6 +618,8 @@ public class ReservationSearch implements IReservationSearchPage {
 			resSearchLogger.info("Tax value is not zero : "+d);
 		}
 	}
+<<<<<<< HEAD
+=======
 	
 	public void verifyNotes(WebDriver driver) throws InterruptedException
 	{
@@ -637,6 +639,7 @@ public class ReservationSearch implements IReservationSearchPage {
 		}
 		
 	}
+>>>>>>> feature/AUTOMATION-90
 /*	
 	public void preDefinedQueriesTab(WebDriver driver) throws InterruptedException{
 		

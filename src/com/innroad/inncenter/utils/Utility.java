@@ -253,6 +253,8 @@ public class Utility extends TestCore {
 		app_logs.error(logMessage + "\n");
 
 		e.printStackTrace();
+<<<<<<< HEAD
+=======
 		
 		try{
 			Thread.sleep(500);
@@ -260,6 +262,7 @@ public class Utility extends TestCore {
 			
 		}
 		
+>>>>>>> feature/AUTOMATION-90
 		throw new SkipException(e.getMessage());
 
 	}
@@ -279,6 +282,8 @@ public class Utility extends TestCore {
 		app_logs.error(logMessage + "\n");
 
 		e.printStackTrace();
+<<<<<<< HEAD
+=======
 		
 		
 		try{
@@ -286,6 +291,7 @@ public class Utility extends TestCore {
 		}catch(InterruptedException ie){
 			
 		}
+>>>>>>> feature/AUTOMATION-90
 		throw new SkipException(e.getMessage());
 
 	}

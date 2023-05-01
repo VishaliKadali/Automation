@@ -9,11 +9,20 @@
 				<classes>
 	
 			
+<<<<<<< HEAD
+ 				<class name="com.innroad.inncenter.tests.Create_Corporate_Acc" />
+            	<class name="com.innroad.inncenter.tests.Create_TravelAgent_Account" />
+            	<class name="com.innroad.inncenter.tests.Create_Unitowner_Account" />
+            	<class name="com.innroad.inncenter.tests.VerifyCashPayInRes" />
+           		<class name="com.innroad.inncenter.tests.CopyReservation" />
+           	
+=======
 		 		<class name="com.innroad.inncenter.tests.Create_Corporate_Acc" />
            		<class name="com.innroad.inncenter.tests.Create_TravelAgent_Account" />
             	<class name="com.innroad.inncenter.tests.Create_Unitowner_Account" />
             	<class name="com.innroad.inncenter.tests.VerifyCashPayInRes" />
            		<class name="com.innroad.inncenter.tests.CopyReservation" />
+>>>>>>> feature/AUTOMATION-90
                
  			 	<class name="com.innroad.inncenter.tests.Clean_Room_Classes" /> 
 				<class name="com.innroad.inncenter.tests.Delete_Reservation" />
@@ -28,6 +37,16 @@
 				<class name="com.innroad.inncenter.tests.VerifyResetOption" />
 				<class name="com.innroad.inncenter.tests.Res_Acc_Policy_Verification" />
 				
+<<<<<<< HEAD
+
+				<class name="com.innroad.inncenter.tests.GuestHistoryAccount" />
+				<class name="com.innroad.inncenter.tests.CreateGuestHistoryReservation" /> 
+				<class name="com.innroad.inncenter.tests.AssociateResWithGuestHistory" />
+				<class name="com.innroad.inncenter.tests.FolioLineItemsVoid" /> 
+				<class name="com.innroad.inncenter.tests.LockUnlockFunctionality" /> 
+				<class name="com.innroad.inncenter.tests.CopyReservationAssigned" /> 
+				<class name="com.innroad.inncenter.tests.Copy_Unassigned_Reservation" />  
+=======
 				<class name="com.innroad.inncenter.tests.GuestHistoryAccount" />
 				<class name="com.innroad.inncenter.tests.CreateGuestHistoryReservation" /> 
 				<class name="com.innroad.inncenter.tests.AssociateResWithGuestHistory" />
@@ -36,6 +55,7 @@
 				<class name="com.innroad.inncenter.tests.FolioLineItemsVoid" /> 
 				<class name="com.innroad.inncenter.tests.LockUnlockFunctionality" /> 
 				
+>>>>>>> feature/AUTOMATION-90
 				<class name="com.innroad.inncenter.tests.Reservation_PromoCode" /> 
 				<class name="com.innroad.inncenter.tests.Reservation_With_NonRackRate" /> 
 				<class name="com.innroad.inncenter.tests.PostLineItem" /> 
@@ -43,11 +63,15 @@
 				<class name="com.innroad.inncenter.tests.DerivedRate" /> 
 				<class name="com.innroad.inncenter.tests.PackageRate" /> 
 				<class name="com.innroad.inncenter.tests.SourceDefaultStatus" /> 
+<<<<<<< HEAD
+				<class name="com.innroad.inncenter.tests.CreateRule" />  
+=======
 				<class name="com.innroad.inncenter.tests.CreateRule" /> 
 				<class name="com.innroad.inncenter.tests.BulkCancel" /> 
 				<class name="com.innroad.inncenter.tests.BulkNoShow" /> 
 				<class name="com.innroad.inncenter.tests.BulkCheckInWithZeroBalance" />
 				<class name="com.innroad.inncenter.tests.BulkCheckOutWithZeroBalance" />
+>>>>>>> feature/AUTOMATION-90
 	
 				<class name="com.innroad.inncenter.tests.New_Edit_Delete_Folio" /> 		
 				<class name="com.innroad.inncenter.tests.RateQuote_Book_Quote" /> 

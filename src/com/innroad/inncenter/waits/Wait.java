@@ -109,6 +109,8 @@ public class Wait {
 		
 	}
 	
+<<<<<<< HEAD
+=======
 	public static void explicit_wait_visibilityof_webelement_120 (WebElement Element)
 	{
 		WebDriverWait wait = new WebDriverWait(TestCore.driver, 120);
@@ -123,13 +125,18 @@ public class Wait {
 		
 	}
 	
+>>>>>>> feature/AUTOMATION-90
 	public static void WaitForElement(WebDriver driver,String locator){
 		FluentWait<ChromeDriver> wait = new FluentWait<ChromeDriver>((ChromeDriver) driver);
 
 
 		new FluentWait<WebDriver>(driver).withTimeout(50, TimeUnit.SECONDS).pollingEvery(10, TimeUnit.SECONDS).ignoring(ElementNotVisibleException.class);
 
+<<<<<<< HEAD
+		wait.withTimeout(60,TimeUnit.SECONDS);
+=======
 		wait.withTimeout(200,TimeUnit.SECONDS);
+>>>>>>> feature/AUTOMATION-90
 		wait.pollingEvery(3, TimeUnit.SECONDS);
 		wait.ignoring(NoSuchElementException.class);
 		wait.ignoring(StaleElementReferenceException.class);

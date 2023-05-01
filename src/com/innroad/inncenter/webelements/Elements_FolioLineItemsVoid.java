@@ -300,6 +300,8 @@ public class Elements_FolioLineItemsVoid {
 		public List<WebElement> RoomCharger_Tax;
 		
 		
+<<<<<<< HEAD
+=======
 		
 		
 		//Folio Payments Bulk Cancellation
@@ -330,6 +332,7 @@ public class Elements_FolioLineItemsVoid {
 		
 	
 		
+>>>>>>> feature/AUTOMATION-90
 }
 
 	

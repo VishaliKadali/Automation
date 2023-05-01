@@ -65,8 +65,11 @@ public class Reservation implements IReservation {
 		return d;
 
 	}
+<<<<<<< HEAD
+=======
 	
 	
+>>>>>>> feature/AUTOMATION-90
 
 	public void marketingInfo(WebDriver driver, String MarketSegment, String Referral, String Travel_Agent,
 			String ExtReservation) throws InterruptedException {
@@ -576,6 +579,8 @@ public class Reservation implements IReservation {
 	 * }
 	 */
 
+<<<<<<< HEAD
+=======
 	
 	
 	
@@ -598,6 +603,7 @@ public class Reservation implements IReservation {
 	}*/
 	
 	
+>>>>>>> feature/AUTOMATION-90
 	public void Cancel_Reservation(WebDriver driver) throws InterruptedException {
 		Elements_Reservation ReservationPage = new Elements_Reservation(driver);
 		Utility.ScrollToElement(ReservationPage.Cancel_Reservation_Icon);

@@ -14,6 +14,10 @@ import com.innroad.inncenter.webelements.Elements_FolioLineItemsVoid;
 
 
 public class FolioLineItems implements IFolioLineItemsVoid{
+<<<<<<< HEAD
+
+public static Logger folioVoidLogger = Logger.getLogger("FolioLineItems");
+=======
 	
 public static double processedamount = 0;
 public static double endingbalance;
@@ -21,6 +25,7 @@ public static double folioendingbalanceafterpayment;
 public static String ReservationNumber;
 
 public static Logger folioLineItemsLogger = Logger.getLogger("FolioLineItems");
+>>>>>>> feature/AUTOMATION-90
 
 public void IPropertySelector(WebDriver driver, String PropertyName) throws InterruptedException {
 		
@@ -34,7 +39,11 @@ public void IPropertySelector(WebDriver driver, String PropertyName) throws Inte
 		}
 		else
 		{
+<<<<<<< HEAD
+			folioVoidLogger.info("Single Property");
+=======
 			folioLineItemsLogger.info("Single Property");
+>>>>>>> feature/AUTOMATION-90
 		}
 	}
 	
@@ -179,7 +188,11 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	
 	new Select(FolioLineItems.Select_Room_Class).selectByVisibleText(RoomClassName);
 	String selectedOption = new Select(FolioLineItems.Validating_UnAssgined_DDL).getFirstSelectedOption().getText();
+<<<<<<< HEAD
+	folioVoidLogger.info("selectedOption  " +selectedOption);
+=======
 	folioLineItemsLogger.info("selectedOption  " +selectedOption);
+>>>>>>> feature/AUTOMATION-90
 	if(selectedOption.equals("--Select--"))
 	{
 	//new Select(FolioLineItems.Select_Room_Number).selectByVisibleText(RoomNumber);
@@ -187,13 +200,21 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	}
 	else
 	{
+<<<<<<< HEAD
+		folioVoidLogger.info("Reservation is unassigned");
+=======
 		folioLineItemsLogger.info("Reservation is unassigned");
+>>>>>>> feature/AUTOMATION-90
 	}
 	}
 	catch(Exception e)
 	{
 		Wait.explicit_wait_xpath(OR.Validation_Text_NoRooms);
+<<<<<<< HEAD
+		folioVoidLogger.info("Room Class are not Available for these dates");
+=======
 		folioLineItemsLogger.info("Room Class are not Available for these dates");
+>>>>>>> feature/AUTOMATION-90
 		
 	}
 	FolioLineItems.Click_Select.click();
@@ -203,7 +224,11 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	}
 	catch(Exception e)
 	{
+<<<<<<< HEAD
+		folioVoidLogger.info("Verification failed");
+=======
 		folioLineItemsLogger.info("Verification failed");
+>>>>>>> feature/AUTOMATION-90
 	}
 	Wait.wait5Second();
 	if(FolioLineItems.Verify_RulesBroken_Popup.isDisplayed())
@@ -212,21 +237,33 @@ public void roomAssignment(WebDriver driver,String PropertyName, String Nights, 
 	}
 	else
 	{
+<<<<<<< HEAD
+		folioVoidLogger.info("Satisfied Rules");
+=======
 		folioLineItemsLogger.info("Satisfied Rules");
+>>>>>>> feature/AUTOMATION-90
 	}
 	
 	if(FolioLineItems.Verify_Toaster_Container.isDisplayed())
 	{
 	String getTotasterTitle=FolioLineItems.Toaster_Title.getText();
 	String getToastermessage=FolioLineItems.Toaster_Message.getText();
+<<<<<<< HEAD
+	folioVoidLogger.info(getTotasterTitle + " " +getToastermessage);
+=======
 	folioLineItemsLogger.info(getTotasterTitle + " " +getToastermessage);
+>>>>>>> feature/AUTOMATION-90
 	Assert.assertEquals(getTotasterTitle, "Room assignment has changed.");
 	Assert.assertEquals(getToastermessage, "Room assignment has changed.");
 	}
 	Wait.wait2Second();
 	String getPropertyName = FolioLineItems.Get_Property_Name.getText();
 	String getRoomclassName_status=FolioLineItems.Get_RoomClass_Status.getText();
+<<<<<<< HEAD
+	folioVoidLogger.info(getRoomclassName_status);
+=======
 	folioLineItemsLogger.info(getRoomclassName_status);
+>>>>>>> feature/AUTOMATION-90
 	Assert.assertEquals(getPropertyName,PropertyName );
 	String getRoomclassName[]= getRoomclassName_status.split(" ");
 	//Assert.assertEquals(getRoomclassName[0],RoomClassName );
@@ -284,6 +321,92 @@ public void saveReservation(WebDriver driver) throws InterruptedException {
 	Wait.wait10Second();
 }
 
+<<<<<<< HEAD
+
+//Add Line Items in Folio
+/*public void addLineItem(WebDriver driver, String Amount) throws InterruptedException {
+	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
+	FolioLineItems.click_Add_Button.click();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.selectCategory);
+	new Select(FolioLineItems.selectCategory).selectByIndex(9);
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.enterAmount);
+	FolioLineItems.enterAmount.sendKeys(Amount);
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickCommitButton);
+	FolioLineItems.clickCommitButton.click();
+	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickSaveButton);
+	FolioLineItems.clickSaveButton.click();
+	Wait.wait10Second();
+	
+}*/
+
+
+/*//Folio Line Items Post and Rollback 
+public void adjustLineItem(WebDriver driver) throws InterruptedException{
+	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
+	//boolean lineItemStatusPending=FolioLineItems.lineItem1.isDisplayed();
+	//boolean checkbox=FolioLineItems.verifyCheckbox.isEnabled();
+	//boolean lineItemStatusPostFutureDate=FolioLineItems.clickOkForPopup.isDisplayed();
+	Wait.wait10Second();
+	if(FolioLineItems.lineItemPendingStatus.isDisplayed()==true)
+	{
+		if(FolioLineItems.verifyCheckboxPendingStatus.isEnabled())
+		{
+		FolioLineItems.lineItemPendingStatus.click();
+		Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickSaveButton);
+		FolioLineItems.clickSaveButton.click();
+		Wait.wait10Second();
+		folioVoidLogger.info(" Posted the Line Item successfully ");
+		Wait.wait15Second();	
+		}
+			FolioLineItems.clickSaveButton.click();
+			Wait.wait10Second();
+			FolioLineItems.clickOnDescription.click();
+			Wait.wait10Second();
+			FolioLineItems.clickRollBackButtonInPopUp.click();
+			Wait.wait10Second();
+			FolioLineItems.clickContinueButton.click();
+			Wait.wait10Second();
+			FolioLineItems.clickSaveButton.click();
+			Wait.wait10Second();
+		
+	}
+	//boolean lineItemStatusPosted=FolioLineItems.lineItem2.isDisplayed();
+	
+//	try{
+		
+		
+		if(FolioLineItems.lineItemPostStatus.isDisplayed()==true)
+		{
+			if(FolioLineItems.verifyCheckboxPostStatus.isEnabled()!=true){
+				FolioLineItems.clickOnDescription.click();
+				Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickRollBackButtonInPopUp);
+				FolioLineItems.clickRollBackButtonInPopUp.click();
+				Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickContinueButton);
+				FolioLineItems.clickContinueButton.click();
+				Wait.wait10Second();
+				folioVoidLogger.info(" Posted Line Item Rolled back successfully ");
+				Wait.explicit_wait_visibilityof_webelement(FolioLineItems.clickSaveButton);
+				FolioLineItems.clickSaveButton.click();
+				Wait.wait10Second();
+			}
+			else {
+				Assert.fail("Failed to Disable the checkbox after posting the line Item");
+				
+			}
+		}
+		
+	
+	
+	
+	catch(Exception e){
+		
+		addOrPostLineItemLogger.info(e.getMessage());
+		
+	}
+*/
+
+ 
+=======
 public void verifyFolioBalance(WebDriver driver) throws InterruptedException{
 	Elements_FolioLineItemsVoid FolioLineItems = new Elements_FolioLineItemsVoid(driver);
 	Wait.WaitForElement(driver, OR.click_Folio_tab);
@@ -338,6 +461,7 @@ public void verifyFolioBalance(WebDriver driver) throws InterruptedException{
 	
 }
 
+>>>>>>> feature/AUTOMATION-90
 //Add and Void Folio Line Items 
 public void folioLineItemsVoid(WebDriver driver, String Category, String Amount, String Notes) throws InterruptedException{
 	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
@@ -349,7 +473,11 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 	}
 	catch(Exception e)
 	{
+<<<<<<< HEAD
+		folioVoidLogger.info("Verification failed");
+=======
 		folioLineItemsLogger.info("Verification failed");
+>>>>>>> feature/AUTOMATION-90
 	}
 	
 	FolioLineItems.click_Add_Button.click();
@@ -361,7 +489,11 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 	FolioLineItems.clickCommitButton.click();
 	Wait.explicit_wait_visibilityof_webelement(FolioLineItems.getBalanceFolioLineItems);
 	String getBalance= FolioLineItems.getBalanceFolioLineItems.getText();
+<<<<<<< HEAD
+	folioVoidLogger.info(" Balance of the Folio Line Items " +getBalance);
+=======
 	folioLineItemsLogger.info(" Balance of the Folio Line Items " +getBalance);
+>>>>>>> feature/AUTOMATION-90
 	FolioLineItems.selectAllLineItems.click();
 	Wait.wait5Second();
 	try {
@@ -373,7 +505,11 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 		}
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
+<<<<<<< HEAD
+		folioVoidLogger.info(" Void button is disabled in Folio tab ");
+=======
 		folioLineItemsLogger.info(" Void button is disabled in Folio tab ");
+>>>>>>> feature/AUTOMATION-90
 		
 	}
 	FolioLineItems.enterNotes.sendKeys(Notes);
@@ -384,7 +520,11 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
 	if(!FolioLineItems.DisplayVoidItemsCheckBox.isSelected())
 	{
 		FolioLineItems.DisplayVoidItemsCheckBox.click();
+<<<<<<< HEAD
+		folioVoidLogger.info(" Checked Display Void Items CheckBox ");
+=======
 		folioLineItemsLogger.info(" Checked Display Void Items CheckBox ");
+>>>>>>> feature/AUTOMATION-90
 	}
 	else{
 		Wait.wait10Second();
@@ -395,13 +535,19 @@ public void folioLineItemsVoid(WebDriver driver, String Category, String Amount,
         js1.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Wait.wait10Second();
         String getBalance1= FolioLineItems.getBalanceFolioLineItems.getText();
+<<<<<<< HEAD
+        folioVoidLogger.info(" Balance of the Folio Line Items after void " +getBalance1);
+=======
         folioLineItemsLogger.info(" Balance of the Folio Line Items after void " +getBalance1);
+>>>>>>> feature/AUTOMATION-90
         Wait.explicit_wait_visibilityof_webelement(FolioLineItems.folioSaveButton);
         FolioLineItems.folioSaveButton.click();
         Wait.wait10Second();
 }
 
 
+<<<<<<< HEAD
+=======
 public void getReservationNumber(WebDriver driver) throws InterruptedException
 {
 	Elements_FolioLineItemsVoid FolioLineItems=new Elements_FolioLineItemsVoid(driver);
@@ -410,6 +556,7 @@ public void getReservationNumber(WebDriver driver) throws InterruptedException
 	Wait.wait5Second();
 	
 }
+>>>>>>> feature/AUTOMATION-90
 
 
 @Override
