@@ -36,7 +36,8 @@ public class Account implements IAccount {
 		CreateAccount.Click_New_Account.click();
 		Wait.explicit_wait_xpath(OR.Verify_New_Account_tab);
 		Wait.explicit_wait_xpath(OR.Verify_New_Account_Page_Load);
-		Wait.explicit_wait_visibilityof_webelement(CreateAccount.Select_Market_Segment);
+		//Wait.explicit_wait_visibilityof_webelement(CreateAccount.Select_Market_Segment);
+		
 	}
 
 	public void AccountDetails(WebDriver driver, String AccountType, String AccountName) {
@@ -44,8 +45,8 @@ public class Account implements IAccount {
 		Elements_Accounts CreateAccount = new Elements_Accounts(driver);
 		String selectedOption = new Select(CreateAccount.Verify_Account_Type).getFirstSelectedOption().getText();
 		Assert.assertEquals(AccountType, selectedOption);
-
 		CreateAccount.Enter_Account_Name.sendKeys(AccountName);
+		
 	}
 
 	public void AccountAttributes(WebDriver driver, String MargetSegment, String Referral) {
@@ -258,7 +259,7 @@ public class Account implements IAccount {
 	public void CreateHouseAccount(WebDriver driver, String HouseAccountName) {
 		Elements_Accounts AccountPayment = new Elements_Accounts(driver);
 		AccountPayment.Enter_House_Account_Name.sendKeys(HouseAccountName);
-
+		
 	}
 
 	public void GiftCertificate(WebDriver driver, String GiftCertificateName) {
