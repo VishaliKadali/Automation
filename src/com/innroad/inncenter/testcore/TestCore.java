@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -109,7 +110,9 @@ public class TestCore {
 								driver = new InternetExplorerDriver();
 								break;
 				case "CHROME":	System.setProperty("webdriver.chrome.driver", ".\\Drivers\\chromedriver.exe");
-								driver = new ChromeDriver();
+								ChromeOptions options=new ChromeOptions();
+								options.addArguments("disable-infobars");
+								driver = new ChromeDriver(options);
 								break;
 				default:	    app_logs.info("Please check the brower name in config file ");
 				

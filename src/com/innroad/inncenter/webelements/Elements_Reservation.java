@@ -300,6 +300,9 @@ public class Elements_Reservation {
 		@FindBy(xpath=OR.Click_Checkin)
 		public WebElement Click_Checkin;
 		
+		@FindBy(xpath=OR.roomAssignmentpopUpSelectButton)
+		public WebElement roomAssignmentpopUpSelectButton;
+		
 		@FindBy(xpath=OR.Verify_Dirty_Room_popup)
 		public WebElement Verify_Dirty_Room_popup;
 		

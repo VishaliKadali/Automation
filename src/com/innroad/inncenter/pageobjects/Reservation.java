@@ -65,6 +65,11 @@ public class Reservation implements IReservation {
 		return d;
 
 	}
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> feature/AUTOMATION-90
 
 	public void marketingInfo(WebDriver driver, String MarketSegment, String Referral, String Travel_Agent,
 			String ExtReservation) throws InterruptedException {
@@ -574,6 +579,31 @@ public class Reservation implements IReservation {
 	 * }
 	 */
 
+<<<<<<< HEAD
+=======
+	
+	
+	
+	/*
+	public void clickCheckIn(WebDriver driver) throws InterruptedException{
+		Elements_Reservation ReservationPage = new Elements_Reservation(driver);
+		Wait.explicit_wait_visibilityof_webelement(ReservationPage.Click_Checkin);
+		// action.moveToElement(ReservationPage.Click_Checkin).doubleClick().build().perform();
+		//Wait.wait1Second();
+		ReservationPage.Click_Checkin.click();
+		reservationLogger.info("Clicked on CheckIn button");
+		
+		Wait.explicit_wait_visibilityof_webelement(ReservationPage.roomAssignmentpopUpSelectButton);
+		ReservationPage.roomAssignmentpopUpSelectButton.click();
+		
+		
+		Wait.explicit_wait_visibilityof_webelement(ReservationPage.Click_Save_ReservationDetails);
+		ReservationPage.Click_Save_ReservationDetails.click();
+		
+	}*/
+	
+	
+>>>>>>> feature/AUTOMATION-90
 	public void Cancel_Reservation(WebDriver driver) throws InterruptedException {
 		Elements_Reservation ReservationPage = new Elements_Reservation(driver);
 		Utility.ScrollToElement(ReservationPage.Cancel_Reservation_Icon);
